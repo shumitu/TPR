@@ -10,11 +10,14 @@ namespace Task_1.Part_1
         private DataContext context;
         private DataFill fill;
 
+
         public DataRepository(DataFill fill, DataContext context)
         {
             this.context = context;
             this.fill = fill;
+            this.fill.Fill(context);
         }
+
 
         public DataContext Context
         {
@@ -27,6 +30,7 @@ namespace Task_1.Part_1
                 context = value;
             }
         }
+
 
         public DataFill Fill
         {
