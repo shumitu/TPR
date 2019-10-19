@@ -6,7 +6,6 @@ namespace Task_1.Part_1
 {
     public class Register
     {
-        private string personId;
         private string firstName;
         private string lastName;
 
