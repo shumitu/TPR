@@ -18,7 +18,7 @@ namespace Task_1.Part_1
 
         public DataContext Context
         {
-            get
+           private get
             {
                 return context;
             }
@@ -30,7 +30,7 @@ namespace Task_1.Part_1
 
         public DataFill Fill
         {
-            get
+            private get
             {
                 return fill;
             }
