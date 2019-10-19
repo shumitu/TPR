@@ -72,12 +72,20 @@ namespace Task_1.Part_1
             }
         }
 
+
         public string All
         {
             get
             {
                 return bookId + " " + title + " " + author + " " + year;
             }
+        }
+
+
+        public override bool Equals(object obj)
+        {
+            Catalog other = (Catalog)obj;
+            return this.bookId == other.bookId;
         }
     }
 }

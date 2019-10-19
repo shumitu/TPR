@@ -65,5 +65,12 @@ namespace Task_1.Part_1
                 return personId + " " + firstName + " " + lastName;
             }
         }
+
+
+        public override bool Equals(object obj)
+        {
+            Register other = (Register)obj;
+            return this.PersonId == other.PersonId;
+        }
     }
 }

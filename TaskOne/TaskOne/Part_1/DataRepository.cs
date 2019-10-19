@@ -47,13 +47,13 @@ namespace Task_1.Part_1
 
 
 
-        public void AddToRegister(Register person)
+        public void AddRegister(Register person)
         {
             context.lists.Add(person);
         }
 
 
-        public Register GetFromRegister(int personId)
+        public Register GetRegister(int personId)
         {
             foreach (var Person in context.lists)
             {
@@ -66,15 +66,15 @@ namespace Task_1.Part_1
         }
 
 
-        public IEnumerable<Register> GetAllFromRegister()
+        public IEnumerable<Register> GetAllRegisters()
         {
             return context.lists;
         }
 
 
-        public void DeleteFromRegister(int _id)
+        public void DeleteRegister(int _id)
         {
-            Register tmp = GetFromRegister(_id);
+            Register tmp = GetRegister(_id);
 
             foreach (var event1 in context.events)
             {
