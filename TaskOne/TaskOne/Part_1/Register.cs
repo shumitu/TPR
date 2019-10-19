@@ -11,24 +11,10 @@ namespace Task_1.Part_1
         private string lastName;
 
 
-        public Register(string personId, string firstName, string lastName)
+        public Register(string firstName, string lastName)
         {
-            this.personId = personId;
             this.firstName = firstName;
             this.lastName = lastName;
-        }
-
-
-        public string PersonId
-        {
-            get
-            {
-                return personId;
-            }
-            set
-            {
-                personId = value;
-            }
         }
 
 
@@ -44,7 +30,7 @@ namespace Task_1.Part_1
             }
         }
 
-
+ 
         public string LastName
         {
             get
@@ -62,7 +48,7 @@ namespace Task_1.Part_1
         {
             get
             {
-                return personId + " " + firstName + " " + lastName;
+                return firstName + " " + lastName;
             }
         }
     }
