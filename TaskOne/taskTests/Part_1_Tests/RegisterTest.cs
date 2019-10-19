@@ -10,22 +10,22 @@ namespace taskTests.Part_1_Tests
         [TestMethod]
         public void personFirstNameGetterTest()
         {
-            Register r = new Register("Jan", "Kowalski");
+            Register r = new Register(1, "Jan", "Kowalski");
             Assert.AreEqual("Jan", r.FirstName);
         }
 
         [TestMethod]
         public void personLastNameGetterTest()
         {
-            Register r = new Register("Jan", "Kowalski");
+            Register r = new Register(1, "Jan", "Kowalski");
             Assert.AreEqual("Kowalski", r.LastName);
         }
 
         [TestMethod]
         public void personStringGetterTest()
         {
-            Register r = new Register("Jan", "Kowalski");
-            Assert.AreEqual("Jan Kowalski", r.FullName);
+            Register r = new Register(1, "Jan", "Kowalski");
+            Assert.AreEqual("1 Jan Kowalski", r.FullName);
         }
     }
 }

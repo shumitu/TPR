@@ -6,14 +6,29 @@ namespace Task_1.Part_1
 {
     public class Register
     {
+        private int personId;
         private string firstName;
         private string lastName;
 
 
-        public Register(string firstName, string lastName)
+        public Register(int personId, string firstName, string lastName)
         {
+            this.personId = personId;
             this.firstName = firstName;
             this.lastName = lastName;
+        }
+
+
+        public int PersonId
+        {
+            get
+            {
+                return personId;
+            }
+            set
+            {
+                personId = value;
+            }
         }
 
 
@@ -47,7 +62,7 @@ namespace Task_1.Part_1
         {
             get
             {
-                return firstName + " " + lastName;
+                return personId + " " + firstName + " " + lastName;
             }
         }
     }
