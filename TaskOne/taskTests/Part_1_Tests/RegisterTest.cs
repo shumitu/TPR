@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Task_1.Part_1;
 
-namespace taskTests.Part_1Tests
+namespace taskTests.Part_1_Tests
 {
     [TestClass]
     public class RegisterTest
