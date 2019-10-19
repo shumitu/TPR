@@ -8,12 +8,12 @@ namespace Task_1.Part_1
     {
         private Catalog catalog;
         private int amount;
-        private float price;
+        private double price;
         private string description;
         private DateTime date;
 
 
-        public StatusDescription(Catalog catalog, int amount, float price, string description, DateTime date)
+        public StatusDescription(Catalog catalog, int amount, double price, string description, DateTime date)
         {
             this.catalog = catalog;
             this.amount = amount;
@@ -49,7 +49,7 @@ namespace Task_1.Part_1
         }
 
 
-        public float Price
+        public double Price
         {
             get
             {
