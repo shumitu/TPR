@@ -43,7 +43,7 @@ namespace Task_1.Part_1
         }
 
 
-        public string All
+        public string FullName
         {
             get
             {
