@@ -76,7 +76,7 @@ namespace Task_1.Part_1
         {
             get
             {
-                return this.Person.All + " " + Description.All + " " + DateBorrow + " " + DateReturn;
+                return this.Person.FullName + " " + Description.All + " " + DateBorrow + " " + DateReturn;
             }
         }
     }

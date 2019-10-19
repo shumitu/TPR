@@ -25,7 +25,7 @@ namespace taskTests.Part_1Tests
         public void personStringGetterTest()
         {
             Register r = new Register("Jan", "Kowalski");
-            Assert.AreEqual("Jan Kowalski", r.All);
+            Assert.AreEqual("Jan Kowalski", r.FullName);
         }
     }
 }
