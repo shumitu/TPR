@@ -7,15 +7,18 @@ namespace Task_1.Part_1
 {
     public class DataContext
     {
-        public List<Register> lists = new List<Register>();
+        public List<Register> lists;
+        public Dictionary<int, Catalog> catalogs;
+        public ObservableCollection<Event> events;
+        public List<StatusDescription> descriptions;
 
-
-        public Dictionary<int, Catalog> catalogs = new Dictionary<int, Catalog>();
-
-
-        public ObservableCollection<Event> events = new ObservableCollection<Event>();
-
-
-        public List<StatusDescription> descriptions = new List<StatusDescription>();
+        public DataContext()
+        {
+            lists = new List<Register>();
+            catalogs = new Dictionary<int, Catalog>();
+            events = new ObservableCollection<Event>();
+            descriptions = new List<StatusDescription>();
+        }
     }
+
 }
