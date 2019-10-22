@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Task_1.Part_1;
@@ -87,21 +88,24 @@ namespace taskTests.Part__3_Tests
 
 
 
-        //[TestMethod()]
-        //public void AddToCatalogTest()
-        //{
-        //    DataContext context = new DataContext();
-        //    ConstantsFill constants = new ConstantsFill();
-        //    DataRepository data = new DataRepository(constants, context);
+        [TestMethod()]
+        public void AddToCatalogTest()
+        {
+            DataContext context = new DataContext();
+            ConstantsFill constants = new ConstantsFill();
+            DataRepository data = new DataRepository(constants, context);
 
-        //    Catalog book = new Catalog(10, "AuthorTest", "TitleTest", 2018);
-        //    data.AddToCatalog(book);       
+            Catalog book = new Catalog(7, "AuthorTest", "TitleTest", 2018);
+            data.AddToCatalog(book);
 
-        //    if (!book.Equals(data.GetFromCatalog(0)))
-        //    {
-        //        Assert.Fail();
-        //    }
-        //}
+            var values = context.catalogs.Values.ToList();
+            int check = values.Count;
+
+            if (check != 8)
+            {
+                Assert.Fail();
+            }
+        }
 
 
         [TestMethod()]
@@ -148,21 +152,249 @@ namespace taskTests.Part__3_Tests
             }
         }
 
-        //[TestMethod()]
-        //public void DeleteFromCatalogTest()
-        //{
 
-        //    DataContext context = new DataContext();
-        //    ConstantsFill constants = new ConstantsFill();
-        //    DataRepository data = new DataRepository(constants, context);
+        [TestMethod()]
+        public void DeleteFromCatalogTest()
+        {
+            DataContext context = new DataContext();
+            ConstantsFill constants = new ConstantsFill();
+            DataRepository data = new DataRepository(constants, context);
 
-        //    data.AddToCatalog(new Catalog(10, "AuthorTest", "TitleTest", 2010));
-        //    data.DeleteFromCatalog(10);
-        //    if (context.catalogs.Count == 7)
-        //    {
-        //        return;
-        //    }
-        //    else Assert.Fail();
-        //}
+            data.AddToCatalog(new Catalog(7, "AuthorTest", "TitleTest", 2010));
+            data.DeleteFromCatalog(7);
+
+            var values = context.catalogs.Values.ToList();
+            int check = values.Count;
+
+            if (check != 6)
+            {
+                return;
+            }
+            else Assert.Fail();
+        }
+
+
+
+        public void AddEventTest()
+        {
+            DataContext context = new DataContext();
+            ConstantsFill constants = new ConstantsFill();
+            DataRepository data = new DataRepository(constants, context);
+
+            Register register = new Register(20, "Johny", "Test");
+            Catalog catalog = new Catalog(40, "AuthorTest", "TitleTest", 2010);
+            DateTime date = new DateTime(2019, 06, 29);
+            StatusDescription description = new StatusDescription(catalog, 1, 9.99, "opis", date);
+            Event event1 = new Event(register, description, date, DateTime.Now);
+            data.AddEvent(event1);
+
+            if (!event1.Equals(context.events[context.events.Count() - 1]))
+            {
+                Assert.Fail();
+            }
+        }
+
+
+        [TestMethod()]
+        public void GetEventTest()
+        {
+            DataContext context = new DataContext();
+            ConstantsFill constants = new ConstantsFill();
+            DataRepository data = new DataRepository(constants, context);
+
+            Register register = new Register(1, "Jan", "Kowalski");
+            Catalog catalog = new Catalog(0, "Bolesław Prus", "Lalka", 1960);
+            DateTime date = new DateTime(2019, 07, 23);
+            StatusDescription description = new StatusDescription(catalog, 1, 19.99, "Krótki opis", DateTime.Today);
+            Event event1 = new Event(register, description, date, DateTime.Now);
+
+            if (!event1.Equals(data.GetEvent(0)))
+            {
+                Assert.Fail();
+            }
+        }
+
+
+        [TestMethod()]
+        public void GetAllEventsTest()
+        {
+            DataContext context = new DataContext();
+            ConstantsFill constants = new ConstantsFill();
+            DataRepository data = new DataRepository(constants, context);
+
+            IEnumerable<Event> constant = data.GetAllEvents();
+            ObservableCollection<Event> new1 = new ObservableCollection<Event>(constant);
+
+            ObservableCollection<Event> test = new ObservableCollection<Event>();
+
+            Register R1 = new Register(1, "Jan", "Kowalski");
+            Register R2 = new Register(2, "Tomasz", "Nowak");
+            Register R3 = new Register(3, "Adrian", "Wiśniewski");
+            Register R4 = new Register(4, "Anna", "Stasiak");
+            Register R5 = new Register(5, "Martyna", "Lotus");
+            Register R6 = new Register(6, "Kamil", "Szybki");
+            Register R7 = new Register(7, "Ewa", "Kuś");
+
+            Catalog C1 = new Catalog(0, "Bolesław Prus", "Lalka", 1960);
+            Catalog C2 = new Catalog(1, "Adam Mickiewicz", "Pan Tadeusz", 1978);
+            Catalog C3 = new Catalog(2, "Fiodor Dostojewski", "Zbrodnia i kara", 1989);
+            Catalog C4 = new Catalog(3, "J.R.R. Tolkien", "Władca Pierścieni", 2006);
+            Catalog C5 = new Catalog(4, "J.K. Rowling", "Harry Potter i Zakon Feniksa", 2001);
+            Catalog C6 = new Catalog(5, "Stanisław Lem", "Solaris", 1961);
+            Catalog C7 = new Catalog(6, "Stephen King", "Zielona Mila", 1996);
+
+            DateTime date = DateTime.Today;
+
+            StatusDescription D1 = new StatusDescription(C1, 1, 19.99, "Krótki opis", DateTime.Today);
+            StatusDescription D2 = new StatusDescription(C2, 1, 29.99, "Krótki opis", DateTime.Today);
+            StatusDescription D3 = new StatusDescription(C3, 1, 9.99, "Krótki opis", DateTime.Today);
+            StatusDescription D4 = new StatusDescription(C4, 1, 49.99, "Krótki opis", DateTime.Today);
+            StatusDescription D5 = new StatusDescription(C5, 1, 44.99, "Krótki opis", DateTime.Today);
+            StatusDescription D6 = new StatusDescription(C6, 1, 39.99, "Krótki opis", DateTime.Today);
+            StatusDescription D7 = new StatusDescription(C7, 1, 59.99, "Krótki opis", DateTime.Today);   
+
+            test.Add(new Event(R1, D1, new DateTime(2019, 07, 23), date));
+            test.Add(new Event(R2, D2, new DateTime(2018, 04, 14), date));
+            test.Add(new Event(R3, D3, new DateTime(2019, 10, 07), date));
+            test.Add(new Event(R4, D4, new DateTime(2019, 02, 21), date));
+            test.Add(new Event(R5, D5, new DateTime(2017, 10, 15), date));
+            test.Add(new Event(R6, D6, new DateTime(2019, 05, 02), date));
+            test.Add(new Event(R7, D7, new DateTime(2019, 06, 29), date));
+
+            for (int i = 0; i < 7; i++)
+            {
+                if (!test[i].Equals(new1[i]))
+                {
+                    Assert.Fail();
+                }
+            }
+        }
+
+
+        [TestMethod()]
+        public void DeleteEventTest()
+        {
+            DataContext context = new DataContext();
+            ConstantsFill constants = new ConstantsFill();
+            DataRepository data = new DataRepository(constants, context);
+
+            Register register = new Register(20, "Johny", "Test");
+            Catalog catalog = new Catalog(40, "AuthorTest", "TitleTest", 2010);
+            DateTime date = new DateTime(2019, 06, 29);
+            StatusDescription description = new StatusDescription(catalog, 1, 9.99, "opis", date);
+            Event event1 = new Event(register, description, date, DateTime.Now);
+            data.AddEvent(event1);
+           
+            data.DeleteEvent(7);
+            var check = context.events.Count();
+
+            if (check != 6)
+            {
+                return;
+            }
+            else Assert.Fail();
+        }
+
+
+
+        public void AddStatusDescriptionTest()
+        {
+            DataContext context = new DataContext();
+            ConstantsFill constants = new ConstantsFill();
+            DataRepository data = new DataRepository(constants, context);
+
+            Catalog catalog = new Catalog(40, "AuthorTest", "TitleTest", 2010);
+            DateTime date = DateTime.Now;
+            StatusDescription description = new StatusDescription(catalog, 1, 19.99, "opis", date);
+            data.AddStatusDescription(description);
+
+            if (!description.Equals(context.descriptions[context.descriptions.Count() - 1]))
+            {
+                Assert.Fail();
+            }
+        }
+
+
+        [TestMethod()]
+        public void GetStatusDescriptionTest()
+        {
+            DataContext context = new DataContext();
+            ConstantsFill constants = new ConstantsFill();
+            DataRepository data = new DataRepository(constants, context);
+
+            Register register = new Register(1, "Jan", "Kowalski");
+            Catalog catalog = new Catalog(0, "Bolesław Prus", "Lalka", 1960);
+            StatusDescription description = new StatusDescription(catalog, 1, 19.99, "Krótki opis", DateTime.Today);
+
+            if (!description.Equals(data.GetStatusDescription(0)))
+            {
+                Assert.Fail();
+            }
+        }
+
+
+        [TestMethod()]
+        public void GetAllStatusDescriptionsTest()
+        {
+            DataContext context = new DataContext();
+            ConstantsFill constants = new ConstantsFill();
+            DataRepository data = new DataRepository(constants, context);
+
+            IEnumerable<StatusDescription> constant = data.GetAllStatusDescriptions();
+            List<StatusDescription> new1 = constant.ToList<StatusDescription>();
+
+            List<StatusDescription> test = new List<StatusDescription>();
+
+            Catalog C1 = new Catalog(0, "Bolesław Prus", "Lalka", 1960);
+            Catalog C2 = new Catalog(1, "Adam Mickiewicz", "Pan Tadeusz", 1978);
+            Catalog C3 = new Catalog(2, "Fiodor Dostojewski", "Zbrodnia i kara", 1989);
+            Catalog C4 = new Catalog(3, "J.R.R. Tolkien", "Władca Pierścieni", 2006);
+            Catalog C5 = new Catalog(4, "J.K. Rowling", "Harry Potter i Zakon Feniksa", 2001);
+            Catalog C6 = new Catalog(5, "Stanisław Lem", "Solaris", 1961);
+            Catalog C7 = new Catalog(6, "Stephen King", "Zielona Mila", 1996);
+
+            DateTime date1 = DateTime.Today;
+
+            test.Add(new StatusDescription(C1, 1, 19.99, "Krótki opis", DateTime.Today));
+            test.Add(new StatusDescription(C2, 1, 29.99, "Krótki opis", DateTime.Today));
+            test.Add(new StatusDescription(C3, 1, 9.99, "Krótki opis", DateTime.Today));
+            test.Add(new StatusDescription(C4, 1, 49.99, "Krótki opis", DateTime.Today));
+            test.Add(new StatusDescription(C5, 1, 44.99, "Krótki opis", DateTime.Today));
+            test.Add(new StatusDescription(C6, 1, 39.99, "Krótki opis", DateTime.Today));
+            test.Add(new StatusDescription(C7, 1, 59.99, "Krótki opis", DateTime.Today));
+
+            for (int i = 0; i < 7; i++)
+            {
+                if (!test[i].Equals(new1[i]))
+                {
+                    Assert.Fail();
+                }
+            }
+        }
+
+
+        [TestMethod()]
+        public void DeleteStatusDescriptionTest()
+        {
+            DataContext context = new DataContext();
+            ConstantsFill constants = new ConstantsFill();
+            DataRepository data = new DataRepository(constants, context);
+
+            Register register = new Register(20, "Johny", "Test");
+            StatusDescription description = new StatusDescription(new Catalog(40, "AuthorTest", "TitleTest", 2010), 1, 29.99, "opis", DateTime.Today);
+            data.AddEvent(new Event(register, description, new DateTime(2019, 06, 29), DateTime.Today));
+            data.AddStatusDescription(description);
+
+            try
+            {
+                data.DeleteStatusDescription(0);
+            }
+            catch
+            {
+                return;
+            }
+
+            Assert.Fail();
+        }
     }
 }

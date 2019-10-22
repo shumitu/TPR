@@ -79,5 +79,16 @@ namespace Task_1.Part_1
                 return this.Person.FullName + " " + Description.All + " " + DateBorrow + " " + DateReturn;
             }
         }
+
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Event)
+            {
+                Event other = (Event) obj;
+                return this.Person.Equals(other.person) && this.DateBorrow == other.dateBorrow;
+            }
+            return base.Equals(obj);
+        }      
     }
 }

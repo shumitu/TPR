@@ -12,6 +12,7 @@ namespace Task_1.Part_1
         public ObservableCollection<Event> events;
         public List<StatusDescription> descriptions;
 
+
         public DataContext()
         {
             lists = new List<Register>();
@@ -20,5 +21,4 @@ namespace Task_1.Part_1
             descriptions = new List<StatusDescription>();
         }
     }
-
 }

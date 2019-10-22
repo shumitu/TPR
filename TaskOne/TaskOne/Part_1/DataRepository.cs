@@ -88,7 +88,7 @@ namespace Task_1.Part_1
 
 
 
-        private int counter = 0;
+        private int counter = 7;
 
 
         public void AddToCatalog(Catalog catalog)

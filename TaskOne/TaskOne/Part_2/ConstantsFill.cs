@@ -49,8 +49,6 @@ namespace Task_1.Part_2
             context.events.Add(new Event(context.lists[4], context.descriptions[4], new DateTime(2017, 10, 15), DateTime.Now));
             context.events.Add(new Event(context.lists[5], context.descriptions[5], new DateTime(2019, 05, 02), DateTime.Now));
             context.events.Add(new Event(context.lists[6], context.descriptions[6], new DateTime(2019, 06, 29), DateTime.Now));
-
-
         }
     }
 }

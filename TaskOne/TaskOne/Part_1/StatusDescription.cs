@@ -95,5 +95,16 @@ namespace Task_1.Part_1
                 return this.Catalog.All + " " + Amount + " " + Price + " " + Description + " " + Date;
             }
         }
+
+
+        public override bool Equals(object obj)
+        {
+            if (obj is StatusDescription)
+            {
+                StatusDescription other = (StatusDescription)obj;
+                return this.catalog.Equals(other.catalog) && this.date == other.date;
+            }
+            return base.Equals(obj);
+        }
     }
 }

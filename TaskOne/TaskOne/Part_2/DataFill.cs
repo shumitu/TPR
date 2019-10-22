@@ -9,5 +9,4 @@ namespace Task_1.Part_2
     {
         void Fill(DataContext context);
     }
-
 }
