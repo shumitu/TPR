@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Part_5\" />
-    <Folder Include="Part_4\" />
     <Folder Include="Part_3\" />
   </ItemGroup>
 
