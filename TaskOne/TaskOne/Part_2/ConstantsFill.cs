@@ -33,13 +33,13 @@ namespace Task_1.Part_2
             context.catalogs.Add(6, new Catalog(6, "Stephen King", "Zielona Mila", 1996));
 
 
-            context.descriptions.Add(new StatusDescription(context.catalogs[0], 1, 19.99, "Krótki opis", DateTime.Today));
-            context.descriptions.Add(new StatusDescription(context.catalogs[1], 1, 29.99, "Krótki opis", DateTime.Today));
-            context.descriptions.Add(new StatusDescription(context.catalogs[2], 1, 9.99, "Krótki opis", DateTime.Today));
-            context.descriptions.Add(new StatusDescription(context.catalogs[3], 1, 49.99, "Krótki opis", DateTime.Today));
-            context.descriptions.Add(new StatusDescription(context.catalogs[4], 1, 44.99, "Krótki opis", DateTime.Today));
-            context.descriptions.Add(new StatusDescription(context.catalogs[5], 1, 39.99, "Krótki opis", DateTime.Today));
-            context.descriptions.Add(new StatusDescription(context.catalogs[6], 1, 59.99, "Krótki opis", DateTime.Today));
+            context.descriptions.Add(new StatusDescription(context.catalogs[0], 19.99, "Krótki opis", DateTime.Today));
+            context.descriptions.Add(new StatusDescription(context.catalogs[1], 29.99, "Krótki opis", DateTime.Today));
+            context.descriptions.Add(new StatusDescription(context.catalogs[2], 9.99, "Krótki opis", DateTime.Today));
+            context.descriptions.Add(new StatusDescription(context.catalogs[3], 49.99, "Krótki opis", DateTime.Today));
+            context.descriptions.Add(new StatusDescription(context.catalogs[4], 44.99, "Krótki opis", DateTime.Today));
+            context.descriptions.Add(new StatusDescription(context.catalogs[5], 39.99, "Krótki opis", DateTime.Today));
+            context.descriptions.Add(new StatusDescription(context.catalogs[6], 59.99, "Krótki opis", DateTime.Today));
 
 
             context.events.Add(new Event(context.lists[0], context.descriptions[0], new DateTime(2019, 07, 23), DateTime.Now));

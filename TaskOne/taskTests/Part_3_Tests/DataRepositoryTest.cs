@@ -184,7 +184,7 @@ namespace taskTests.Part__3_Tests
             Register register = new Register(20, "Johny", "Test");
             Catalog catalog = new Catalog(40, "AuthorTest", "TitleTest", 2010);
             DateTime date = new DateTime(2019, 06, 29);
-            StatusDescription description = new StatusDescription(catalog, 1, 9.99, "opis", date);
+            StatusDescription description = new StatusDescription(catalog, 9.99, "opis", date);
             Event event1 = new Event(register, description, date, DateTime.Now);
             data.AddEvent(event1);
 
@@ -205,7 +205,7 @@ namespace taskTests.Part__3_Tests
             Register register = new Register(1, "Jan", "Kowalski");
             Catalog catalog = new Catalog(0, "Bolesław Prus", "Lalka", 1960);
             DateTime date = new DateTime(2019, 07, 23);
-            StatusDescription description = new StatusDescription(catalog, 1, 19.99, "Krótki opis", DateTime.Today);
+            StatusDescription description = new StatusDescription(catalog, 19.99, "Krótki opis", DateTime.Today);
             Event event1 = new Event(register, description, date, DateTime.Now);
 
             if (!event1.Equals(data.GetEvent(0)))
@@ -245,13 +245,13 @@ namespace taskTests.Part__3_Tests
 
             DateTime date = DateTime.Today;
 
-            StatusDescription D1 = new StatusDescription(C1, 1, 19.99, "Krótki opis", DateTime.Today);
-            StatusDescription D2 = new StatusDescription(C2, 1, 29.99, "Krótki opis", DateTime.Today);
-            StatusDescription D3 = new StatusDescription(C3, 1, 9.99, "Krótki opis", DateTime.Today);
-            StatusDescription D4 = new StatusDescription(C4, 1, 49.99, "Krótki opis", DateTime.Today);
-            StatusDescription D5 = new StatusDescription(C5, 1, 44.99, "Krótki opis", DateTime.Today);
-            StatusDescription D6 = new StatusDescription(C6, 1, 39.99, "Krótki opis", DateTime.Today);
-            StatusDescription D7 = new StatusDescription(C7, 1, 59.99, "Krótki opis", DateTime.Today);   
+            StatusDescription D1 = new StatusDescription(C1, 19.99, "Krótki opis", DateTime.Today);
+            StatusDescription D2 = new StatusDescription(C2, 29.99, "Krótki opis", DateTime.Today);
+            StatusDescription D3 = new StatusDescription(C3, 9.99, "Krótki opis", DateTime.Today);
+            StatusDescription D4 = new StatusDescription(C4, 49.99, "Krótki opis", DateTime.Today);
+            StatusDescription D5 = new StatusDescription(C5, 44.99, "Krótki opis", DateTime.Today);
+            StatusDescription D6 = new StatusDescription(C6, 39.99, "Krótki opis", DateTime.Today);
+            StatusDescription D7 = new StatusDescription(C7, 59.99, "Krótki opis", DateTime.Today);   
 
             test.Add(new Event(R1, D1, new DateTime(2019, 07, 23), date));
             test.Add(new Event(R2, D2, new DateTime(2018, 04, 14), date));
@@ -281,7 +281,7 @@ namespace taskTests.Part__3_Tests
             Register register = new Register(20, "Johny", "Test");
             Catalog catalog = new Catalog(40, "AuthorTest", "TitleTest", 2010);
             DateTime date = new DateTime(2019, 06, 29);
-            StatusDescription description = new StatusDescription(catalog, 1, 9.99, "opis", date);
+            StatusDescription description = new StatusDescription(catalog, 9.99, "opis", date);
             Event event1 = new Event(register, description, date, DateTime.Now);
             data.AddEvent(event1);
            
@@ -305,7 +305,7 @@ namespace taskTests.Part__3_Tests
 
             Catalog catalog = new Catalog(40, "AuthorTest", "TitleTest", 2010);
             DateTime date = DateTime.Now;
-            StatusDescription description = new StatusDescription(catalog, 1, 19.99, "opis", date);
+            StatusDescription description = new StatusDescription(catalog, 19.99, "opis", date);
             data.AddStatusDescription(description);
 
             if (!description.Equals(context.descriptions[context.descriptions.Count() - 1]))
@@ -324,7 +324,7 @@ namespace taskTests.Part__3_Tests
 
             Register register = new Register(1, "Jan", "Kowalski");
             Catalog catalog = new Catalog(0, "Bolesław Prus", "Lalka", 1960);
-            StatusDescription description = new StatusDescription(catalog, 1, 19.99, "Krótki opis", DateTime.Today);
+            StatusDescription description = new StatusDescription(catalog, 19.99, "Krótki opis", DateTime.Today);
 
             if (!description.Equals(data.GetStatusDescription(0)))
             {
@@ -355,13 +355,13 @@ namespace taskTests.Part__3_Tests
 
             DateTime date1 = DateTime.Today;
 
-            test.Add(new StatusDescription(C1, 1, 19.99, "Krótki opis", DateTime.Today));
-            test.Add(new StatusDescription(C2, 1, 29.99, "Krótki opis", DateTime.Today));
-            test.Add(new StatusDescription(C3, 1, 9.99, "Krótki opis", DateTime.Today));
-            test.Add(new StatusDescription(C4, 1, 49.99, "Krótki opis", DateTime.Today));
-            test.Add(new StatusDescription(C5, 1, 44.99, "Krótki opis", DateTime.Today));
-            test.Add(new StatusDescription(C6, 1, 39.99, "Krótki opis", DateTime.Today));
-            test.Add(new StatusDescription(C7, 1, 59.99, "Krótki opis", DateTime.Today));
+            test.Add(new StatusDescription(C1, 19.99, "Krótki opis", DateTime.Today));
+            test.Add(new StatusDescription(C2, 29.99, "Krótki opis", DateTime.Today));
+            test.Add(new StatusDescription(C3, 9.99, "Krótki opis", DateTime.Today));
+            test.Add(new StatusDescription(C4, 49.99, "Krótki opis", DateTime.Today));
+            test.Add(new StatusDescription(C5, 44.99, "Krótki opis", DateTime.Today));
+            test.Add(new StatusDescription(C6, 39.99, "Krótki opis", DateTime.Today));
+            test.Add(new StatusDescription(C7, 59.99, "Krótki opis", DateTime.Today));
 
             for (int i = 0; i < 7; i++)
             {
@@ -381,7 +381,7 @@ namespace taskTests.Part__3_Tests
             DataRepository data = new DataRepository(constants, context);
 
             Register register = new Register(20, "Johny", "Test");
-            StatusDescription description = new StatusDescription(new Catalog(40, "AuthorTest", "TitleTest", 2010), 1, 29.99, "opis", DateTime.Today);
+            StatusDescription description = new StatusDescription(new Catalog(40, "AuthorTest", "TitleTest", 2010), 29.99, "opis", DateTime.Today);
             data.AddEvent(new Event(register, description, new DateTime(2019, 06, 29), DateTime.Today));
             data.AddStatusDescription(description);
 

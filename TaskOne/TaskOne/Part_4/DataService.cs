@@ -152,9 +152,9 @@ namespace Task_1.Part_4
         }
 
 
-        public void AddStatusDescription(Catalog catalog, int amount, double price, string description, DateTime date)
+        public void AddStatusDescription(Catalog catalog, double price, string description, DateTime date)
         {
-            this.data.AddStatusDescription(new StatusDescription(catalog, amount, price, description, date));
+            this.data.AddStatusDescription(new StatusDescription(catalog, price, description, date));
         }
 
 

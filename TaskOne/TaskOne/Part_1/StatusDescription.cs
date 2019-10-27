@@ -7,16 +7,14 @@ namespace Task_1.Part_1
     public class StatusDescription
     {
         private Catalog catalog;
-        private int amount;
         private double price;
         private string description;
         private DateTime date;
 
 
-        public StatusDescription(Catalog catalog, int amount, double price, string description, DateTime date)
+        public StatusDescription(Catalog catalog, double price, string description, DateTime date)
         {
             this.catalog = catalog;
-            this.amount = amount;
             this.price = price;
             this.description = description;
             this.date = date;
@@ -32,19 +30,6 @@ namespace Task_1.Part_1
             set
             {
                 catalog = value;
-            }
-        }
-
-
-        public int Amount
-        {
-            get
-            {
-                return amount;
-            }
-            set
-            {
-                amount = value;
             }
         }
 
@@ -92,7 +77,7 @@ namespace Task_1.Part_1
         {
             get
             {
-                return this.Catalog.All + " " + Amount + " " + Price + " " + Description + " " + Date;
+                return this.Catalog.All + " " + Price + " " + Description + " " + Date;
             }
         }
 
