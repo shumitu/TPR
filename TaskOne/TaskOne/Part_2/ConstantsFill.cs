@@ -42,13 +42,13 @@ namespace Task_1.Part_2
             context.descriptions.Add(new StatusDescription(context.catalogs[6], 59.99, "Krótki opis", DateTime.Today));
 
 
-            context.events.Add(new Event(context.lists[0], context.descriptions[0], new DateTime(2019, 07, 23), DateTime.Now));
-            context.events.Add(new Event(context.lists[1], context.descriptions[1], new DateTime(2018, 04, 14), DateTime.Now));
-            context.events.Add(new Event(context.lists[2], context.descriptions[2], new DateTime(2019, 10, 07), DateTime.Now));
-            context.events.Add(new Event(context.lists[3], context.descriptions[3], new DateTime(2019, 02, 21), DateTime.Now));
-            context.events.Add(new Event(context.lists[4], context.descriptions[4], new DateTime(2017, 10, 15), DateTime.Now));
-            context.events.Add(new Event(context.lists[5], context.descriptions[5], new DateTime(2019, 05, 02), DateTime.Now));
-            context.events.Add(new Event(context.lists[6], context.descriptions[6], new DateTime(2019, 06, 29), DateTime.Now));
+            context.events.Add(new BookBought(context.lists[0], context.descriptions[0], new DateTime(2019, 07, 23), 19.99));
+            context.events.Add(new BookReturn(context.lists[1], context.descriptions[1], new DateTime(2018, 04, 14)));
+            context.events.Add(new BookBorrow(context.lists[2], context.descriptions[2], new DateTime(2019, 10, 07)));
+            context.events.Add(new BookDestroy(context.lists[3], context.descriptions[3], new DateTime(2019, 02, 21)));
+            context.events.Add(new BookReturn(context.lists[4], context.descriptions[4], new DateTime(2017, 10, 15)));
+            context.events.Add(new BookBorrow(context.lists[5], context.descriptions[5], new DateTime(2019, 05, 02)));
+            context.events.Add(new BookBorrow(context.lists[6], context.descriptions[6], new DateTime(2019, 06, 29)));
         }
     }
 }

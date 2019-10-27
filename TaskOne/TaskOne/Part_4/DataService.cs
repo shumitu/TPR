@@ -164,9 +164,27 @@ namespace Task_1.Part_4
         }
 
 
-        public void AddEvent(Register person, StatusDescription description, DateTime dateBorrow, DateTime dateReturn)
+        public void AddEventBought(Register person, StatusDescription description, DateTime date, double price)
         {
-            this.data.AddEvent(new Event(person, description, dateBorrow, dateReturn));
+            this.data.AddEvent(new BookBought(person, description, date, price));
+        }
+
+
+        public void AddEventDestroy(Register person, StatusDescription description, DateTime date)
+        {
+            this.data.AddEvent(new BookDestroy(person, description, date));
+        }
+
+
+        public void AddEventBorrow(Register person, StatusDescription description, DateTime date)
+        {
+            this.data.AddEvent(new BookBorrow(person, description, date));
+        }
+
+
+        public void AddEventReturn(Register person, StatusDescription description, DateTime date)
+        {
+            this.data.AddEvent(new BookReturn(person, description, date));
         }
 
 
@@ -238,7 +256,7 @@ namespace Task_1.Part_4
 
             for (int i = 0; i < this.data.GetAllRegisters().Count(); i++)
             {
-                if (all[i].DateBorrow > dateStart && all[i].DateReturn < dateEnd)
+                if (all[i].Date > dateStart && all[i].Date < dateEnd)
                 {
                     new1.Add(all[i]);
                 }

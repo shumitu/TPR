@@ -75,15 +75,15 @@ namespace taskTests.Part__3_Tests
             DataContext context = new DataContext();
             ConstantsFill constants = new ConstantsFill();
             DataRepository data = new DataRepository(constants, context);
-            try
+
+            int value1 = context.lists.Count;
+            data.DeleteRegister(1);
+            int value2 = context.lists.Count;
+
+            if (value1 - value2 != 1)
             {
-                data.DeleteRegister(1);
+                Assert.Fail();
             }
-            catch
-            {
-                return;
-            }
-            Assert.Fail();
         }
 
 
@@ -174,7 +174,7 @@ namespace taskTests.Part__3_Tests
         }
 
 
-
+        [TestMethod()]
         public void AddEventTest()
         {
             DataContext context = new DataContext();
@@ -185,10 +185,11 @@ namespace taskTests.Part__3_Tests
             Catalog catalog = new Catalog(40, "AuthorTest", "TitleTest", 2010);
             DateTime date = new DateTime(2019, 06, 29);
             StatusDescription description = new StatusDescription(catalog, 9.99, "opis", date);
-            Event event1 = new Event(register, description, date, DateTime.Now);
+            Event event1 = new BookBorrow(register, description, date);
             data.AddEvent(event1);
+            int check = context.events.Count();
 
-            if (!event1.Equals(context.events[context.events.Count() - 1]))
+            if (check != 8)
             {
                 Assert.Fail();
             }
@@ -204,9 +205,10 @@ namespace taskTests.Part__3_Tests
 
             Register register = new Register(1, "Jan", "Kowalski");
             Catalog catalog = new Catalog(0, "Bolesław Prus", "Lalka", 1960);
+            double price = 19.99;
             DateTime date = new DateTime(2019, 07, 23);
             StatusDescription description = new StatusDescription(catalog, 19.99, "Krótki opis", DateTime.Today);
-            Event event1 = new Event(register, description, date, DateTime.Now);
+            Event event1 = new BookBought(register, description, date, price);
 
             if (!event1.Equals(data.GetEvent(0)))
             {
@@ -253,13 +255,13 @@ namespace taskTests.Part__3_Tests
             StatusDescription D6 = new StatusDescription(C6, 39.99, "Krótki opis", DateTime.Today);
             StatusDescription D7 = new StatusDescription(C7, 59.99, "Krótki opis", DateTime.Today);   
 
-            test.Add(new Event(R1, D1, new DateTime(2019, 07, 23), date));
-            test.Add(new Event(R2, D2, new DateTime(2018, 04, 14), date));
-            test.Add(new Event(R3, D3, new DateTime(2019, 10, 07), date));
-            test.Add(new Event(R4, D4, new DateTime(2019, 02, 21), date));
-            test.Add(new Event(R5, D5, new DateTime(2017, 10, 15), date));
-            test.Add(new Event(R6, D6, new DateTime(2019, 05, 02), date));
-            test.Add(new Event(R7, D7, new DateTime(2019, 06, 29), date));
+            test.Add(new BookBorrow(R1, D1, new DateTime(2019, 07, 23)));
+            test.Add(new BookDestroy(R2, D2, new DateTime(2018, 04, 14)));
+            test.Add(new BookReturn(R3, D3, new DateTime(2019, 10, 07)));
+            test.Add(new BookBought(R4, D4, new DateTime(2019, 02, 21), 9.99));
+            test.Add(new BookReturn(R5, D5, new DateTime(2017, 10, 15)));
+            test.Add(new BookBorrow(R6, D6, new DateTime(2019, 05, 02)));
+            test.Add(new BookDestroy(R7, D7, new DateTime(2019, 06, 29)));
 
             for (int i = 0; i < 7; i++)
             {
@@ -282,13 +284,13 @@ namespace taskTests.Part__3_Tests
             Catalog catalog = new Catalog(40, "AuthorTest", "TitleTest", 2010);
             DateTime date = new DateTime(2019, 06, 29);
             StatusDescription description = new StatusDescription(catalog, 9.99, "opis", date);
-            Event event1 = new Event(register, description, date, DateTime.Now);
+            Event event1 = new BookBorrow(register, description, date);
             data.AddEvent(event1);
            
             data.DeleteEvent(7);
-            var check = context.events.Count();
+            int check = context.events.Count();
 
-            if (check != 6)
+            if (check != 7)
             {
                 return;
             }
@@ -296,7 +298,7 @@ namespace taskTests.Part__3_Tests
         }
 
 
-
+        [TestMethod()]
         public void AddStatusDescriptionTest()
         {
             DataContext context = new DataContext();
@@ -382,7 +384,7 @@ namespace taskTests.Part__3_Tests
 
             Register register = new Register(20, "Johny", "Test");
             StatusDescription description = new StatusDescription(new Catalog(40, "AuthorTest", "TitleTest", 2010), 29.99, "opis", DateTime.Today);
-            data.AddEvent(new Event(register, description, new DateTime(2019, 06, 29), DateTime.Today));
+            data.AddEvent(new BookReturn(register, description, new DateTime(2019, 06, 29)));
             data.AddStatusDescription(description);
 
             try

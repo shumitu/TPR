@@ -8,17 +8,15 @@ namespace Task_1.Part_1
     {
         private Register person;
         private StatusDescription description;
-        private DateTime dateBorrow;
-        private DateTime dateReturn;
+        private DateTime date;
 
 
-        public Event(Register person, StatusDescription description, DateTime dateBorrow, DateTime dateReturn)
-        {
-            this.person = person;
-            this.description = description;
-            this.dateBorrow = dateBorrow;
-            this.dateReturn = dateReturn;
-        }
+        //public Event(Register person, StatusDescription description, DateTime date)
+        //{
+        //    this.person = person;
+        //    this.description = description;
+        //    this.date = date;
+        //}
 
         public Register Person
         {
@@ -46,28 +44,15 @@ namespace Task_1.Part_1
         }
 
 
-        public DateTime DateBorrow
+        public DateTime Date
         {
             get
             {
-                return dateBorrow;
+                return date;
             }
             set
             {
-                dateBorrow = value;
-            }
-        }
-
-
-        public DateTime DateReturn
-        {
-            get
-            {
-                return dateReturn;
-            }
-            set
-            {
-                dateReturn = value;
+                date = value;
             }
         }
 
@@ -76,7 +61,7 @@ namespace Task_1.Part_1
         {
             get
             {
-                return this.Person.FullName + " " + Description.All + " " + DateBorrow + " " + DateReturn;
+                return this.Person.FullName + " " + Description.All + " " + Date;
             }
         }
 
@@ -86,9 +71,101 @@ namespace Task_1.Part_1
             if (obj is Event)
             {
                 Event other = (Event) obj;
-                return this.Person.Equals(other.person) && this.DateBorrow == other.dateBorrow;
+                return this.Person.Equals(other.person) && this.Date == other.date;
             }
             return base.Equals(obj);
         }      
+    }
+
+
+
+    public class BookBought : Event
+    {
+        private Register person;
+        private StatusDescription description;
+        private DateTime date;
+        private double price;
+
+
+        public BookBought(Register person, StatusDescription description, DateTime date, double price)
+        {
+            this.person = person;
+            this.description = description;
+            this.date = date;
+            this.price = price;
+        }
+
+
+        public double Price
+        {
+            get
+            {
+                return price;
+            }
+            set
+            {
+                price = value;
+            }
+        }
+
+
+        public string All
+        {
+            get
+            {
+                return this.Person.FullName + " " + Description.All + " " + Date + " " + Price;
+            }
+        }
+    }
+
+
+
+    public class BookDestroy : Event
+    {
+        private Register person;
+        private StatusDescription description;
+        private DateTime date;
+
+
+        public BookDestroy(Register person, StatusDescription description, DateTime date)
+        {
+            this.person = person;
+            this.description = description;
+            this.date = date;
+        }
+    }
+
+
+
+    public class BookBorrow : Event
+    {
+        private Register person;
+        private StatusDescription description;
+        private DateTime date;
+
+
+        public BookBorrow(Register person, StatusDescription description, DateTime date)
+        {
+            this.person = person;
+            this.description = description;
+            this.date = date;
+        }
+    }
+
+
+
+    public class BookReturn : Event
+    {
+        private Register person;
+        private StatusDescription description;
+        private DateTime date;
+
+
+        public BookReturn(Register person, StatusDescription description, DateTime date)
+        {
+            this.person = person;
+            this.description = description;
+            this.date = date;
+        }
     }
 }

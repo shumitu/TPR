@@ -80,7 +80,7 @@ namespace Task_1.Part_1
             {
                 if (event1.Person == tmp)
                 {
-                    throw new Exception("Cannot delete a person that have borrowed a book");
+                    throw new Exception("Cannot delete that person");
                 }
             }
             context.lists.Remove(tmp);
@@ -144,7 +144,10 @@ namespace Task_1.Part_1
 
         public void DeleteEvent(int _id)
         {
-            if (_id >= context.events.Count()) throw new Exception("Cannot find match");
+            if (_id >= context.events.Count())
+            {
+                throw new Exception("Cannot find match");
+            }
             context.events.Remove(context.events[_id]);
         }
 
