@@ -5,7 +5,7 @@ using Task_1.Part_1;
 
 namespace Task_1.Part_2
 {
-    public class ConstantsFill : DataFill
+    public class ConstantsFill : IDataFill
     {
         public ConstantsFill()
         {

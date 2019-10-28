@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Task_1.Part_2;
+using Task_1.Part_4;
 
 namespace Task_1.Part_1
 {
-    public class DataRepository
+    public class DataRepository : IDataRepository
     {
         public DataContext context;
-        public DataFill fill;
+        public IDataFill fill;
 
 
-        public DataRepository(DataFill fill)
+        public DataRepository(IDataFill fill)
         {
             this.context = new DataContext();
             this.fill = fill;
@@ -33,7 +34,7 @@ namespace Task_1.Part_1
         }
 
 
-        public DataFill Fill
+        public IDataFill Fill
         {
             private get
             {
