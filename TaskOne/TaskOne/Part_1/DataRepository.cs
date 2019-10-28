@@ -16,7 +16,7 @@ namespace Task_1.Part_1
         {
             this.context = new DataContext();
             this.fill = fill;
-          //  this.fill.Fill(context);
+            this.fill.Fill(context);
         }
 
 

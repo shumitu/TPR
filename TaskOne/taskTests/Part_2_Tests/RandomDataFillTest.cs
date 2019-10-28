@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Task_1.Part_1;
+using Task_1.Part_2;
 
 namespace taskTests.Part_2_Tests
 {
@@ -10,7 +11,8 @@ namespace taskTests.Part_2_Tests
         [TestMethod]
         public void RandomFillTest()
         {
-            DataRepository rep;
+            DataRepository rep = new DataRepository(new RandomDataFill(20));
+            Assert.AreEqual(20, rep.context.catalogs.Count);
         }
     }
 }

@@ -6,7 +6,7 @@ using Task_1.Part_1;
 
 namespace Task_1.Part_2
 {
-    class RandomDataFill : DataFill
+    public class RandomDataFill : DataFill
     {
 
         private int numberOfEntries;
