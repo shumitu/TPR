@@ -21,10 +21,7 @@ namespace taskTests.Part__3_Tests
             Register person = new Register(50, "Adam", "Małysz");
             data.AddRegister(person);
 
-            if (!person.Equals(context.lists[context.lists.Count() - 1]))
-            {
-                Assert.Fail();
-            }
+            Assert.AreEqual(8, data.context.lists.Count());
         }
 
 
@@ -80,10 +77,7 @@ namespace taskTests.Part__3_Tests
             data.DeleteRegister(1);
             int value2 = context.lists.Count;
 
-            if (value1 - value2 != 1)
-            {
-                Assert.Fail();
-            }
+            Assert.AreEqual(6, data.context.lists.Count());
         }
 
 
@@ -98,13 +92,7 @@ namespace taskTests.Part__3_Tests
             Catalog book = new Catalog(7, "AuthorTest", "TitleTest", 2018);
             data.AddToCatalog(book);
 
-            var values = context.catalogs.Values.ToList();
-            int check = values.Count;
-
-            if (check != 8)
-            {
-                Assert.Fail();
-            }
+            Assert.AreEqual(8, data.context.catalogs.Count());
         }
 
 
@@ -187,12 +175,8 @@ namespace taskTests.Part__3_Tests
             StatusDescription description = new StatusDescription(catalog, 9.99, "opis", date);
             Event event1 = new BookBorrow(register, description, date);
             data.AddEvent(event1);
-            int check = context.events.Count();
 
-            if (check != 8)
-            {
-                Assert.Fail();
-            }
+            Assert.AreEqual(8, data.context.events.Count());
         }
 
 
@@ -288,13 +272,8 @@ namespace taskTests.Part__3_Tests
             data.AddEvent(event1);
            
             data.DeleteEvent(7);
-            int check = context.events.Count();
 
-            if (check != 7)
-            {
-                return;
-            }
-            else Assert.Fail();
+            Assert.AreEqual(7, data.context.events.Count());
         }
 
 
@@ -310,10 +289,7 @@ namespace taskTests.Part__3_Tests
             StatusDescription description = new StatusDescription(catalog, 19.99, "opis", date);
             data.AddStatusDescription(description);
 
-            if (!description.Equals(context.descriptions[context.descriptions.Count() - 1]))
-            {
-                Assert.Fail();
-            }
+            Assert.AreEqual(8, data.context.descriptions.Count());
         }
 
 
