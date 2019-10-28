@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Part_5\" />
     <Folder Include="Part_3\" />
+    <Folder Include="Part_5\" />
   </ItemGroup>
 
 </Project>
