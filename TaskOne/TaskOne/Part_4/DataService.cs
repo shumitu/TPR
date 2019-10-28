@@ -7,7 +7,7 @@ using Task_1.Part_1;
 
 namespace Task_1.Part_4
 {
-    class DataService
+    public class DataService
     {
         private DataRepository data;
 
