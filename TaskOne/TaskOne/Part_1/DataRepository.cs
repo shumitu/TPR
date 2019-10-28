@@ -8,15 +8,15 @@ namespace Task_1.Part_1
 {
     public class DataRepository
     {
-        private DataContext context;
-        private DataFill fill;
+        public DataContext context;
+        public DataFill fill;
 
 
-        public DataRepository(DataFill fill, DataContext context)
+        public DataRepository(DataFill fill)
         {
-            this.context = context;
+            this.context = new DataContext();
             this.fill = fill;
-            this.fill.Fill(context);
+          //  this.fill.Fill(context);
         }
 
 

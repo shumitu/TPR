@@ -16,7 +16,7 @@ namespace taskTests.Part__3_Tests
         {
             DataContext context = new DataContext();
             ConstantsFill constants = new ConstantsFill();
-            DataRepository data = new DataRepository(constants, context);
+            DataRepository data = new DataRepository(constants);
          
             Register person = new Register(50, "Adam", "Małysz");
             data.AddRegister(person);
@@ -33,7 +33,7 @@ namespace taskTests.Part__3_Tests
         {
             DataContext context = new DataContext();
             ConstantsFill constants = new ConstantsFill();
-            DataRepository data = new DataRepository(constants, context);
+            DataRepository data = new DataRepository(constants);
 
             Register person = new Register(1, "Jan", "Kowalski");
             if (!person.Equals(data.GetRegister(person.PersonId)))
@@ -48,7 +48,7 @@ namespace taskTests.Part__3_Tests
         {
             DataContext context = new DataContext();
             ConstantsFill constants = new ConstantsFill();
-            DataRepository data = new DataRepository(constants, context);
+            DataRepository data = new DataRepository(constants);
 
             IEnumerable<Register> constant = data.GetAllRegisters();
             List<Register> new1 = constant.ToList<Register>();
@@ -74,7 +74,7 @@ namespace taskTests.Part__3_Tests
         {
             DataContext context = new DataContext();
             ConstantsFill constants = new ConstantsFill();
-            DataRepository data = new DataRepository(constants, context);
+            DataRepository data = new DataRepository(constants);
 
             int value1 = context.lists.Count;
             data.DeleteRegister(1);
@@ -93,7 +93,7 @@ namespace taskTests.Part__3_Tests
         {
             DataContext context = new DataContext();
             ConstantsFill constants = new ConstantsFill();
-            DataRepository data = new DataRepository(constants, context);
+            DataRepository data = new DataRepository(constants);
 
             Catalog book = new Catalog(7, "AuthorTest", "TitleTest", 2018);
             data.AddToCatalog(book);
@@ -113,7 +113,7 @@ namespace taskTests.Part__3_Tests
         {
             DataContext context = new DataContext();
             ConstantsFill constants = new ConstantsFill();
-            DataRepository data = new DataRepository(constants, context);
+            DataRepository data = new DataRepository(constants);
 
 
             Catalog book = new Catalog(0, "Bolesław Prus", "Lalka", 1960);
@@ -129,7 +129,7 @@ namespace taskTests.Part__3_Tests
         {
             DataContext context = new DataContext();
             ConstantsFill constants = new ConstantsFill();
-            DataRepository data = new DataRepository(constants, context);
+            DataRepository data = new DataRepository(constants);
 
             IEnumerable<Catalog> constant = data.GetAllFromCatalog();
             Dictionary<int, Catalog> new1 = constant.ToDictionary(x => x.BookId, x => x);
@@ -158,7 +158,7 @@ namespace taskTests.Part__3_Tests
         {
             DataContext context = new DataContext();
             ConstantsFill constants = new ConstantsFill();
-            DataRepository data = new DataRepository(constants, context);
+            DataRepository data = new DataRepository(constants);
 
             data.AddToCatalog(new Catalog(7, "AuthorTest", "TitleTest", 2010));
             data.DeleteFromCatalog(7);
@@ -179,7 +179,7 @@ namespace taskTests.Part__3_Tests
         {
             DataContext context = new DataContext();
             ConstantsFill constants = new ConstantsFill();
-            DataRepository data = new DataRepository(constants, context);
+            DataRepository data = new DataRepository(constants);
 
             Register register = new Register(20, "Johny", "Test");
             Catalog catalog = new Catalog(40, "AuthorTest", "TitleTest", 2010);
@@ -201,7 +201,7 @@ namespace taskTests.Part__3_Tests
         {
             DataContext context = new DataContext();
             ConstantsFill constants = new ConstantsFill();
-            DataRepository data = new DataRepository(constants, context);
+            DataRepository data = new DataRepository(constants);
 
             Register register = new Register(1, "Jan", "Kowalski");
             Catalog catalog = new Catalog(0, "Bolesław Prus", "Lalka", 1960);
@@ -222,7 +222,7 @@ namespace taskTests.Part__3_Tests
         {
             DataContext context = new DataContext();
             ConstantsFill constants = new ConstantsFill();
-            DataRepository data = new DataRepository(constants, context);
+            DataRepository data = new DataRepository(constants);
 
             IEnumerable<Event> constant = data.GetAllEvents();
             ObservableCollection<Event> new1 = new ObservableCollection<Event>(constant);
@@ -278,7 +278,7 @@ namespace taskTests.Part__3_Tests
         {
             DataContext context = new DataContext();
             ConstantsFill constants = new ConstantsFill();
-            DataRepository data = new DataRepository(constants, context);
+            DataRepository data = new DataRepository(constants);
 
             Register register = new Register(20, "Johny", "Test");
             Catalog catalog = new Catalog(40, "AuthorTest", "TitleTest", 2010);
@@ -303,7 +303,7 @@ namespace taskTests.Part__3_Tests
         {
             DataContext context = new DataContext();
             ConstantsFill constants = new ConstantsFill();
-            DataRepository data = new DataRepository(constants, context);
+            DataRepository data = new DataRepository(constants);
 
             Catalog catalog = new Catalog(40, "AuthorTest", "TitleTest", 2010);
             DateTime date = DateTime.Now;
@@ -322,7 +322,7 @@ namespace taskTests.Part__3_Tests
         {
             DataContext context = new DataContext();
             ConstantsFill constants = new ConstantsFill();
-            DataRepository data = new DataRepository(constants, context);
+            DataRepository data = new DataRepository(constants);
 
             Register register = new Register(1, "Jan", "Kowalski");
             Catalog catalog = new Catalog(0, "Bolesław Prus", "Lalka", 1960);
@@ -340,7 +340,7 @@ namespace taskTests.Part__3_Tests
         {
             DataContext context = new DataContext();
             ConstantsFill constants = new ConstantsFill();
-            DataRepository data = new DataRepository(constants, context);
+            DataRepository data = new DataRepository(constants);
 
             IEnumerable<StatusDescription> constant = data.GetAllStatusDescriptions();
             List<StatusDescription> new1 = constant.ToList<StatusDescription>();
@@ -380,7 +380,7 @@ namespace taskTests.Part__3_Tests
         {
             DataContext context = new DataContext();
             ConstantsFill constants = new ConstantsFill();
-            DataRepository data = new DataRepository(constants, context);
+            DataRepository data = new DataRepository(constants);
 
             Register register = new Register(20, "Johny", "Test");
             StatusDescription description = new StatusDescription(new Catalog(40, "AuthorTest", "TitleTest", 2010), 29.99, "opis", DateTime.Today);

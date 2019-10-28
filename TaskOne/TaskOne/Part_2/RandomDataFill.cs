@@ -10,7 +10,6 @@ namespace Task_1.Part_2
     {
 
         private int numberOfEntries;
-        private int randomStringLength;
 
         public RandomDataFill(int numberOfEntries)
         {
