@@ -1,7 +1,8 @@
 ﻿using System;
 using Task_1.Part_1;
+using Task_1.Part_2;
 
-namespace Task_1.Part_2
+namespace taskTests.Part_2_classes
 {
     public class ConstantsFill : IDataFill
     {

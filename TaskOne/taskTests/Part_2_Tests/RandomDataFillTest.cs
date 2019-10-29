@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Task_1.Part_1;
-using Task_1.Part_2;
 using Task_1.Part_4;
+using taskTests.Part_2_classes;
 
 namespace taskTests.Part_2_Tests
 {
