@@ -8,10 +8,10 @@ namespace Task_1.Part_4
 {
     public class DataService
     {
-        private DataRepository data;
+        private IDataRepository data;
 
 
-        public DataService(DataRepository data)
+        public DataService(IDataRepository data)
         {
             this.data = data;
         }
