@@ -1,4 +1,6 @@
-﻿namespace Task_1.Part_1
+﻿using System;
+
+namespace Task_1.Part_1
 {
     public class Catalog
     {
@@ -10,6 +12,16 @@
 
         public Catalog(int bookId, string author, string title, int year)
         {
+            if (year < 0)
+            {
+                throw new Exception("Cannot create book with negative year");
+            }
+
+            if (bookId < 0)
+            {
+                throw new Exception("Cannot create book with negative id");
+            }
+
             this.bookId = bookId;
             this.author = author;
             this.title = title;

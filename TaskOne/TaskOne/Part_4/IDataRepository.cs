@@ -8,7 +8,7 @@ namespace Task_1.Part_4
         void AddRegister(Register person);
         Register GetRegister(int personId);
         IEnumerable<Register> GetAllRegisters();
-        void DeleteRegister(int _id);
+        void DeleteRegister(int id);
         void AddToCatalog(Catalog catalog);
         Catalog GetFromCatalog(int id);
         IEnumerable<Catalog> GetAllFromCatalog();

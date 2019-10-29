@@ -1,4 +1,6 @@
-﻿namespace Task_1.Part_1
+﻿using System;
+
+namespace Task_1.Part_1
 {
     public class Register
     {
@@ -9,6 +11,11 @@
 
         public Register(int personId, string firstName, string lastName)
         {
+            if (personId < 0)
+            {
+                throw new Exception("Cannot create person with negative id");
+            }
+
             this.personId = personId;
             this.firstName = firstName;
             this.lastName = lastName;

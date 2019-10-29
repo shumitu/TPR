@@ -67,7 +67,7 @@ namespace taskTests.Part__3_Tests
 
 
         [TestMethod()]
-        public void DeleteRegister()
+        public void DeleteRegisterTest()
         {
             DataContext context = new DataContext();
             ConstantsFill constants = new ConstantsFill();
@@ -116,7 +116,7 @@ namespace taskTests.Part__3_Tests
 
 
         [TestMethod()]
-        public void GetAllFromCatalog()
+        public void GetAllFromCatalogTest()
         {
             DataContext context = new DataContext();
             ConstantsFill constants = new ConstantsFill();

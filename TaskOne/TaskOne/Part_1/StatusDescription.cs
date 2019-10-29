@@ -12,6 +12,11 @@ namespace Task_1.Part_1
 
         public StatusDescription(Catalog catalog, double price, string description, DateTime date)
         {
+            if (price < 0.00)
+            {
+                throw new Exception("Cannot create description with negative price");
+            }
+
             this.catalog = catalog;
             this.price = price;
             this.description = description;

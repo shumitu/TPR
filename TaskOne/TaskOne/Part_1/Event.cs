@@ -77,6 +77,11 @@ namespace Task_1.Part_1
 
         public BookBought(Register person, StatusDescription description, DateTime date, double price)
         {
+            if (price < 0.00)
+            {
+                throw new Exception("Cannot create event with negative price");
+            }
+
             this.person = person;
             this.description = description;
             this.date = date;
