@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Task_1.Part_1
 {
@@ -87,7 +85,7 @@ namespace Task_1.Part_1
             if (obj is StatusDescription)
             {
                 StatusDescription other = (StatusDescription)obj;
-                return this.catalog.Equals(other.catalog) && this.date == other.date;
+                return this.catalog.Equals(other.catalog) && this.date == other.date && this.price == other.price && this.description == other.description;
             }
             return base.Equals(obj);
         }

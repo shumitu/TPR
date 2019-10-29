@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Task_1.Part_1;
 
 namespace Task_1.Part_2
 {
     public class RandomDataFill : IDataFill
     {
-
         private int numberOfEntries;
+
 
         public RandomDataFill(int numberOfEntries)
         {
@@ -34,9 +32,7 @@ namespace Task_1.Part_2
                 context.lists.Add(register);
                 context.catalogs.Add(i, catalog);
                 context.descriptions.Add(statusDesc);
-
             }
-
         }
 
 

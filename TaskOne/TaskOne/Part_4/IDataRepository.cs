@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using Task_1.Part_1;
-using Task_1.Part_2;
 
 namespace Task_1.Part_4
 {
@@ -24,6 +21,5 @@ namespace Task_1.Part_4
         StatusDescription GetStatusDescription(int id);
         IEnumerable<StatusDescription> GetAllStatusDescriptions();
         void DeleteStatusDescription(int id);
-
         }
 }

@@ -14,12 +14,14 @@ namespace taskTests.Part_1_Tests
             Assert.AreEqual("Jan", r.FirstName);
         }
 
+
         [TestMethod]
         public void personLastNameGetterTest()
         {
             Register r = new Register(1, "Jan", "Kowalski");
             Assert.AreEqual("Kowalski", r.LastName);
         }
+
 
         [TestMethod]
         public void personStringGetterTest()

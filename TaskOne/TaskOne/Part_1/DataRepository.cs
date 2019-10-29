@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Task_1.Part_2;
 using Task_1.Part_4;
 
@@ -73,9 +72,9 @@ namespace Task_1.Part_1
         }
 
 
-        public void DeleteRegister(int _id)
+        public void DeleteRegister(int id)
         {
-            Register tmp = GetRegister(_id);
+            Register tmp = GetRegister(id);
 
             foreach (var event1 in context.events)
             {

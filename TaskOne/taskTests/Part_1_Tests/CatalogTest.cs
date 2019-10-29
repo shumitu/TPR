@@ -8,7 +8,6 @@ namespace taskTests.Part_1_Tests
     public class CatalogTest
     {
         [TestMethod]
-
         public void bookConstructorTest()
         {
             Catalog c = new Catalog(0, "Jo Nesbo", "Nóż", 2019);

@@ -73,11 +73,14 @@ namespace taskTests.Part__3_Tests
             ConstantsFill constants = new ConstantsFill();
             DataRepository data = new DataRepository(constants);
 
+            Register person = new Register(10, "Johny", "Test");
+            data.AddRegister(person);
+
             int value1 = context.lists.Count;
-            data.DeleteRegister(1);
+            data.DeleteRegister(10);
             int value2 = context.lists.Count;
 
-            Assert.AreEqual(6, data.context.lists.Count());
+            Assert.AreEqual(7, data.context.lists.Count());
         }
 
 

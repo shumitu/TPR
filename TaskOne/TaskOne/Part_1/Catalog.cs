@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Task_1.Part_1
+﻿namespace Task_1.Part_1
 {
     public class Catalog
     {
@@ -85,7 +81,7 @@ namespace Task_1.Part_1
         public override bool Equals(object obj)
         {
             Catalog other = (Catalog)obj;
-            return this.bookId == other.bookId;
+            return this.bookId == other.bookId && this.Author == other.author && this.Title == other.title && this.Year == other.year;
         }
     }
 }

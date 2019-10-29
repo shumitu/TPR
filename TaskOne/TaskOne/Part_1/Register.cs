@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Task_1.Part_1
+﻿namespace Task_1.Part_1
 {
     public class Register
     {
@@ -70,7 +66,7 @@ namespace Task_1.Part_1
         public override bool Equals(object obj)
         {
             Register other = (Register)obj;
-            return this.PersonId == other.PersonId;
+            return this.PersonId == other.PersonId && this.FirstName == other.firstName && this.LastName == other.lastName;
         }
     }
 }
