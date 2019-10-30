@@ -82,13 +82,11 @@ namespace Task_1.Part_1
         }
 
 
-        public string All
+        public override string ToString()
         {
-            get
-            {
-                return bookId + " | " + title + " | " + author + " | " + year;
-            }
+            return "Book id: " + this.BookId + " title: " + this.Title + ", author: " + this.Author + ", year: " + this.Year;
         }
+
 
 
         public override bool Equals(object obj)

@@ -61,12 +61,9 @@ namespace Task_1.Part_1
         }
 
 
-        public string FullName
+        public override string ToString()
         {
-            get
-            {
-                return personId + " | " + firstName + " | " + lastName;
-            }
+            return "Person id: " + this.PersonId + ", first name: " + this.FirstName + ", last name: " + this.LastName;
         }
 
 

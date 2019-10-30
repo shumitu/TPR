@@ -77,12 +77,9 @@ namespace Task_1.Part_1
         }
 
 
-        public string All
+        public override string ToString()
         {
-            get
-            {
-                return this.Catalog.All + " | " + Price + " | " + Description + " | " + Date;
-            }
+            return "Catalog " + this.Catalog.ToString() + " with price: " + this.Price + ", description: " + this.Description + ", date: " + this.Date;
         }
 
 
@@ -107,7 +104,7 @@ namespace Task_1.Part_1
             hashCode = hashCode * -1521134295 + Price.GetHashCode();
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Description);
             hashCode = hashCode * -1521134295 + Date.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(All);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(ToString());
             return hashCode;
         }
     }

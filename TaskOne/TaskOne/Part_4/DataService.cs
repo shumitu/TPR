@@ -24,7 +24,7 @@ namespace Task_1.Part_4
 
             for (int i = 0; i < lists.Count(); i++)
             {
-                Console.WriteLine(new1[i].FullName);
+                Console.WriteLine(new1[i].ToString());
             }
         }
 
@@ -36,7 +36,7 @@ namespace Task_1.Part_4
 
             for (int i = 0; i < catalogs.Count(); i++)
             {
-                Console.WriteLine(new1[i].All);
+                Console.WriteLine(new1[i].ToString());
             }
         }
 
@@ -48,7 +48,7 @@ namespace Task_1.Part_4
 
             for (int i = 0; i < descriptions.Count(); i++)
             {
-                Console.WriteLine(new1[i].All);
+                Console.WriteLine(new1[i].ToString());
             }
         }
 
@@ -60,7 +60,7 @@ namespace Task_1.Part_4
 
             for (int i = 0; i < events.Count(); i++)
             {
-                Console.WriteLine(new1[i].All);
+                Console.WriteLine(new1[i].ToString());
             }
         }
 
@@ -196,7 +196,7 @@ namespace Task_1.Part_4
 
             for (int i = 0; i < this.data.GetAllEvents().Count(); i++)
             {
-                text = all[i].All;
+                text = all[i].ToString();
 
                 if (text.Contains(enquiry))
                 {
@@ -218,7 +218,7 @@ namespace Task_1.Part_4
 
             for (int i = 0; i < this.data.GetAllRegisters().Count(); i++)
             {
-                text = all[i].All;
+                text = all[i].ToString();
 
                 if (text.Contains(enquiry))
                 {

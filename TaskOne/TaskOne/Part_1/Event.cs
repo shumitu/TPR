@@ -49,12 +49,9 @@ namespace Task_1.Part_1
         }
 
 
-        public string All
+        public override string ToString()
         {
-            get
-            {
-                return this.Person.FullName + " | " + Description.All + " | " + Date;
-            }
+            return "Event with " + this.Person.ToString() + " with description: " + this.Description + " on " + this.Date;
         }
 
 
@@ -104,12 +101,9 @@ namespace Task_1.Part_1
         }
 
 
-        public string All
+        public override string ToString()
         {
-            get
-            {
-                return this.Person.FullName + " | " + Description.All + " | " + Date + " | " + Price;
-            }
+            return "Event with " + this.Person.ToString() + " with description: " + this.Description + " on " + this.Date + " with price: " + this.Price;
         }
 
 
