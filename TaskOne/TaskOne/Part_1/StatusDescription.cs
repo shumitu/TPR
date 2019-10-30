@@ -79,7 +79,7 @@ namespace Task_1.Part_1
 
         public override string ToString()
         {
-            return "Catalog " + this.Catalog.ToString() + " with price: " + this.Price + ", description: " + this.Description + ", date: " + this.Date;
+            return "Catalog " + Catalog.ToString() + " with price: " + Price + ", description: " + Description + ", date: " + Date;
         }
 
 
@@ -88,24 +88,10 @@ namespace Task_1.Part_1
             if (obj is StatusDescription)
             {
                 StatusDescription other = (StatusDescription)obj;
-                return this.catalog.Equals(other.catalog) && this.date == other.date && this.price == other.price && this.description == other.description;
+                return catalog.Equals(other.catalog) && date == other.date && price == other.price && description == other.description;
             }
             return base.Equals(obj);
         }
 
-        public override int GetHashCode()
-        {
-            var hashCode = 957587004;
-            hashCode = hashCode * -1521134295 + EqualityComparer<Catalog>.Default.GetHashCode(catalog);
-            hashCode = hashCode * -1521134295 + price.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(description);
-            hashCode = hashCode * -1521134295 + date.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<Catalog>.Default.GetHashCode(Catalog);
-            hashCode = hashCode * -1521134295 + Price.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Description);
-            hashCode = hashCode * -1521134295 + Date.GetHashCode();
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(ToString());
-            return hashCode;
-        }
     }
 }

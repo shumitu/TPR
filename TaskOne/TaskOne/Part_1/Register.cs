@@ -63,14 +63,14 @@ namespace Task_1.Part_1
 
         public override string ToString()
         {
-            return "Person id: " + this.PersonId + ", first name: " + this.FirstName + ", last name: " + this.LastName;
+            return "Person id: " + PersonId + ", first name: " + FirstName + ", last name: " + LastName;
         }
 
 
         public override bool Equals(object obj)
         {
             Register other = (Register)obj;
-            return this.PersonId == other.PersonId && this.FirstName == other.firstName && this.LastName == other.lastName;
+            return PersonId == other.PersonId && FirstName == other.firstName && LastName == other.lastName;
         }
     }
 }

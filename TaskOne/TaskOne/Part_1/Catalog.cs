@@ -84,7 +84,7 @@ namespace Task_1.Part_1
 
         public override string ToString()
         {
-            return "Book id: " + this.BookId + " title: " + this.Title + ", author: " + this.Author + ", year: " + this.Year;
+            return "Book id: " + BookId + " title: " + Title + ", author: " + Author + ", year: " + Year;
         }
 
 
@@ -92,7 +92,7 @@ namespace Task_1.Part_1
         public override bool Equals(object obj)
         {
             Catalog other = (Catalog)obj;
-            return this.bookId == other.bookId && this.Author == other.author && this.Title == other.title && this.Year == other.year;
+            return bookId == other.bookId && Author == other.author && Title == other.title && Year == other.year;
         }
 
     }

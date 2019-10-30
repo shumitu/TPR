@@ -80,7 +80,7 @@ namespace Task_1.Part_4
                 }
             }
 
-            return (IEnumerable<StatusDescription>)new1;
+            return new1;
         }
 
 
@@ -98,7 +98,7 @@ namespace Task_1.Part_4
                 }
             }
 
-            return (IEnumerable<Event>)new1;
+            return new1;
         }
 
 
@@ -116,7 +116,7 @@ namespace Task_1.Part_4
                 }
             }
 
-            return (IEnumerable<Event>)new1;
+            return new1;
         }
 
 
@@ -129,72 +129,72 @@ namespace Task_1.Part_4
 
         public void AddRegister(int personId, string firstName, string lastName)
         {
-            this.data.AddRegister(new Register(personId, firstName, lastName));
+            data.AddRegister(new Register(personId, firstName, lastName));
         }
 
 
         public void AddCatalog(Catalog catalog)
         {
-            this.data.AddToCatalog(catalog);
+            data.AddToCatalog(catalog);
         }
 
 
         public void AddCatalog(int bookId, string author, string title, int year)
         {
-            this.data.AddToCatalog(new Catalog(bookId, author, title, year));
+            data.AddToCatalog(new Catalog(bookId, author, title, year));
         }
 
 
         public void AddStatusDescription(StatusDescription description)
         {
-            this.data.AddStatusDescription(description);
+            data.AddStatusDescription(description);
         }
 
 
         public void AddStatusDescription(Catalog catalog, double price, string description, DateTime date)
         {
-            this.data.AddStatusDescription(new StatusDescription(catalog, price, description, date));
+            data.AddStatusDescription(new StatusDescription(catalog, price, description, date));
         }
 
 
         public void AddEvent(Event event1)
         {
-            this.data.AddEvent(event1);
+            data.AddEvent(event1);
         }
 
 
         public void AddEventBought(Register person, StatusDescription description, DateTime date, double price)
         {
-            this.data.AddEvent(new BookBought(person, description, date, price));
+            data.AddEvent(new BookBought(person, description, date, price));
         }
 
 
         public void AddEventDestroy(Register person, StatusDescription description, DateTime date)
         {
-            this.data.AddEvent(new BookDestroy(person, description, date));
+            data.AddEvent(new BookDestroy(person, description, date));
         }
 
 
         public void AddEventBorrow(Register person, StatusDescription description, DateTime date)
         {
-            this.data.AddEvent(new BookBorrow(person, description, date));
+            data.AddEvent(new BookBorrow(person, description, date));
         }
 
 
         public void AddEventReturn(Register person, StatusDescription description, DateTime date)
         {
-            this.data.AddEvent(new BookReturn(person, description, date));
+            data.AddEvent(new BookReturn(person, description, date));
         }
 
 
 
         public List<Event> FindEvent(string enquiry)
         {
-            List<Event> all = this.data.GetAllEvents().ToList<Event>();
+            List<Event> all = data.GetAllEvents().ToList();
             List<Event> new1 = new List<Event>();
             String text = string.Empty;
 
-            for (int i = 0; i < this.data.GetAllEvents().Count(); i++)
+            for (int i = 0; i < data.GetAllEvents().Count(); i++)
             {
                 text = all[i].ToString();
 
@@ -210,13 +210,13 @@ namespace Task_1.Part_4
 
         public Dictionary<int, Catalog> FindCatalog(string enquiry)
         {
-            Dictionary<int, Catalog> all = this.data.GetAllFromCatalog().ToDictionary(x => x.BookId, x => x);
+            Dictionary<int, Catalog> all = data.GetAllFromCatalog().ToDictionary(x => x.BookId, x => x);
             Dictionary<int, Catalog> new1 = new Dictionary<int, Catalog>();
 
             String text = string.Empty;
             int index = 0;
 
-            for (int i = 0; i < this.data.GetAllRegisters().Count(); i++)
+            for (int i = 0; i < data.GetAllRegisters().Count(); i++)
             {
                 text = all[i].ToString();
 
@@ -233,10 +233,10 @@ namespace Task_1.Part_4
 
         public List<StatusDescription> FindStatusDescription(double minimum, double maximum)
         {
-            List<StatusDescription> all = this.data.GetAllStatusDescriptions().ToList();
+            List<StatusDescription> all = data.GetAllStatusDescriptions().ToList();
             List<StatusDescription> new1 = new List<StatusDescription>();
 
-            for (int i = 0; i < this.data.GetAllRegisters().Count(); i++)
+            for (int i = 0; i < data.GetAllRegisters().Count(); i++)
             {
                 if (all[i].Price > minimum && all[i].Price < maximum)
                 {
@@ -250,10 +250,10 @@ namespace Task_1.Part_4
 
         public ObservableCollection<Event> FindEvent(DateTime dateStart, DateTime dateEnd)
         {
-            ObservableCollection<Event> all = new ObservableCollection<Event>(this.data.GetAllEvents());
+            ObservableCollection<Event> all = new ObservableCollection<Event>(data.GetAllEvents());
             ObservableCollection<Event> new1 = new ObservableCollection<Event>();
 
-            for (int i = 0; i < this.data.GetAllRegisters().Count(); i++)
+            for (int i = 0; i < data.GetAllRegisters().Count(); i++)
             {
                 if (all[i].Date > dateStart && all[i].Date < dateEnd)
                 {
