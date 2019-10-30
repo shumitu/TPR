@@ -10,8 +10,4 @@
     <None Remove="Part_3\**" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Part_5\" />
-  </ItemGroup>
-
 </Project>
