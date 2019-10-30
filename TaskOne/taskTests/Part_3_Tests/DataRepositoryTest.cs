@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Task_1.Part_1;
 using taskTests.Part_2_classes;
 
-namespace taskTests.Part__3_Tests
+namespace taskTests.Part_3_Tests
 {
     [TestClass]
     public class DataRepositoryTest
