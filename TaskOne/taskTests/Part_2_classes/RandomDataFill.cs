@@ -28,7 +28,7 @@ namespace taskTests.Part_2_classes
             {
                 register = new Register(i, getRandomString(rand.Next(3, 10)), getRandomString(rand.Next(3, 10)));
                 catalog = new Catalog(i, getRandomString(rand.Next(6, 12)), getRandomString(rand.Next(8, 12)), rand.Next(1900, 2020));
-                statusDesc = new StatusDescription(catalog, rand.NextDouble() * 90 + 10, getRandomString(rand.Next(10, 20)), DateTime.Now);
+                statusDesc = new StatusDescription(catalog, Math.Round(rand.NextDouble() * 90 + 10, 2, MidpointRounding.AwayFromZero), getRandomString(rand.Next(10, 20)), DateTime.Now);
 
                 context.lists.Add(register);
                 context.catalogs.Add(i, catalog);
