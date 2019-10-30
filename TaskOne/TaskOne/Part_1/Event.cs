@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Task_1.Part_1
 {
@@ -52,7 +53,7 @@ namespace Task_1.Part_1
         {
             get
             {
-                return this.Person.FullName + " " + Description.All + " " + Date;
+                return this.Person.FullName + " | " + Description.All + " | " + Date;
             }
         }
 
@@ -65,7 +66,8 @@ namespace Task_1.Part_1
                 return this.Person.Equals(other.person) && this.Date == other.date;
             }
             return base.Equals(obj);
-        }      
+        }
+
     }
 
 
@@ -106,7 +108,7 @@ namespace Task_1.Part_1
         {
             get
             {
-                return this.Person.FullName + " " + Description.All + " " + Date + " " + Price;
+                return this.Person.FullName + " | " + Description.All + " | " + Date + " | " + Price;
             }
         }
 

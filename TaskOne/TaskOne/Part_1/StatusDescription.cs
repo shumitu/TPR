@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Task_1.Part_1
 {
@@ -80,7 +81,7 @@ namespace Task_1.Part_1
         {
             get
             {
-                return this.Catalog.All + " " + Price + " " + Description + " " + Date;
+                return this.Catalog.All + " | " + Price + " | " + Description + " | " + Date;
             }
         }
 
@@ -93,6 +94,21 @@ namespace Task_1.Part_1
                 return this.catalog.Equals(other.catalog) && this.date == other.date && this.price == other.price && this.description == other.description;
             }
             return base.Equals(obj);
+        }
+
+        public override int GetHashCode()
+        {
+            var hashCode = 957587004;
+            hashCode = hashCode * -1521134295 + EqualityComparer<Catalog>.Default.GetHashCode(catalog);
+            hashCode = hashCode * -1521134295 + price.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(description);
+            hashCode = hashCode * -1521134295 + date.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<Catalog>.Default.GetHashCode(Catalog);
+            hashCode = hashCode * -1521134295 + Price.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Description);
+            hashCode = hashCode * -1521134295 + Date.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(All);
+            return hashCode;
         }
     }
 }

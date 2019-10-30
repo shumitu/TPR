@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Task_1.Part_1
 {
@@ -85,7 +86,7 @@ namespace Task_1.Part_1
         {
             get
             {
-                return bookId + " " + title + " " + author + " " + year;
+                return bookId + " | " + title + " | " + author + " | " + year;
             }
         }
 
@@ -95,5 +96,6 @@ namespace Task_1.Part_1
             Catalog other = (Catalog)obj;
             return this.bookId == other.bookId && this.Author == other.author && this.Title == other.title && this.Year == other.year;
         }
+
     }
 }
