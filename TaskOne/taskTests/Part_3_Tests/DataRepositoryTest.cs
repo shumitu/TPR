@@ -17,7 +17,7 @@ namespace taskTests.Part__3_Tests
             DataContext context = new DataContext();
             ConstantsFill constants = new ConstantsFill();
             DataRepository data = new DataRepository(constants);
-         
+
             Register person = new Register(50, "Adam", "Małysz");
             data.AddRegister(person);
 
@@ -194,11 +194,12 @@ namespace taskTests.Part__3_Tests
             StatusDescription description = new StatusDescription(catalog, 9.99, "opis", date);
             Event event1 = new BookBorrow(register, description, date);
             data.AddEvent(event1);
-           
+
             data.DeleteEvent(7);
 
             Assert.AreEqual(7, data.context.events.Count());
         }
+
 
 
         [TestMethod()]
@@ -257,20 +258,11 @@ namespace taskTests.Part__3_Tests
 
             Register register = new Register(20, "Johny", "Test");
             StatusDescription description = new StatusDescription(new Catalog(40, "AuthorTest", "TitleTest", 2010), 29.99, "opis", DateTime.Today);
-            data.AddEvent(new BookReturn(register, description, new DateTime(2019, 06, 29)));
+
             data.AddStatusDescription(description);
+            data.DeleteStatusDescription(7);
 
-
-            try
-            {
-                data.DeleteStatusDescription(0);
-            }
-            catch
-            {
-                return;
-            }
-
-            Assert.Fail();
+            Assert.AreEqual(7, data.context.descriptions.Count());
         }
     }
 }
