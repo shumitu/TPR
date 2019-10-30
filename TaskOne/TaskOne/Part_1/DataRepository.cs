@@ -142,13 +142,13 @@ namespace Task_1.Part_1
         }
 
 
-        public void DeleteEvent(int _id)
+        public void DeleteEvent(int id)
         {
-            if (_id >= context.events.Count())
+            if (id >= context.events.Count())
             {
                 throw new Exception("Cannot find match");
             }
-            context.events.Remove(context.events[_id]);
+            context.events.Remove(context.events[id]);
         }
 
 
