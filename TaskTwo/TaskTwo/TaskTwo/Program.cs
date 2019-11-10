@@ -50,6 +50,8 @@ namespace Task_2
 
                     case 6:
                         Console.WriteLine("Showing data");
+
+
                         break;
 
                     case 7:
