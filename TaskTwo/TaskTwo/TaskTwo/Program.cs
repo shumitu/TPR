@@ -16,7 +16,7 @@ namespace TaskTwo
             Console.WriteLine("=========================================================================");
             Console.WriteLine("Welcome in simple TUI which allows You to perfom I/O operations on files.");
             Console.WriteLine("=========================================================================\n");
-            Console.WriteLine("[1] Fill with defined data and show");
+            Console.WriteLine("[1] Fill with defined data");
             Console.WriteLine("[2] Export to .json");
             Console.WriteLine("[3] Export to .dat");
             Console.WriteLine("[4] Import from .json");
@@ -70,6 +70,7 @@ namespace TaskTwo
                         break;
 
                     case 7:
+                        Environment.Exit(0);
                         break;
 
                     default:
