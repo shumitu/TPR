@@ -27,6 +27,10 @@ namespace TaskTwo
 
             int choose = 0;
 
+            DataContext context = new DataContext();
+            EmptyData empty = new EmptyData();
+            DataRepository data = new DataRepository(empty);
+
 
             while (choose != 7)
             {
@@ -36,7 +40,8 @@ namespace TaskTwo
                 {
                     case 1:
                         Console.WriteLine("Filling with defined data");
-                        FillOrShow(false);
+                        DefinedData defined = new DefinedData();
+                        data = new DataRepository(defined);
                         break;
 
                     case 2:
@@ -57,7 +62,11 @@ namespace TaskTwo
 
                     case 6:
                         Console.WriteLine("Showing data");
-                        FillOrShow(true);
+                        DataService service = new DataService(data);
+                        service.View(data.GetAllRegisters());
+                        service.View(data.GetAllFromCatalog());
+                        service.View(data.GetAllStatusDescriptions());
+                        service.View(data.GetAllEvents());
                         break;
 
                     case 7:
@@ -69,23 +78,6 @@ namespace TaskTwo
 
                 Console.ReadLine();
             }         
-        }
-
-
-        static public void FillOrShow(bool show)
-        {
-            DataService service;
-            DataContext context = new DataContext();
-            FillWithDefinedData data;
-
-            data = new FillWithDefinedData();
-            if (show == true)
-            {
-                service = new DataService(data.data);
-                service.View(data.data.GetAllRegisters());
-                service.View(data.data.GetAllFromCatalog());
-                service.View(data.data.GetAllStatusDescriptions());         
-            }
-        }
+        }       
     }
 }
