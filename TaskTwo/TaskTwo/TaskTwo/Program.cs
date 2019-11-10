@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Task_1.Part_1;
 using Task_1.Part_4;
 using TaskTwo.Data;
+using TaskTwo.OurSerializer;
 
 namespace TaskTwo
 {
@@ -14,7 +15,7 @@ namespace TaskTwo
         static void Main(string[] args)
         {
             Console.WriteLine("=========================================================================");
-            Console.WriteLine("Welcome in simple TUI which allows You to perfom I/O operations on files.");
+            Console.WriteLine("Welcome in simple TUI which allows You to perform I/O operations on files.");
             Console.WriteLine("=========================================================================\n");
             Console.WriteLine("[1] Fill with defined data");
             Console.WriteLine("[2] Export to .json");
@@ -22,7 +23,8 @@ namespace TaskTwo
             Console.WriteLine("[4] Import from .json");
             Console.WriteLine("[5] Import from .dat");
             Console.WriteLine("[6] Show data");
-            Console.WriteLine("[7] Exit program");
+            Console.WriteLine("[7] Clear data");
+            Console.WriteLine("[8] Exit program");
 
 
             int choose = 0;
@@ -32,7 +34,7 @@ namespace TaskTwo
             DataRepository data = new DataRepository(empty);
 
 
-            while (choose != 7)
+            while (choose != 8)
             {
                 Console.Write("\nEnter your choose: ");
                 choose = Console.Read() - '0';
@@ -50,6 +52,10 @@ namespace TaskTwo
 
                     case 3:
                         Console.WriteLine("Exporting to .dat");
+                        OurExport.SerializeRegister(data);
+                        OurExport.SerializeCatalog(data);
+                        OurExport.SerializeStatusDescription(data);
+                        OurExport.SerializeEvent(data);
                         break;
 
                     case 4:
@@ -58,6 +64,10 @@ namespace TaskTwo
 
                     case 5:
                         Console.WriteLine("Importing from .dat");
+                        OurImport.DeserializeRegister(context);
+                        OurImport.DeserializeCatalog(context);
+                        OurImport.DeserializeStatusDescription(context);
+                        OurImport.DeserializeEvent(context);
                         break;
 
                     case 6:
@@ -70,6 +80,12 @@ namespace TaskTwo
                         break;
 
                     case 7:
+                        Console.WriteLine("Clearing data");
+                        EmptyData empty2 = new EmptyData();
+                        data = new DataRepository(empty2);
+                        break;                   
+
+                    case 8:
                         Environment.Exit(0);
                         break;
 
@@ -79,6 +95,6 @@ namespace TaskTwo
 
                 Console.ReadLine();
             }         
-        }       
+        }  
     }
 }
