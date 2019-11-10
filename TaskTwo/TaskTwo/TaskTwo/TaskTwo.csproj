@@ -43,8 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DefinedData.cs" />
-    <Compile Include="FillWithDefinedData.cs" />
+    <Compile Include="Data\DefinedData.cs" />
+    <Compile Include="Data\FillWithDefinedData.cs" />
+    <Compile Include="JsonSerializer\JsonExport.cs" />
+    <Compile Include="JsonSerializer\JsonImport.cs" />
+    <Compile Include="OurSerializer\OurExport.cs" />
+    <Compile Include="OurSerializer\OurImport.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -57,5 +61,6 @@
       <Name>Task_1</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

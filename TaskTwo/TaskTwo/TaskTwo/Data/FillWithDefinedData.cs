@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Task_1.Part_1;
 
-namespace TaskTwo
+namespace TaskTwo.Data
 {
     class FillWithDefinedData
     {

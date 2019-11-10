@@ -2,7 +2,7 @@
 using Task_1.Part_1;
 using Task_1.Part_2;
 
-namespace TaskTwo
+namespace TaskTwo.Data
 {
     public class DefinedData : IDataFill
     {
