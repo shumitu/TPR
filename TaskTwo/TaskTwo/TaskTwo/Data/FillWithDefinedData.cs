@@ -7,10 +7,15 @@ using Task_1.Part_1;
 
 namespace TaskTwo.Data
 {
-    class FillWithDefinedData
+    public class FillWithDefinedData
     {
+        public FillWithDefinedData()
+        {
+
+        }
+
         DataContext context = new DataContext();
-        DataRepository data = new DataRepository(new DefinedData());
+        public DataRepository data = new DataRepository(new DefinedData());
 
     }
 }

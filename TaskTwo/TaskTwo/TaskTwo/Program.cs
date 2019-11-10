@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Task_1.Part_4;
+using TaskTwo.Data;
 
 namespace TaskTwo
 {
@@ -10,14 +12,16 @@ namespace TaskTwo
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("What would you like to do?:");
-            Console.WriteLine("1. Fill with defined data");
-            Console.WriteLine("2. Export to .json");
-            Console.WriteLine("3. Export to .dat");
-            Console.WriteLine("4. Import from .json");
-            Console.WriteLine("5. Import from .dat");
-            Console.WriteLine("6. Show data");
-            Console.WriteLine("7. Exit program");
+            Console.WriteLine("=========================================================================");
+            Console.WriteLine("Welcome in simple TUI which allows You to perfom I/O operations on files.");
+            Console.WriteLine("=========================================================================\n");
+            Console.WriteLine("[1] Fill with defined data");
+            Console.WriteLine("[2] Export to .json");
+            Console.WriteLine("[3] Export to .dat");
+            Console.WriteLine("[4] Import from .json");
+            Console.WriteLine("[5] Import from .dat");
+            Console.WriteLine("[6] Show data");
+            Console.WriteLine("[7] Exit program");
 
 
             int choose = 0;
@@ -25,6 +29,7 @@ namespace TaskTwo
 
             while (choose != 7)
             {
+                Console.Write("\nEnter your choose: ");
                 choose = Console.Read()-'0';
                 switch (choose)
                 {
@@ -49,8 +54,11 @@ namespace TaskTwo
                         break;
 
                     case 6:
-                        Console.WriteLine("Showing data");
-
+                        Console.WriteLine("Showing data:\n");
+                        DataService service = new DataService(dd.data);
+                        service.View(dd.data.GetAllRegisters());
+                        service.View(dd.data.GetAllFromCatalog());
+                        service.View(dd.data.GetAllStatusDescriptions());
 
                         break;
 
@@ -60,7 +68,10 @@ namespace TaskTwo
                     default:
                         break;
                 }
+
+                Console.ReadLine();
             }
         }
+
     }
 }
