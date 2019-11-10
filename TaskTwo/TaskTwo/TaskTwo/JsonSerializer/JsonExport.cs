@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaskTwo.JsonSerializer
+namespace Task_2.JsonSerializer
 {
     class JsonExport
     {
