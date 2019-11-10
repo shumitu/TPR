@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Task_1.Part_1;
 using Task_1.Part_4;
 using TaskTwo.Data;
 
@@ -20,26 +21,22 @@ namespace TaskTwo
             Console.WriteLine("[3] Export to .dat");
             Console.WriteLine("[4] Import from .json");
             Console.WriteLine("[5] Import from .dat");
-            Console.WriteLine("[6] Exit program");
+            Console.WriteLine("[6] Show data");
+            Console.WriteLine("[7] Exit program");
 
 
             int choose = 0;
 
 
-            while (choose != 6)
+            while (choose != 7)
             {
                 Console.Write("\nEnter your choose: ");
                 choose = Console.Read() - '0';
                 switch (choose)
                 {
                     case 1:
-                        Console.WriteLine("Filling with defined data\n");
-                        FillWithDefinedData dd = new FillWithDefinedData();
-                        DataService service = new DataService(dd.data);
-                        Console.WriteLine("Showing data:\n");
-                        service.View(dd.data.GetAllRegisters());
-                        service.View(dd.data.GetAllFromCatalog());
-                        service.View(dd.data.GetAllStatusDescriptions());
+                        Console.WriteLine("Filling with defined data");
+                        FillOrShow(false);
                         break;
 
                     case 2:
@@ -59,6 +56,11 @@ namespace TaskTwo
                         break;
 
                     case 6:
+                        Console.WriteLine("Showing data");
+                        FillOrShow(true);
+                        break;
+
+                    case 7:
                         break;
 
                     default:
@@ -66,8 +68,24 @@ namespace TaskTwo
                 }
 
                 Console.ReadLine();
-            }
+            }         
         }
 
+
+        static public void FillOrShow(bool show)
+        {
+            DataService service;
+            DataContext context = new DataContext();
+            FillWithDefinedData data;
+
+            data = new FillWithDefinedData();
+            if (show == true)
+            {
+                service = new DataService(data.data);
+                service.View(data.data.GetAllRegisters());
+                service.View(data.data.GetAllFromCatalog());
+                service.View(data.data.GetAllStatusDescriptions());         
+            }
+        }
     }
 }
