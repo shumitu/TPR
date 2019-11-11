@@ -42,29 +42,30 @@ namespace TaskTwo
                 {
                     case 1:
                         Console.WriteLine("Filling with defined data");
-                        DefinedData defined = new DefinedData();
-                        data = new DataRepository(defined);
+                        data = new DataRepository(new DefinedData());
                         break;
 
                     case 2:
                         Console.WriteLine("Exporting to .json");
-                        JsonExport.SerializeRegister(data);
-                        JsonExport.SerializeCatalog(data);
-                        JsonExport.SerializeStatusDescription(data);
-                        JsonExport.SerializeEvent(data);
-
+                        JsonExport JsonExporter = new JsonExport();
+                        JsonExporter.SerializeRegister(data);
+                        JsonExporter.SerializeCatalog(data);
+                        JsonExporter.SerializeStatusDescription(data);
+                        JsonExporter.SerializeEvent(data);
                         break;
 
                     case 3:
                         Console.WriteLine("Exporting to .dat");
-                        OurExport.SerializeRegister(data);
-                        OurExport.SerializeCatalog(data);
-                        OurExport.SerializeStatusDescription(data);
-                        OurExport.SerializeEvent(data);
+                        OurExport OurExporter = new OurExport();
+                        OurExporter.SerializeRegister(data);
+                        OurExporter.SerializeCatalog(data);
+                        OurExporter.SerializeStatusDescription(data);
+                        OurExporter.SerializeEvent(data);
                         break;
 
                     case 4:
                         Console.WriteLine("Importing from .json");
+                        data = new DataRepository(new JsonImport());
                         break;
 
                     case 5:
@@ -76,11 +77,15 @@ namespace TaskTwo
                         break;
 
                     case 6:
-                        Console.WriteLine("Showing data");
+                        Console.WriteLine("Showing data\n");
                         DataService service = new DataService(data);
+                        Console.WriteLine("\nCatalogs:\n");
                         service.View(data.GetAllRegisters());
+                        Console.WriteLine("\nRegisters:\n");
                         service.View(data.GetAllFromCatalog());
+                        Console.WriteLine("\nDescriptions:\n");
                         service.View(data.GetAllStatusDescriptions());
+                        Console.WriteLine("\nEvents:\n");
                         service.View(data.GetAllEvents());
                         break;
 
