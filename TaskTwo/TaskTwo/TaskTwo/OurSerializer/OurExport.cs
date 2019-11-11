@@ -12,7 +12,7 @@ namespace TaskTwo.OurSerializer
 {
     public class OurExport
     {
-        static public void SerializeRegister(DataRepository data)
+        public void SerializeRegister(DataRepository data)
         {
             FileStream F = new FileStream("..\\..\\Files\\Register.dat", FileMode.Create, FileAccess.Write);
             BinaryFormatter b = new BinaryFormatter();
@@ -22,7 +22,7 @@ namespace TaskTwo.OurSerializer
         }
 
 
-        static public void SerializeCatalog(DataRepository data)
+        public void SerializeCatalog(DataRepository data)
         {
             FileStream F = new FileStream("..\\..\\Files\\Catalog.dat", FileMode.Create, FileAccess.Write);
             BinaryFormatter b = new BinaryFormatter();
@@ -32,7 +32,7 @@ namespace TaskTwo.OurSerializer
         }
 
 
-        static public void SerializeStatusDescription(DataRepository data)
+        public void SerializeStatusDescription(DataRepository data)
         {
             FileStream F = new FileStream("..\\..\\Files\\StatusDescription.dat", FileMode.Create, FileAccess.Write);
             BinaryFormatter b = new BinaryFormatter();
@@ -42,7 +42,7 @@ namespace TaskTwo.OurSerializer
         }
 
 
-        static public void SerializeEvent(DataRepository data)
+        public void SerializeEvent(DataRepository data)
         {
             FileStream F = new FileStream("..\\..\\Files\\Event.dat", FileMode.Create, FileAccess.Write);
             BinaryFormatter b = new BinaryFormatter();

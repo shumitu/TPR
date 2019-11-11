@@ -10,7 +10,7 @@ using Task_1.Part_1;
     public class JsonExport
     {
 
-        static public void SerializeRegister(DataRepository data)
+        public void SerializeRegister(DataRepository data)
         {
         JsonSerializer serializer = new JsonSerializer();
         FileStream file = new FileStream("..\\..\\Files\\Register.json", FileMode.Create, FileAccess.Write);
@@ -26,7 +26,7 @@ using Task_1.Part_1;
     }
 
 
-        static public void SerializeCatalog(DataRepository data)
+        public void SerializeCatalog(DataRepository data)
         {
             JsonSerializer serializer = new JsonSerializer();
             FileStream file = new FileStream("..\\..\\Files\\Catalog.json", FileMode.Create, FileAccess.Write);
@@ -42,7 +42,7 @@ using Task_1.Part_1;
         }
 
 
-        static public void SerializeStatusDescription(DataRepository data)
+        public void SerializeStatusDescription(DataRepository data)
         {
             JsonSerializer serializer = new JsonSerializer();
             FileStream file = new FileStream("..\\..\\Files\\StatusDescription.json", FileMode.Create, FileAccess.Write);
@@ -58,7 +58,7 @@ using Task_1.Part_1;
     }
 
 
-        static public void SerializeEvent(DataRepository data)
+        public void SerializeEvent(DataRepository data)
         {
             JsonSerializer serializer = new JsonSerializer();
             FileStream file = new FileStream("..\\..\\Files\\Event.json", FileMode.Create, FileAccess.Write);
