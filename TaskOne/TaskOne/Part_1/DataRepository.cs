@@ -6,6 +6,7 @@ using Task_1.Part_4;
 
 namespace Task_1.Part_1
 {
+    [Serializable]
     public class DataRepository : IDataRepository
     {
         public DataContext context;

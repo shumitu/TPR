@@ -6,6 +6,7 @@ using Task_1.Part_1;
 
 namespace Task_1.Part_4
 {
+    [Serializable]
     public class DataService
     {
         private IDataRepository data;

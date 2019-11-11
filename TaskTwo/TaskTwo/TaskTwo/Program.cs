@@ -48,6 +48,11 @@ namespace TaskTwo
 
                     case 2:
                         Console.WriteLine("Exporting to .json");
+                        JsonExport.SerializeRegister(data);
+                        JsonExport.SerializeCatalog(data);
+                        JsonExport.SerializeStatusDescription(data);
+                        JsonExport.SerializeEvent(data);
+
                         break;
 
                     case 3:

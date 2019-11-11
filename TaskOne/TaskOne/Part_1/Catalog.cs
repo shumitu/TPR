@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Task_1.Part_1
 {
+    [Serializable]
     public class Catalog
     {
         private int bookId;

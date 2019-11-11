@@ -2,6 +2,7 @@
 
 namespace Task_1.Part_1
 {
+    [Serializable]
     public class Register
     {
         private int personId;

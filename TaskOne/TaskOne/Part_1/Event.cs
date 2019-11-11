@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Task_1.Part_1
 {
+    [Serializable]
     public class Event
     {
         public Register person;
@@ -68,7 +69,7 @@ namespace Task_1.Part_1
     }
 
 
-
+    [Serializable]
     public class BookBought : Event
     {
         private double price;
@@ -119,7 +120,7 @@ namespace Task_1.Part_1
     }
 
 
-
+    [Serializable]
     public class BookDestroy : Event
     {
         public BookDestroy(Register person, StatusDescription description, DateTime date)
@@ -142,7 +143,7 @@ namespace Task_1.Part_1
     }
 
 
-
+    [Serializable]
     public class BookBorrow : Event
     {
         public BookBorrow(Register person, StatusDescription description, DateTime date)
@@ -165,7 +166,7 @@ namespace Task_1.Part_1
     }
 
 
-
+    [Serializable]
     public class BookReturn : Event
     {
         public BookReturn(Register person, StatusDescription description, DateTime date)
