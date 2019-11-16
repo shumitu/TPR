@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace Task_1.Part_1
 {
+    [Serializable]
     public class DataContext
     {
         public List<Register> lists;
