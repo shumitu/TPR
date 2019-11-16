@@ -2,7 +2,6 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-
 namespace TaskTwo.OurSerializer
 {
     public static class OurSerializer
@@ -30,6 +29,7 @@ namespace TaskTwo.OurSerializer
                 }
             }
         }
+
 
         public static T Deserialize<T>(string filename)
         {

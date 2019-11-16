@@ -4,11 +4,11 @@ using System.IO;
 using Newtonsoft.Json;
 using Task_1.Part_1;
 
-
-public class JsonExport
+namespace TaskTwo.JsonSerializer
 {
-
-    public JsonExport()
+    public class JsonExport
+    {
+        public JsonExport()
         {
 
         }
@@ -32,11 +32,11 @@ public class JsonExport
                     writer.WriteLine(json);
                 }
             }
-            catch(IOException e)
+            catch (IOException e)
             {
                 Console.WriteLine("The file could not be read: " + e.Message);
             }
-    }
+        }
 
 
         public void SerializeCatalog(DataRepository data)
@@ -46,21 +46,21 @@ public class JsonExport
                 using (FileStream file = new FileStream("..\\..\\Files\\Catalog.json", FileMode.Create, FileAccess.Write))
                 using (StreamWriter writer = new StreamWriter(file))
                 {
-                IEnumerable<Catalog> constant = data.GetAllFromCatalog();
-                string json = JsonConvert.SerializeObject(constant, Formatting.Indented, new JsonSerializerSettings
-                {
-                    TypeNameHandling = TypeNameHandling.All,
-                    MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
-                    PreserveReferencesHandling = PreserveReferencesHandling.Objects
-                });
-                writer.WriteLine(json);
+                    IEnumerable<Catalog> constant = data.GetAllFromCatalog();
+                    string json = JsonConvert.SerializeObject(constant, Formatting.Indented, new JsonSerializerSettings
+                    {
+                        TypeNameHandling = TypeNameHandling.All,
+                        MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
+                        PreserveReferencesHandling = PreserveReferencesHandling.Objects
+                    });
+                    writer.WriteLine(json);
                 }
             }
             catch (IOException e)
             {
                 Console.WriteLine("The file could not be read: " + e.Message);
             }
-    }
+        }
 
 
         public void SerializeStatusDescription(DataRepository data)
@@ -84,7 +84,7 @@ public class JsonExport
             {
                 Console.WriteLine("The file could not be read: " + e.Message);
             }
-    }
+        }
 
 
         public void SerializeEvent(DataRepository data)
@@ -109,6 +109,5 @@ public class JsonExport
                 Console.WriteLine("The file could not be read: " + e.Message);
             }
         }
-    
-
     }
+}
