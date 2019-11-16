@@ -2,6 +2,7 @@
 using Task_1.Part_1;
 using Task_1.Part_4;
 using TaskTwo.Data;
+using TaskTwo.JsonSerializer;
 using TaskTwo.OurSerializer;
 
 namespace TaskTwo
@@ -44,6 +45,8 @@ namespace TaskTwo
                     case 2:
                         Console.WriteLine("Exporting to .json");
                         JsonExport JsonExporter = new JsonExport();
+                        JsonContextSerialization whole = new JsonContextSerialization(data);
+                        whole.SerializeWhole();
                         JsonExporter.SerializeRegister(data);
                         JsonExporter.SerializeCatalog(data);
                         JsonExporter.SerializeStatusDescription(data);
@@ -62,6 +65,7 @@ namespace TaskTwo
                     case 4:
                         Console.WriteLine("Importing from .json");
                         data = new DataRepository(new JsonImport());
+                        data = new DataRepository(new JsonContextSerialization());
                         break;
 
                     case 5:

@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Data\DefinedData.cs" />
     <Compile Include="Data\EmptyData.cs" />
+    <Compile Include="JsonSerializer\JsonContextSerialization.cs" />
     <Compile Include="JsonSerializer\JsonExport.cs" />
     <Compile Include="JsonSerializer\JsonImport.cs" />
     <Compile Include="OurSerializer\OurExport.cs" />
