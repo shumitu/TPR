@@ -36,7 +36,7 @@ namespace TaskTwoTests.Tests
                             PreserveReferencesHandling = PreserveReferencesHandling.Objects,
                         });
 
-            Assert.AreEqual(clsA, clsA_test);
+            Assert.AreEqual(clsA.ToString(), clsA_test.ToString());
 
         }
     }

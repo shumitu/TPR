@@ -52,18 +52,20 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TestClasses\ClassA.cs" />
+    <Compile Include="TestClasses\ClassB.cs" />
+    <Compile Include="TestClasses\ClassC.cs" />
     <Compile Include="Tests\JsonSingleTest.cs" />
     <Compile Include="Tests\JsonWholeContextTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\OurSingleTest.cs" />
     <Compile Include="Tests\OurWholeContextTest.cs" />
+    <Compile Include="Tests\RecursiveTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="TestClasses\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\..\TaskOne\TaskOne\Task_1.csproj">
       <Project>{493264CF-EFED-4AC0-97C7-90637B787AA2}</Project>
