@@ -1,0 +1,51 @@
+[
+  {
+    "$id": "1",
+    "BookId": 0,
+    "Author": "Bolesław Prus",
+    "Title": "Lalka",
+    "Year": 1960
+  },
+  {
+    "$id": "2",
+    "BookId": 1,
+    "Author": "Adam Mickiewicz",
+    "Title": "Pan Tadeusz",
+    "Year": 1978
+  },
+  {
+    "$id": "3",
+    "BookId": 2,
+    "Author": "Fiodor Dostojewski",
+    "Title": "Zbrodnia i kara",
+    "Year": 1989
+  },
+  {
+    "$id": "4",
+    "BookId": 3,
+    "Author": "J.R.R. Tolkien",
+    "Title": "Władca Pierścieni",
+    "Year": 2006
+  },
+  {
+    "$id": "5",
+    "BookId": 4,
+    "Author": "J.K. Rowling",
+    "Title": "Harry Potter i Zakon Feniksa",
+    "Year": 2001
+  },
+  {
+    "$id": "6",
+    "BookId": 5,
+    "Author": "Stanisław Lem",
+    "Title": "Solaris",
+    "Year": 1961
+  },
+  {
+    "$id": "7",
+    "BookId": 6,
+    "Author": "Stephen King",
+    "Title": "Zielona Mila",
+    "Year": 1996
+  }
+]

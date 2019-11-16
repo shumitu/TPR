@@ -1,0 +1,93 @@
+[
+  {
+    "$id": "1",
+    "Catalog": {
+      "$id": "2",
+      "BookId": 0,
+      "Author": "Bolesław Prus",
+      "Title": "Lalka",
+      "Year": 1960
+    },
+    "Price": 19.99,
+    "Description": "Krótki opis",
+    "Date": "2019-11-16T00:00:00+01:00"
+  },
+  {
+    "$id": "3",
+    "Catalog": {
+      "$id": "4",
+      "BookId": 1,
+      "Author": "Adam Mickiewicz",
+      "Title": "Pan Tadeusz",
+      "Year": 1978
+    },
+    "Price": 29.99,
+    "Description": "Krótki opis",
+    "Date": "2019-11-16T00:00:00+01:00"
+  },
+  {
+    "$id": "5",
+    "Catalog": {
+      "$id": "6",
+      "BookId": 2,
+      "Author": "Fiodor Dostojewski",
+      "Title": "Zbrodnia i kara",
+      "Year": 1989
+    },
+    "Price": 9.99,
+    "Description": "Krótki opis",
+    "Date": "2019-11-16T00:00:00+01:00"
+  },
+  {
+    "$id": "7",
+    "Catalog": {
+      "$id": "8",
+      "BookId": 3,
+      "Author": "J.R.R. Tolkien",
+      "Title": "Władca Pierścieni",
+      "Year": 2006
+    },
+    "Price": 49.99,
+    "Description": "Krótki opis",
+    "Date": "2019-11-16T00:00:00+01:00"
+  },
+  {
+    "$id": "9",
+    "Catalog": {
+      "$id": "10",
+      "BookId": 4,
+      "Author": "J.K. Rowling",
+      "Title": "Harry Potter i Zakon Feniksa",
+      "Year": 2001
+    },
+    "Price": 44.99,
+    "Description": "Krótki opis",
+    "Date": "2019-11-16T00:00:00+01:00"
+  },
+  {
+    "$id": "11",
+    "Catalog": {
+      "$id": "12",
+      "BookId": 5,
+      "Author": "Stanisław Lem",
+      "Title": "Solaris",
+      "Year": 1961
+    },
+    "Price": 39.99,
+    "Description": "Krótki opis",
+    "Date": "2019-11-16T00:00:00+01:00"
+  },
+  {
+    "$id": "13",
+    "Catalog": {
+      "$id": "14",
+      "BookId": 6,
+      "Author": "Stephen King",
+      "Title": "Zielona Mila",
+      "Year": 1996
+    },
+    "Price": 59.99,
+    "Description": "Krótki opis",
+    "Date": "2019-11-16T00:00:00+01:00"
+  }
+]

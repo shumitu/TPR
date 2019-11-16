@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Task_1.Part_1;
 using Task_1.Part_4;
 using TaskTwo.Data;
@@ -70,10 +66,7 @@ namespace TaskTwo
 
                     case 5:
                         Console.WriteLine("Importing from .dat");
-                        OurImport.DeserializeRegister(context);
-                        OurImport.DeserializeCatalog(context);
-                        OurImport.DeserializeStatusDescription(context);
-                        OurImport.DeserializeEvent(context);
+                        data = new DataRepository(new OurImport());
                         break;
 
                     case 6:
@@ -93,7 +86,7 @@ namespace TaskTwo
                         Console.WriteLine("Clearing data");
                         EmptyData empty2 = new EmptyData();
                         data = new DataRepository(empty2);
-                        break;                   
+                        break;
 
                     case 8:
                         Environment.Exit(0);
@@ -104,7 +97,7 @@ namespace TaskTwo
                 }
 
                 Console.ReadLine();
-            }         
-        }  
+            }
+        }
     }
 }

@@ -1,0 +1,44 @@
+[
+  {
+    "$id": "1",
+    "PersonId": 1,
+    "FirstName": "Jan",
+    "LastName": "Kowalski"
+  },
+  {
+    "$id": "2",
+    "PersonId": 2,
+    "FirstName": "Tomasz",
+    "LastName": "Nowak"
+  },
+  {
+    "$id": "3",
+    "PersonId": 3,
+    "FirstName": "Adrian",
+    "LastName": "Wiśniewski"
+  },
+  {
+    "$id": "4",
+    "PersonId": 4,
+    "FirstName": "Anna",
+    "LastName": "Stasiak"
+  },
+  {
+    "$id": "5",
+    "PersonId": 5,
+    "FirstName": "Martyna",
+    "LastName": "Lotus"
+  },
+  {
+    "$id": "6",
+    "PersonId": 6,
+    "FirstName": "Kamil",
+    "LastName": "Szybki"
+  },
+  {
+    "$id": "7",
+    "PersonId": 7,
+    "FirstName": "Ewa",
+    "LastName": "Kuś"
+  }
+]
