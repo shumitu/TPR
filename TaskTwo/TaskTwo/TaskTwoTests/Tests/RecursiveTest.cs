@@ -28,7 +28,7 @@ namespace TaskTwoTests.Tests
                 });
             Console.WriteLine(jsonForClassA);
 
-            ClassA clsA_test= JsonConvert.DeserializeObject<ClassA>(jsonForClassA,
+            ClassA clsA_test = JsonConvert.DeserializeObject<ClassA>(jsonForClassA,
                         new JsonSerializerSettings
                         {
                             TypeNameHandling = TypeNameHandling.All,
@@ -37,7 +37,6 @@ namespace TaskTwoTests.Tests
                         });
 
             Assert.AreEqual(clsA.ToString(), clsA_test.ToString());
-
         }
     }
 }
