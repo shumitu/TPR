@@ -53,6 +53,7 @@
     <Compile Include="JsonSerializer\JsonImport.cs" />
     <Compile Include="OurSerializer\OurExport.cs" />
     <Compile Include="OurSerializer\OurImport.cs" />
+    <Compile Include="OurSerializer\OurSerializer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
