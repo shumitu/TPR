@@ -46,10 +46,10 @@ namespace TaskTwoTests.Tests
             Console.WriteLine(json.Equals(json2));
             Console.WriteLine(context.Equals(deserialized));
 
-            string s1 = context.ToString();
-            string s2 = deserialized.ToString();
+            string string1 = context.ToString();
+            string string2 = deserialized.ToString();
 
-            Assert.AreEqual(s1, s2);
+            Assert.AreEqual(string1, string2);
         }
     }
 }
