@@ -7,8 +7,6 @@ namespace TaskTwo.OurSerializer
 {
     public static class OurSerializer
     {
-        public static object MessageBox { get; private set; }
-
         public static void Serialize(string filename, object objectToSerialize)
         {
             if (objectToSerialize == null)
