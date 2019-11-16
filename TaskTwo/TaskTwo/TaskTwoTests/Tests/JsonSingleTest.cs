@@ -7,7 +7,7 @@ using Task_1.Part_1;
 namespace TaskTwoTests.Tests
 {
     [TestClass]
-    public class JsonTest
+    public class JsonSingleTest
     {
         [TestMethod]
         public void RegisterSerializationTest()
