@@ -120,7 +120,7 @@
     "$values": [
       {
         "$id": "17",
-        "$type": "Task_1.Part_1.Event, Task_1",
+        "$type": "Task_1.Part_1.BookBought, Task_1",
         "person": {
           "$ref": "2"
         },
@@ -135,6 +135,7 @@
           "Date": "2019-11-16T00:00:00+01:00"
         },
         "date": "2019-07-23T00:00:00",
+        "Price": 66.99,
         "Person": {
           "$ref": "2"
         },
@@ -145,7 +146,7 @@
       },
       {
         "$id": "19",
-        "$type": "Task_1.Part_1.Event, Task_1",
+        "$type": "Task_1.Part_1.BookReturn, Task_1",
         "person": {
           "$ref": "3"
         },
@@ -170,7 +171,7 @@
       },
       {
         "$id": "21",
-        "$type": "Task_1.Part_1.Event, Task_1",
+        "$type": "Task_1.Part_1.BookBorrow, Task_1",
         "person": {
           "$ref": "4"
         },
@@ -195,7 +196,7 @@
       },
       {
         "$id": "23",
-        "$type": "Task_1.Part_1.Event, Task_1",
+        "$type": "Task_1.Part_1.BookDestroy, Task_1",
         "person": {
           "$ref": "5"
         },
@@ -220,7 +221,7 @@
       },
       {
         "$id": "25",
-        "$type": "Task_1.Part_1.Event, Task_1",
+        "$type": "Task_1.Part_1.BookReturn, Task_1",
         "person": {
           "$ref": "6"
         },
@@ -245,7 +246,7 @@
       },
       {
         "$id": "27",
-        "$type": "Task_1.Part_1.Event, Task_1",
+        "$type": "Task_1.Part_1.BookBorrow, Task_1",
         "person": {
           "$ref": "7"
         },
@@ -270,7 +271,7 @@
       },
       {
         "$id": "29",
-        "$type": "Task_1.Part_1.Event, Task_1",
+        "$type": "Task_1.Part_1.BookBorrow, Task_1",
         "person": {
           "$ref": "8"
         },

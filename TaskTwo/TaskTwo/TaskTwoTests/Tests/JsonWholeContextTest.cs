@@ -46,9 +46,10 @@ namespace TaskTwoTests.Tests
             Console.WriteLine(json.Equals(json2));
             Console.WriteLine(context.Equals(deserialized));
 
-            // toFix
-            //Assert.AreEqual(context, abc);
+            string s1 = context.ToString();
+            string s2 = deserialized.ToString();
 
+            Assert.AreEqual(s1, s2);
         }
     }
 }
