@@ -54,8 +54,9 @@
   <ItemGroup>
     <Compile Include="Tests\JsonSingleTest.cs" />
     <Compile Include="Tests\JsonWholeContextTest.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\OurSingleTest.cs" />
+    <Compile Include="Tests\OurWholeContextTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -67,6 +68,10 @@
     <ProjectReference Include="..\..\..\TaskOne\TaskOne\Task_1.csproj">
       <Project>{493264CF-EFED-4AC0-97C7-90637B787AA2}</Project>
       <Name>Task_1</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TaskTwo\TaskTwo.csproj">
+      <Project>{EC1A5194-3DE9-4CD2-9E44-369F12D48DE6}</Project>
+      <Name>TaskTwo</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
