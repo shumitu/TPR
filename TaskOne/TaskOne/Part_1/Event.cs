@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace Task_1.Part_1
 {
@@ -72,12 +72,14 @@ namespace Task_1.Part_1
     [Serializable]
     public class BookBought : Event
     {
-        private double price;
+        [JsonProperty(Required=Required.Always)]
+        public double Price { get; set; }
 
+        [JsonConstructor]
 
-        public BookBought(Register person, StatusDescription description, DateTime date, double price)
+        public BookBought(Register person, StatusDescription description, DateTime date, double Price)
         {
-            if (price < 0.00)
+            if (Price < 0.00)
             {
                 throw new Exception("Cannot create event with negative price");
             }
@@ -85,22 +87,8 @@ namespace Task_1.Part_1
             this.person = person;
             this.description = description;
             this.date = date;
-            this.price = price;
+            this.Price = Price;
         }
-
-
-        public double Price
-        {
-            get
-            {
-                return price;
-            }
-            set
-            {
-                price = value;
-            }
-        }
-
 
         public override string ToString()
         {

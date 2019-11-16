@@ -31,7 +31,13 @@ namespace TaskTwo.JsonSerializer
                 using (FileStream file = new FileStream("..\\..\\Files\\WholeContext.json", FileMode.Create, FileAccess.Write))
                 using (StreamWriter writer = new StreamWriter(file))
                 {
-                    string json = JsonConvert.SerializeObject(cont, Formatting.Indented, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+                    string json = JsonConvert.SerializeObject(cont, Formatting.Indented,
+                         new JsonSerializerSettings
+                         {
+                             TypeNameHandling = TypeNameHandling.All,
+                             MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
+                             PreserveReferencesHandling = PreserveReferencesHandling.Objects
+                         });
                     writer.WriteLine(json);
                 }
             }
@@ -53,7 +59,12 @@ namespace TaskTwo.JsonSerializer
                     // remove last new line
                     JsonString = JsonString.Remove(JsonString.Length - 2);
 
-                    deserialized = JsonConvert.DeserializeObject<DataContext>(JsonString, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+                    deserialized = JsonConvert.DeserializeObject<DataContext>(JsonString,
+                        new JsonSerializerSettings {
+                            TypeNameHandling = TypeNameHandling.All,
+                            MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
+                            PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+                        });
                 }
             }
             catch (IOException e)

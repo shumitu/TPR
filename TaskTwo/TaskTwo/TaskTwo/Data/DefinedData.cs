@@ -41,7 +41,7 @@ namespace TaskTwo.Data
             context.descriptions.Add(new StatusDescription(context.catalogs[6], 59.99, "Krótki opis", DateTime.Today));
 
 
-            context.events.Add(new BookBought(context.lists[0], context.descriptions[0], new DateTime(2019, 07, 23), 19.99));
+            context.events.Add(new BookBought(context.lists[0], context.descriptions[0], new DateTime(2019, 07, 23), 66.99));
             context.events.Add(new BookReturn(context.lists[1], context.descriptions[1], new DateTime(2018, 04, 14)));
             context.events.Add(new BookBorrow(context.lists[2], context.descriptions[2], new DateTime(2019, 10, 07)));
             context.events.Add(new BookDestroy(context.lists[3], context.descriptions[3], new DateTime(2019, 02, 21)));
