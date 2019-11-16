@@ -27,7 +27,12 @@ namespace TaskTwo.Data
                     // remove last new line
                     JsonString = JsonString.Remove(JsonString.Length - 2);
 
-                    List<Register> deserializedRegisters = JsonConvert.DeserializeObject<List<Register>>(JsonString, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+                    List<Register> deserializedRegisters = JsonConvert.DeserializeObject<List<Register>>(JsonString, new JsonSerializerSettings
+                    {
+                        TypeNameHandling = TypeNameHandling.All,
+                        MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
+                        PreserveReferencesHandling = PreserveReferencesHandling.Objects
+                    });
 
                     for (int i = 0; i < deserializedRegisters.Count; i++)
                     {
@@ -48,7 +53,12 @@ namespace TaskTwo.Data
                     // remove last new line
                     JsonString = JsonString.Remove(JsonString.Length - 2);
 
-                    List<Catalog> deserializedCatalogs = JsonConvert.DeserializeObject<List<Catalog>>(JsonString, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+                    List<Catalog> deserializedCatalogs = JsonConvert.DeserializeObject<List<Catalog>>(JsonString, new JsonSerializerSettings
+                    {
+                        TypeNameHandling = TypeNameHandling.All,
+                        MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
+                        PreserveReferencesHandling = PreserveReferencesHandling.Objects
+                    });
 
                     for (int i = 0; i < deserializedCatalogs.Count; i++)
                     {
@@ -69,7 +79,12 @@ namespace TaskTwo.Data
                     // remove last new line
                     JsonString = JsonString.Remove(JsonString.Length - 2);
 
-                    List<StatusDescription> deserializedDescriptions = JsonConvert.DeserializeObject<List<StatusDescription>>(JsonString, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+                    List<StatusDescription> deserializedDescriptions = JsonConvert.DeserializeObject<List<StatusDescription>>(JsonString, new JsonSerializerSettings
+                    {
+                        TypeNameHandling = TypeNameHandling.All,
+                        MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
+                        PreserveReferencesHandling = PreserveReferencesHandling.Objects
+                    });
 
                     for (int i = 0; i < deserializedDescriptions.Count; i++)
                     {
@@ -90,7 +105,12 @@ namespace TaskTwo.Data
                     // remove last new line
                     JsonString = JsonString.Remove(JsonString.Length - 2);
 
-                    List<Event> deserializedEvents = JsonConvert.DeserializeObject<List<Event>>(JsonString, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+                    List<Event> deserializedEvents = JsonConvert.DeserializeObject<List<Event>>(JsonString, new JsonSerializerSettings
+                    {
+                        TypeNameHandling = TypeNameHandling.All,
+                        MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
+                        PreserveReferencesHandling = PreserveReferencesHandling.Objects
+                    });
 
                     for (int i = 0; i < deserializedEvents.Count; i++)
                     {

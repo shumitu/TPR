@@ -22,7 +22,13 @@ public class JsonExport
                 using (StreamWriter writer = new StreamWriter(file))
                 {
                     IEnumerable<Register> constant = data.GetAllRegisters();
-                    string json = JsonConvert.SerializeObject(constant, Formatting.Indented, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+                    string json = JsonConvert.SerializeObject(constant, Formatting.Indented,
+                        new JsonSerializerSettings
+                        {
+                            TypeNameHandling = TypeNameHandling.All,
+                            MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
+                            PreserveReferencesHandling = PreserveReferencesHandling.Objects
+                        });
                     writer.WriteLine(json);
                 }
             }
@@ -41,7 +47,12 @@ public class JsonExport
                 using (StreamWriter writer = new StreamWriter(file))
                 {
                 IEnumerable<Catalog> constant = data.GetAllFromCatalog();
-                string json = JsonConvert.SerializeObject(constant, Formatting.Indented, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+                string json = JsonConvert.SerializeObject(constant, Formatting.Indented, new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.All,
+                    MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
+                    PreserveReferencesHandling = PreserveReferencesHandling.Objects
+                });
                 writer.WriteLine(json);
                 }
             }
@@ -60,7 +71,12 @@ public class JsonExport
                 using (StreamWriter writer = new StreamWriter(file))
                 {
                     IEnumerable<StatusDescription> constant = data.GetAllStatusDescriptions();
-                    string json = JsonConvert.SerializeObject(constant, Formatting.Indented, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+                    string json = JsonConvert.SerializeObject(constant, Formatting.Indented, new JsonSerializerSettings
+                    {
+                        TypeNameHandling = TypeNameHandling.All,
+                        MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
+                        PreserveReferencesHandling = PreserveReferencesHandling.Objects
+                    });
                     writer.WriteLine(json);
                 }
             }
@@ -79,7 +95,12 @@ public class JsonExport
                 using (StreamWriter writer = new StreamWriter(file))
                 {
                     IEnumerable<Event> constant = data.GetAllEvents();
-                    string json = JsonConvert.SerializeObject(constant, Formatting.Indented, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+                    string json = JsonConvert.SerializeObject(constant, Formatting.Indented, new JsonSerializerSettings
+                    {
+                        TypeNameHandling = TypeNameHandling.All,
+                        MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
+                        PreserveReferencesHandling = PreserveReferencesHandling.Objects
+                    });
                     writer.WriteLine(json);
                 }
             }
