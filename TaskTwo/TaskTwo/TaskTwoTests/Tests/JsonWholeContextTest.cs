@@ -22,8 +22,9 @@ namespace TaskTwoTests.Tests
             {
                 TypeNameHandling = TypeNameHandling.All,
                 MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
-                PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
             });
+
             Console.WriteLine(json);
 
             DataContext deserialized = JsonConvert.DeserializeObject<DataContext>(json,
@@ -39,8 +40,9 @@ namespace TaskTwoTests.Tests
             {
                 TypeNameHandling = TypeNameHandling.All,
                 MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
-                PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
             });
+
             Console.WriteLine(json2);
 
             Console.WriteLine(json.Equals(json2));

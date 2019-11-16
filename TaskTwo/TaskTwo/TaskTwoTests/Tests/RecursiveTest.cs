@@ -24,7 +24,7 @@ namespace TaskTwoTests.Tests
                 {
                     TypeNameHandling = TypeNameHandling.All,
                     MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
-                    PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+                    PreserveReferencesHandling = PreserveReferencesHandling.Objects
                 });
             Console.WriteLine(jsonForClassA);
 
@@ -33,7 +33,7 @@ namespace TaskTwoTests.Tests
                         {
                             TypeNameHandling = TypeNameHandling.All,
                             MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
-                            PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+                            PreserveReferencesHandling = PreserveReferencesHandling.Objects
                         });
 
             Assert.AreEqual(clsA.ToString(), clsA_test.ToString());
