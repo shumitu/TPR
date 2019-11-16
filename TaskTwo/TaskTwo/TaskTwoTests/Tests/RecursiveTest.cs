@@ -19,6 +19,7 @@ namespace TaskTwoTests.Tests
             clsB.ClassC = clsC;
             clsC.ClassA = clsA;
 
+            // serialize ClassA to string via Json.NET
             string jsonForClassA = JsonConvert.SerializeObject(clsA, Formatting.Indented,
                 new JsonSerializerSettings
                 {
@@ -26,8 +27,8 @@ namespace TaskTwoTests.Tests
                     MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
                     PreserveReferencesHandling = PreserveReferencesHandling.Objects
                 });
-            Console.WriteLine(jsonForClassA);
 
+            // create clsA_test object from deserialized string
             ClassA clsA_test = JsonConvert.DeserializeObject<ClassA>(jsonForClassA,
                         new JsonSerializerSettings
                         {
@@ -36,7 +37,22 @@ namespace TaskTwoTests.Tests
                             PreserveReferencesHandling = PreserveReferencesHandling.Objects
                         });
 
-            Assert.AreEqual(clsA.ToString(), clsA_test.ToString());
+            // serialize object created above to get it serialized form
+            string jsonForDeserializedObject = JsonConvert.SerializeObject(clsA_test, Formatting.Indented,
+                new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.All,
+                    MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
+                    PreserveReferencesHandling = PreserveReferencesHandling.Objects
+                });
+
+            // log both serialized versions of object to console
+            Console.WriteLine(jsonForClassA);
+            Console.WriteLine("===");
+            Console.WriteLine(jsonForDeserializedObject);
+
+            // compare objects before and after serialization, using their serialized forms
+            Assert.AreEqual(jsonForClassA, jsonForDeserializedObject);
         }
     }
 }

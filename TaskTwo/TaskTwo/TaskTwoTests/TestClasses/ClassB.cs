@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 
 namespace TaskTwoTests.TestClasses
 {
     [Serializable]
     public class ClassB
     {
+        [JsonProperty]
         public ClassC ClassC { get; set; }
 
         public ClassB()

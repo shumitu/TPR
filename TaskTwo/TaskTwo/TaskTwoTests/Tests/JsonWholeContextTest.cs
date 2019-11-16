@@ -17,6 +17,7 @@ namespace TaskTwoTests.Tests
             context.descriptions.Add(new StatusDescription(context.catalogs[0], 19.99, "Krótki opis", DateTime.Today));
             context.events.Add(new BookBought(context.lists[0], context.descriptions[0], DateTime.Today, 19.99));
 
+            // serialize DataContext to string via Json.NET
             string json = JsonConvert.SerializeObject(context, Formatting.Indented,
                 new JsonSerializerSettings
             {
@@ -25,8 +26,7 @@ namespace TaskTwoTests.Tests
                 PreserveReferencesHandling = PreserveReferencesHandling.Objects
             });
 
-            Console.WriteLine(json);
-
+            // create DataContext object using serialized string which was made above
             DataContext deserialized = JsonConvert.DeserializeObject<DataContext>(json,
                 new JsonSerializerSettings
             {
@@ -35,7 +35,8 @@ namespace TaskTwoTests.Tests
                 PreserveReferencesHandling = PreserveReferencesHandling.Objects,
             });
 
-            string json2 = JsonConvert.SerializeObject(context, Formatting.Indented,
+            // serialize new object which we created from deserialized string
+            string json2 = JsonConvert.SerializeObject(deserialized, Formatting.Indented,
                 new JsonSerializerSettings
             {
                 TypeNameHandling = TypeNameHandling.All,
@@ -43,15 +44,23 @@ namespace TaskTwoTests.Tests
                 PreserveReferencesHandling = PreserveReferencesHandling.Objects
             });
 
+            // log both strings, from original dataContext and from new, created object
+            Console.WriteLine(json);
+            Console.WriteLine("===");
             Console.WriteLine(json2);
 
-            Console.WriteLine(json.Equals(json2));
-            Console.WriteLine(context.Equals(deserialized));
+            // compare serialized forms of objects
+            Assert.AreEqual(json, json2);
 
-            string string1 = context.ToString();
-            string string2 = deserialized.ToString();
+            // compare objects and their collections
+            CollectionAssert.AreEquivalent(context.catalogs, deserialized.catalogs);
+            CollectionAssert.AreEqual(context.descriptions, deserialized.descriptions);
+            CollectionAssert.AreEqual(context.lists, deserialized.lists);
+            CollectionAssert.AreEqual(context.events, deserialized.events);
+            CollectionAssert.AreEqual(context.catalogs, deserialized.catalogs);
 
-            Assert.AreEqual(string1, string2);
+            CollectionAssert.Equals(context, deserialized);
+            
         }
     }
 }
