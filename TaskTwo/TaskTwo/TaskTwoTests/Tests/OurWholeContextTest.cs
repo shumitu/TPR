@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Task_1.Part_1;
+using TaskTwo.Data;
 using TaskTwo.OurSerializer;
 
 namespace TaskTwoTests.Tests
@@ -19,10 +20,16 @@ namespace TaskTwoTests.Tests
 
             OurSerializer.Serialize(@"..\\..\\..\\TaskTwo\\Files\\TestContext.dat", context);
 
-            DataContext deserialized = null;
+            DataContext deserialized = new DataContext();
             deserialized = OurSerializer.Deserialize<DataContext>(@"..\\..\\..\\TaskTwo\\Files\\TestContext.dat");
 
-            Assert.AreEqual(context, deserialized);
+            string s1 = context.ToString();
+            string s2 = deserialized.ToString();
+
+            Console.WriteLine(s1);
+            Console.WriteLine(s2);
+
+            Assert.AreEqual(s1, s2);
         }
     }
 }
