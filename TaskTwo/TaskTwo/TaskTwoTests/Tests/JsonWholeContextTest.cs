@@ -17,12 +17,30 @@ namespace TaskTwoTests.Tests
             context.descriptions.Add(new StatusDescription(context.catalogs[0], 19.99, "Krótki opis", DateTime.Today));
             context.events.Add(new BookBought(context.lists[0], context.descriptions[0], DateTime.Today, 19.99));
 
-            string json = JsonConvert.SerializeObject(context, Formatting.Indented, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+            string json = JsonConvert.SerializeObject(context, Formatting.Indented,
+                new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.All,
+                MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+            });
             Console.WriteLine(json);
 
-            DataContext deserialized = JsonConvert.DeserializeObject<DataContext>(json, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+            DataContext deserialized = JsonConvert.DeserializeObject<DataContext>(json,
+                new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.All,
+                MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+            });
 
-            string json2 = JsonConvert.SerializeObject(context, Formatting.Indented, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+            string json2 = JsonConvert.SerializeObject(context, Formatting.Indented,
+                new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.All,
+                MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+            });
             Console.WriteLine(json2);
 
             Console.WriteLine(json.Equals(json2));

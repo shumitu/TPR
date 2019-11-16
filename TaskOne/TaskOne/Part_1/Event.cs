@@ -4,6 +4,7 @@ using System;
 namespace Task_1.Part_1
 {
     [Serializable]
+
     public class Event
     {
         public Register person;
@@ -70,6 +71,7 @@ namespace Task_1.Part_1
 
 
     [Serializable]
+    [JsonObject]
     public class BookBought : Event
     {
         [JsonProperty(Required=Required.Always)]
@@ -109,6 +111,7 @@ namespace Task_1.Part_1
 
 
     [Serializable]
+    [JsonObject]
     public class BookDestroy : Event
     {
         public BookDestroy(Register person, StatusDescription description, DateTime date)
@@ -132,6 +135,7 @@ namespace Task_1.Part_1
 
 
     [Serializable]
+    [JsonObject]
     public class BookBorrow : Event
     {
         public BookBorrow(Register person, StatusDescription description, DateTime date)
@@ -155,6 +159,7 @@ namespace Task_1.Part_1
 
 
     [Serializable]
+    [JsonObject]
     public class BookReturn : Event
     {
         public BookReturn(Register person, StatusDescription description, DateTime date)

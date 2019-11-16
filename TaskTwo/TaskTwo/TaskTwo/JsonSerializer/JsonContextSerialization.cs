@@ -88,7 +88,12 @@ namespace TaskTwo.JsonSerializer
                     // remove last new line
                     JsonString = JsonString.Remove(JsonString.Length - 2);
 
-                    deserialized = JsonConvert.DeserializeObject<DataContext>(JsonString, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+                    deserialized = JsonConvert.DeserializeObject<DataContext>(JsonString, new JsonSerializerSettings
+                    {
+                        TypeNameHandling = TypeNameHandling.All,
+                        MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
+                        PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+                    });
                 }
             }
             catch (IOException e)
