@@ -40,7 +40,7 @@ namespace TaskTwoTests.TestClasses
             }
         }
 
-        public List<TestClass> deserialize(Stream stream)
+        public List<TestClass> Deserialize(Stream stream)
         {
             Dictionary<string, TestClass> classes = new Dictionary<string, TestClass>();
             Dictionary<TestClass, string> secondClasses = new Dictionary<TestClass, string>();

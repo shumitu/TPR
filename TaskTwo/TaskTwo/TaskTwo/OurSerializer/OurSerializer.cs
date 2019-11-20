@@ -25,6 +25,7 @@ namespace TaskTwo.OurSerializer
             InputStream = stream;
         }
 
+
         public OurSerializer()
         {
             DeserializedObj = new Dictionary<long, object>();
@@ -57,6 +58,7 @@ namespace TaskTwo.OurSerializer
             DeserializeDecision(context);
             return context;
         }
+
 
         public void Fill(DataContext context)
         {

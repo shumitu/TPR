@@ -43,7 +43,7 @@ namespace TaskTwoTests.Tests
 
             using (Stream stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
-                DeserializedClasses = serializer.deserialize(stream);
+                DeserializedClasses = serializer.Deserialize(stream);
             }
 
             Assert.AreEqual(1, DeserializedClasses[0].Id);
