@@ -18,22 +18,16 @@ namespace TaskTwo
 
             void Show()
             {
-                Console.WriteLine(" ");
-                Console.WriteLine(" ");
-                Console.WriteLine("[1] Fill with defined data");
+                Console.WriteLine("\n\n[1] Fill with defined data");
                 Console.WriteLine("[2] Export to .json");
                 Console.WriteLine("[3] Export to .json (whole Context)");
-                Console.WriteLine("[4] Export to .dat");
-                Console.WriteLine("[5] Export to .dat (whole Context)");
-                Console.WriteLine("[6] Import from .json");
-                Console.WriteLine("[7] Import from .json (whole Context)");
-                Console.WriteLine("[8] Import from .dat");
-                Console.WriteLine("[9] Import from .dat (whole Context)");
-                Console.WriteLine("[10] Show data");
-                Console.WriteLine("[11] Clear data");
-                Console.WriteLine("[12] Exit program");
-                Console.WriteLine(" ");
-                Console.WriteLine(" ");
+                Console.WriteLine("[4] Export to .txt (whole Context)");
+                Console.WriteLine("[5] Import from .json");
+                Console.WriteLine("[6] Import from .json (whole Context)");
+                Console.WriteLine("[7] Import from .txt (whole Context)");
+                Console.WriteLine("[8] Show data");
+                Console.WriteLine("[9] Clear data");
+                Console.WriteLine("[10] Exit program\n\n");
             }
 
             Show();
@@ -43,11 +37,10 @@ namespace TaskTwo
             DataContext context = new DataContext();
             EmptyData empty = new EmptyData();
             DataRepository data = new DataRepository(empty);
-            DataContext deserialized = null;
-            string path = @"..\\..\\Files\\Context.txt";
+            const string path = @"..\\..\\Files\\Context.txt";
 
 
-            while (choose != 12)
+            while (choose != 10)
             {
                 Console.Write("\nEnter your choose: ");
                 choose = Convert.ToInt32(Console.ReadLine());
@@ -56,74 +49,60 @@ namespace TaskTwo
                 switch (choose)
                 {
                     case 1:
-                        Console.WriteLine("Filling with defined data");
-                        data = new DataRepository(new DefinedData());
+                        Console.WriteLine("Filling with defined data...");
+                        data = new DataRepository(new ConsoleDataFill());
                         Show();
                         break;
 
                     case 2:
                         Console.WriteLine("Exporting to .json");
-                        JsonExport JsonExporter = new JsonExport();
-                        JsonExporter.SerializeRegister(data);
-                        JsonExporter.SerializeCatalog(data);
-                        JsonExporter.SerializeStatusDescription(data);
-                        JsonExporter.SerializeEvent(data);
+                        JsonExport jsonExporter = new JsonExport();
+                        jsonExporter.SerializeRegister(data);
+                        jsonExporter.SerializeCatalog(data);
+                        jsonExporter.SerializeStatusDescription(data);
+                        jsonExporter.SerializeEvent(data);
                         Show();
                         break;
 
                     case 3:
                         Console.WriteLine("Exporting to .json (whole Context)");
-                        JsonContextSerialization whole = new JsonContextSerialization(data);
-                        whole.SerializeWhole();
+                        JsonContextSerialization wholeContent = new JsonContextSerialization(data);
+                        wholeContent.SerializeWhole();
                         Show();
                         break;
 
                     case 4:
-                        Console.WriteLine("Exporting to .dat");
-                        Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
-                        IOurSerializer serializer = new OurSerializer.OurSerializer();
-                        serializer.Serialize(data.context, stream);
-                        stream.Close();
+                        Console.WriteLine("Exporting to .txt (whole Context)");
+                        using (Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+                        {
+                            IOurSerializer serializer = new OurSerializer.OurSerializer();
+                            serializer.Serialize(data.context, stream);
+                        }
                         Show();
                         break;
 
                     case 5:
-                        Console.WriteLine("Exporting to .dat (whole Context)");
-                        //OurContextSerialization wholecontext = new OurContextSerialization(data);
-                        //wholecontext.SerializeWhole();
-                        Show();
-                        break;
-
-                    case 6:
                         Console.WriteLine("Importing from .json");
                         data = new DataRepository(new JsonImport());
                         Show();
                         break;
 
-                    case 7:
+                    case 6:
                         Console.WriteLine("Importing from .json (whole Context)");
                         data = new DataRepository(new JsonContextSerialization());
                         Show();
                         break;
 
-                    case 8:
-                        Console.WriteLine("Importing from .dat");
-                        Stream stream2 = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
-//                        IOurSerializer deserializer = new OurSerializer.OurSerializer();
-//                        deserializer.Deserialize(stream2);
-//                        
-                        data = new DataRepository(new OurSerializer.OurSerializer(stream2));
-                        stream2.Close();
-                        Show();
-                        break;
-
-                    case 9:
+                    case 7:
                         Console.WriteLine("Importing from .dat (whole Context)");
-                        //data = new DataRepository(new OurContextSerialization());
+                        using (Stream stream2 = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
+                        {
+                            data = new DataRepository(new OurSerializer.OurSerializer(stream2));
+                        }
                         Show();
                         break;
 
-                    case 10:
+                    case 8:
                         Console.WriteLine("Showing data\n");
                         DataService service = new DataService(data);
                         Console.WriteLine("\nCatalogs:\n");
@@ -137,14 +116,14 @@ namespace TaskTwo
                         Show();
                         break;
 
-                    case 11:
+                    case 9:
                         Console.WriteLine("Clearing data");
                         EmptyData empty2 = new EmptyData();
                         data = new DataRepository(empty2);
                         Show();
                         break;
 
-                    case 12:
+                    case 10:
                         Environment.Exit(0);
                         break;
 

@@ -10,24 +10,24 @@ namespace TaskTwo.OurSerializer
     public class OurSerializer : IOurSerializer, IDataFill
     {
         private string SerializedData { get; set; }
-        private Dictionary<long, Object> DeserializedObj { get; set; }
+        private Dictionary<long, object> DeserializedObj { get; set; }
         public List<string[]> DeserializedData { get; set; }
         public string Path { get; set; }
         public string DeserializedString { get; set; }
-        private Char DataSeparator = ';';
+        private char DataSeparator = ';';
         private Stream InputStream { get; set; }
 
 
         public OurSerializer(Stream stream)
         {
-            DeserializedObj = new Dictionary<long, Object>();
+            DeserializedObj = new Dictionary<long, object>();
             DeserializedData = new List<string[]>();
             InputStream = stream;
         }
 
         public OurSerializer()
         {
-            DeserializedObj = new Dictionary<long, Object>();
+            DeserializedObj = new Dictionary<long, object>();
             DeserializedData = new List<string[]>();
         }
 
@@ -35,10 +35,11 @@ namespace TaskTwo.OurSerializer
         public void Serialize(DataContext context, Stream stream)
         {
             ObjectIDGenerator generator = new ObjectIDGenerator();
-            SerializedData = PrepareSerialization(context, generator);
-            StreamWriter outputFile = new StreamWriter(stream);
-            outputFile.WriteLine(SerializedData);
-            outputFile.Flush();
+            SerializedData = GetSerializedStringStream(context, generator);
+            using (StreamWriter outputFile = new StreamWriter(stream))
+            {
+                outputFile.WriteLine(SerializedData);
+            }
         }
 
 
@@ -60,12 +61,17 @@ namespace TaskTwo.OurSerializer
         public void Fill(DataContext context)
         {
             DataContext deserialized = Deserialize(InputStream);
-
-            context.lists = deserialized.lists;
-            context.catalogs = deserialized.catalogs;
-            context.descriptions = deserialized.descriptions;
-            context.events = deserialized.events;
-
+            try
+            {
+                context.lists = deserialized.lists;
+                context.catalogs = deserialized.catalogs;
+                context.descriptions = deserialized.descriptions;
+                context.events = deserialized.events;
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
 
@@ -138,7 +144,7 @@ namespace TaskTwo.OurSerializer
         }
 
 
-        public string PrepareSerialization(DataContext context, ObjectIDGenerator generator)
+        public string GetSerializedStringStream(DataContext context, ObjectIDGenerator generator)
         {
             string stringStream = "";
 
