@@ -130,6 +130,10 @@ namespace Task_1.Part_1
             this.Price = Price;
         }
 
+        public BookBought()
+        {
+        }
+
         public override string ToString()
         {
             return "Event with " + this.Person.ToString() + " with description: " + this.Description + " on " + this.Date + " with price: " + this.Price;
@@ -152,6 +156,10 @@ namespace Task_1.Part_1
     [JsonObject]
     public class BookDestroy : Event
     {
+        public BookDestroy()
+        {
+        }
+
         public BookDestroy(Register person, StatusDescription description, DateTime date)
         {
             this.person = person;
@@ -176,6 +184,10 @@ namespace Task_1.Part_1
     [JsonObject]
     public class BookBorrow : Event
     {
+        public BookBorrow()
+        {
+        }
+
         public BookBorrow(Register person, StatusDescription description, DateTime date)
         {
             this.person = person;
@@ -200,6 +212,10 @@ namespace Task_1.Part_1
     [JsonObject]
     public class BookReturn : Event
     {
+        public BookReturn()
+        {
+        }
+
         public BookReturn(Register person, StatusDescription description, DateTime date)
         {
             this.person = person;
