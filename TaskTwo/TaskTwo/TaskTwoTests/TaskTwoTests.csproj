@@ -53,9 +53,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestClasses\ClassA.cs" />
-    <Compile Include="TestClasses\ClassB.cs" />
-    <Compile Include="TestClasses\ClassC.cs" />
+    <Compile Include="TestClasses\TestClass.cs" />
+    <Compile Include="TestClasses\TestSerializer.cs" />
     <Compile Include="Tests\JsonSingleTest.cs" />
     <Compile Include="Tests\JsonWholeContextTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
