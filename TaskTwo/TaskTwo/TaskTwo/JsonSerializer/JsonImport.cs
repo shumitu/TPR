@@ -31,7 +31,7 @@ namespace TaskTwo.Data
                     {
                         TypeNameHandling = TypeNameHandling.Auto,
                         MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
-                        PreserveReferencesHandling = PreserveReferencesHandling.Objects
+                        PreserveReferencesHandling = PreserveReferencesHandling.None
                     });
 
                     for (int i = 0; i < deserializedRegisters.Count; i++)
@@ -57,7 +57,7 @@ namespace TaskTwo.Data
                     {
                         TypeNameHandling = TypeNameHandling.Auto,
                         MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
-                        PreserveReferencesHandling = PreserveReferencesHandling.Objects
+                        PreserveReferencesHandling = PreserveReferencesHandling.None
                     });
 
                     for (int i = 0; i < deserializedCatalogs.Count; i++)
@@ -83,7 +83,7 @@ namespace TaskTwo.Data
                     {
                         TypeNameHandling = TypeNameHandling.Auto,
                         MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
-                        PreserveReferencesHandling = PreserveReferencesHandling.Objects
+                        PreserveReferencesHandling = PreserveReferencesHandling.None
                     });
 
                     for (int i = 0; i < deserializedDescriptions.Count; i++)
@@ -109,7 +109,7 @@ namespace TaskTwo.Data
                     {
                         TypeNameHandling = TypeNameHandling.Auto,
                         MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
-                        PreserveReferencesHandling = PreserveReferencesHandling.Objects
+                        PreserveReferencesHandling = PreserveReferencesHandling.None
                     });
 
                     foreach (var singleEvent in deserializedEvents)

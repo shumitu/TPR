@@ -27,7 +27,7 @@ namespace TaskTwo.JsonSerializer
                         {
                             TypeNameHandling = TypeNameHandling.Auto,
                             MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
-                            PreserveReferencesHandling = PreserveReferencesHandling.Objects
+                            PreserveReferencesHandling = PreserveReferencesHandling.None
                         });
                     writer.WriteLine(json);
                 }
@@ -51,7 +51,7 @@ namespace TaskTwo.JsonSerializer
                     {
                         TypeNameHandling = TypeNameHandling.Auto,
                         MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
-                        PreserveReferencesHandling = PreserveReferencesHandling.Objects
+                        PreserveReferencesHandling = PreserveReferencesHandling.None
                     });
                     writer.WriteLine(json);
                 }
@@ -75,7 +75,7 @@ namespace TaskTwo.JsonSerializer
                     {
                         TypeNameHandling = TypeNameHandling.Auto,
                         MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
-                        PreserveReferencesHandling = PreserveReferencesHandling.Objects
+                        PreserveReferencesHandling = PreserveReferencesHandling.None
                     });
                     writer.WriteLine(json);
                 }
@@ -99,7 +99,7 @@ namespace TaskTwo.JsonSerializer
                     {
                         TypeNameHandling = TypeNameHandling.Auto,
                         MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
-                        PreserveReferencesHandling = PreserveReferencesHandling.Objects
+                        PreserveReferencesHandling = PreserveReferencesHandling.None
                     });
                     writer.WriteLine(json);
                 }

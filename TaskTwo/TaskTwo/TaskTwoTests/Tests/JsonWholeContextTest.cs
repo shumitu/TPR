@@ -21,28 +21,29 @@ namespace TaskTwoTests.Tests
             string json = JsonConvert.SerializeObject(context, Formatting.Indented,
                 new JsonSerializerSettings
             {
-                TypeNameHandling = TypeNameHandling.All,
+                TypeNameHandling = TypeNameHandling.Auto,
                 MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
-                PreserveReferencesHandling = PreserveReferencesHandling.Objects
-            });
+                PreserveReferencesHandling = PreserveReferencesHandling.None
+                });
 
             // create DataContext object using serialized string which was made above
             DataContext deserialized = JsonConvert.DeserializeObject<DataContext>(json,
                 new JsonSerializerSettings
             {
-                TypeNameHandling = TypeNameHandling.All,
+                TypeNameHandling = TypeNameHandling.Auto,
                 MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
-                PreserveReferencesHandling = PreserveReferencesHandling.Objects,
-            });
+                PreserveReferencesHandling = PreserveReferencesHandling.None
+
+                });
 
             // serialize new object which we created from deserialized string
             string json2 = JsonConvert.SerializeObject(deserialized, Formatting.Indented,
                 new JsonSerializerSettings
             {
-                TypeNameHandling = TypeNameHandling.All,
+                TypeNameHandling = TypeNameHandling.Auto,
                 MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
-                PreserveReferencesHandling = PreserveReferencesHandling.Objects
-            });
+                PreserveReferencesHandling = PreserveReferencesHandling.None
+                });
 
             // log both strings, from original dataContext and from new, created object
             Console.WriteLine(json);
@@ -53,7 +54,6 @@ namespace TaskTwoTests.Tests
             Assert.AreEqual(json, json2);
 
             // compare objects and their collections
-            CollectionAssert.AreEquivalent(context.catalogs, deserialized.catalogs);
             CollectionAssert.AreEqual(context.descriptions, deserialized.descriptions);
             CollectionAssert.AreEqual(context.lists, deserialized.lists);
             CollectionAssert.AreEqual(context.events, deserialized.events);

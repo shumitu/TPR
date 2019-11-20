@@ -24,9 +24,19 @@ namespace TaskTwoTests.Tests
             context.lists.Add(reg3);
             context.lists.Add(reg4);
 
-            string json = JsonConvert.SerializeObject(context.lists, Formatting.Indented, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+            string json = JsonConvert.SerializeObject(context.lists, Formatting.Indented, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto,
+                MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
+                PreserveReferencesHandling = PreserveReferencesHandling.None
+            });
             Console.WriteLine(json);
-            List<Register> deserializedRegisters = JsonConvert.DeserializeObject<List<Register>>(json, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+            List<Register> deserializedRegisters = JsonConvert.DeserializeObject<List<Register>>(json, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto,
+                MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
+                PreserveReferencesHandling = PreserveReferencesHandling.None
+            });
             
             Register reg1Test = deserializedRegisters[0];
             Register reg2Test = deserializedRegisters[1];
@@ -55,9 +65,19 @@ namespace TaskTwoTests.Tests
             context.catalogs.Add(3, cat3);
             context.catalogs.Add(4, cat4);
 
-            string json = JsonConvert.SerializeObject(context.catalogs.Values, Formatting.Indented, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+            string json = JsonConvert.SerializeObject(context.catalogs.Values, Formatting.Indented, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto,
+                MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
+                PreserveReferencesHandling = PreserveReferencesHandling.None
+            });
             Console.WriteLine(json);
-            List<Catalog> deserializedCatalogs = JsonConvert.DeserializeObject<List<Catalog>>(json, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+            List<Catalog> deserializedCatalogs = JsonConvert.DeserializeObject<List<Catalog>>(json, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto,
+                MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
+                PreserveReferencesHandling = PreserveReferencesHandling.None
+            });
 
             Catalog cat1Test = deserializedCatalogs[0];
             Catalog cat2Test = deserializedCatalogs[1];
@@ -87,9 +107,19 @@ namespace TaskTwoTests.Tests
             context.descriptions.Add(desc1);
             context.descriptions.Add(desc2);
 
-            string json = JsonConvert.SerializeObject(context.descriptions, Formatting.Indented, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+            string json = JsonConvert.SerializeObject(context.descriptions, Formatting.Indented, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto,
+                MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
+                PreserveReferencesHandling = PreserveReferencesHandling.None
+            });
             Console.WriteLine(json);
-            List<StatusDescription> deserializedDescs = JsonConvert.DeserializeObject<List<StatusDescription>>(json, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+            List<StatusDescription> deserializedDescs = JsonConvert.DeserializeObject<List<StatusDescription>>(json, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto,
+                MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
+                PreserveReferencesHandling = PreserveReferencesHandling.None
+            });
 
             StatusDescription desc1Test = deserializedDescs[0];
             StatusDescription desc2Test = deserializedDescs[1];
@@ -126,9 +156,19 @@ namespace TaskTwoTests.Tests
             context.events.Add(ev1);
             context.events.Add(ev2);
 
-            string json = JsonConvert.SerializeObject(context.events, Formatting.Indented, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+            string json = JsonConvert.SerializeObject(context.events, Formatting.Indented, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto,
+                MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
+                PreserveReferencesHandling = PreserveReferencesHandling.None
+            });
             Console.WriteLine(json);
-            List<Event> deserializedEvents = JsonConvert.DeserializeObject<List<Event>>(json, new JsonSerializerSettings { PreserveReferencesHandling = PreserveReferencesHandling.Objects });
+            List<Event> deserializedEvents = JsonConvert.DeserializeObject<List<Event>>(json, new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto,
+                MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
+                PreserveReferencesHandling = PreserveReferencesHandling.None
+            });
 
             Event ev1Test = deserializedEvents[0];
             Event ev2Test = deserializedEvents[1]; 

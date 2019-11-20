@@ -23,27 +23,30 @@ namespace TaskTwoTests.Tests
             string jsonForClassA = JsonConvert.SerializeObject(clsA, Formatting.Indented,
                 new JsonSerializerSettings
                 {
-                    TypeNameHandling = TypeNameHandling.All,
+                    TypeNameHandling = TypeNameHandling.Auto,
                     MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
-                    PreserveReferencesHandling = PreserveReferencesHandling.Objects
+                    PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+                    ReferenceLoopHandling = ReferenceLoopHandling.Serialize
                 });
 
             // create clsA_test object from deserialized string
             ClassA clsA_test = JsonConvert.DeserializeObject<ClassA>(jsonForClassA,
                         new JsonSerializerSettings
                         {
-                            TypeNameHandling = TypeNameHandling.All,
+                            TypeNameHandling = TypeNameHandling.Auto,
                             MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
-                            PreserveReferencesHandling = PreserveReferencesHandling.Objects
+                            PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+                            ReferenceLoopHandling = ReferenceLoopHandling.Serialize
                         });
 
             // serialize object created above to get it serialized form
             string jsonForDeserializedObject = JsonConvert.SerializeObject(clsA_test, Formatting.Indented,
                 new JsonSerializerSettings
                 {
-                    TypeNameHandling = TypeNameHandling.All,
+                    TypeNameHandling = TypeNameHandling.Auto,
                     MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
-                    PreserveReferencesHandling = PreserveReferencesHandling.Objects
+                    PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+                    ReferenceLoopHandling = ReferenceLoopHandling.Serialize
                 });
 
             // log both serialized versions of object to console
