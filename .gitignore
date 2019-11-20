@@ -351,3 +351,4 @@ MigrationBackup/
 *.json
 TaskTwo/TaskTwo/TaskTwo/Files/WholeContext.json
 TaskTwo/TaskTwo/TaskTwo/Files/Context.txt
+*.txt

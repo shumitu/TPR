@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
 using Task_1.Part_1;
+using Task_1.Part_2;
 
 namespace TaskTwo.OurSerializer
 {
-    public class OurSerializer : IOurSerializer
+    public class OurSerializer : IOurSerializer, IDataFill
     {
         private string SerializedData { get; set; }
         private Dictionary<long, Object> DeserializedObj { get; set; }
@@ -14,14 +15,22 @@ namespace TaskTwo.OurSerializer
         public string Path { get; set; }
         public string DeserializedString { get; set; }
         private Char DataSeparator = ';';
+        private Stream InputStream { get; set; }
 
+
+        public OurSerializer(Stream stream)
+        {
+            DeserializedObj = new Dictionary<long, Object>();
+            DeserializedData = new List<string[]>();
+            InputStream = stream;
+        }
 
         public OurSerializer()
         {
             DeserializedObj = new Dictionary<long, Object>();
             DeserializedData = new List<string[]>();
         }
-    
+
 
         public void Serialize(DataContext context, Stream stream)
         {
@@ -51,6 +60,17 @@ namespace TaskTwo.OurSerializer
 
             DeserializeDecision(context);
             return context;
+        }
+
+        public void Fill(DataContext context)
+        {
+            DataContext deserialized = Deserialize(InputStream);
+
+            context.lists = deserialized.lists;
+            context.catalogs = deserialized.catalogs;
+            context.descriptions = deserialized.descriptions;
+            context.events = deserialized.events;
+
         }
 
 

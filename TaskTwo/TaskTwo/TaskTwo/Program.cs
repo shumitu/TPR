@@ -109,8 +109,10 @@ namespace TaskTwo
                     case 8:
                         Console.WriteLine("Importing from .dat");
                         Stream stream2 = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
-                        IOurSerializer deserializer = new OurSerializer.OurSerializer();
-                        deserializer.Deserialize(stream2);
+//                        IOurSerializer deserializer = new OurSerializer.OurSerializer();
+//                        deserializer.Deserialize(stream2);
+//                        
+                        data = new DataRepository(new OurSerializer.OurSerializer(stream2));
                         stream2.Close();
                         Show();
                         break;
