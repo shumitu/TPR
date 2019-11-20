@@ -49,13 +49,8 @@ namespace TaskTwo.OurSerializer
             var fileDataLine = "";
             while ((fileDataLine = sr.ReadLine()) != null)
             {
-                DeserializedString = "";
-                while ((fileDataLine = sr.ReadLine()) != null)
-                {
-                    DeserializedString += fileDataLine;
-                    char[] separator = { DataSeparator };
-                    DeserializedData.Add(fileDataLine.Split(separator));
-                }
+                char[] separator = { DataSeparator };
+                DeserializedData.Add(fileDataLine.Split(separator));
             }
 
             DeserializeDecision(context);
@@ -104,28 +99,28 @@ namespace TaskTwo.OurSerializer
                         break;
 
                     case "Task_1.Part_1.BookBought":
-                        BookBought evt1 = new BookBought();
+                        Event evt1 = new BookBought();
                         evt1.Deserialize(data, DeserializedObj);
                         context.events.Add(evt1);
                         DeserializedObj.Add(long.Parse(data[1]), evt1);
                         break;
 
                     case "Task_1.Part_1.BookDestroy":
-                        BookDestroy evt2 = new BookDestroy();
+                        Event evt2 = new BookDestroy();
                         evt2.Deserialize(data, DeserializedObj);
                         context.events.Add(evt2);
                         DeserializedObj.Add(long.Parse(data[1]), evt2);
                         break;
 
                     case "Task_1.Part_1.BookBorrow":
-                        BookBorrow evt3 = new BookBorrow();
+                        Event evt3 = new BookBorrow();
                         evt3.Deserialize(data, DeserializedObj);
                         context.events.Add(evt3);
                         DeserializedObj.Add(long.Parse(data[1]), evt3);
                         break;
 
                     case "Task_1.Part_1.BookReturn":
-                        BookReturn evt4 = new BookReturn();
+                        Event evt4 = new BookReturn();
                         evt4.Deserialize(data, DeserializedObj);
                         context.events.Add(evt4);
                         DeserializedObj.Add(long.Parse(data[1]), evt4);
