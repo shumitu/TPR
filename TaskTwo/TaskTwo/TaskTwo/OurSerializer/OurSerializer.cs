@@ -14,7 +14,7 @@ namespace TaskTwo.OurSerializer
         public List<string[]> DeserializedData { get; set; }
         public string Path { get; set; }
         public string DeserializedString { get; set; }
-        private Char delimeter = '-';
+        private Char delimeter = ';';
 
 
         public OurSerializer()
@@ -60,6 +60,8 @@ namespace TaskTwo.OurSerializer
             string dataType = "";
             foreach (string[] data in this.DeserializedData)
             {
+                dataType = data[0];
+
                 switch (dataType)
                 {
                     case "Task_1.Part_1.Register":

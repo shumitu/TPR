@@ -84,11 +84,11 @@ namespace Task_1.Part_1
         public virtual string Serialize(ObjectIDGenerator generator)
         {
             string data = "";
-            data += this.GetType().FullName + "-";
-            data += generator.GetId(this, out bool firstTime).ToString() + "-";
-            data += generator.GetId(this.Person, out firstTime).ToString() + "-";
-            data += generator.GetId(this.Description, out firstTime).ToString() + "-";
-            data += this.Date + "-";
+            data += this.GetType().FullName + ";";
+            data += generator.GetId(this, out bool firstTime).ToString() + ";";
+            data += generator.GetId(this.Person, out firstTime).ToString() + ";";
+            data += generator.GetId(this.Description, out firstTime).ToString() + ";";
+            data += this.Date + ";";
             return data;
         }
 

@@ -91,11 +91,11 @@ namespace Task_1.Part_1
         public string Serialize(ObjectIDGenerator generator)
         {
             string data = "";
-            data += this.GetType().FullName + "-";
-            data += generator.GetId(this, out bool firstTime).ToString() + "-";
-            data += this.PersonId.ToString() + "-";
-            data += this.FirstName.ToString() + "-";
-            data += this.LastName.ToString() + "-";
+            data += this.GetType().FullName + ";";
+            data += generator.GetId(this, out bool firstTime).ToString() + ";";
+            data += this.PersonId.ToString() + ";";
+            data += this.FirstName.ToString() + ";";
+            data += this.LastName.ToString() + ";";
             return data;
         }
 

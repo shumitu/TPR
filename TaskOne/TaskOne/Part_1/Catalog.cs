@@ -113,12 +113,12 @@ namespace Task_1.Part_1
         public string Serialize(ObjectIDGenerator generator)
         {
             string data = "";
-            data += this.GetType().FullName + "-";
-            data += generator.GetId(this, out bool firstTime).ToString() + "-";
-            data += this.BookId.ToString() + "-";
-            data += this.Author + "-";
-            data += this.Title + "-";
-            data += this.Year + "-";
+            data += this.GetType().FullName + ";";
+            data += generator.GetId(this, out bool firstTime).ToString() + ";";
+            data += this.BookId.ToString() + ";";
+            data += this.Author + ";";
+            data += this.Title + ";";
+            data += this.Year + ";";
             return data;
         }
 
