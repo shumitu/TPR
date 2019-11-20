@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Security.Cryptography;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
+using TaskTwo.OurSerializer;
 using TaskTwoTests.TestClasses;
 
 namespace TaskTwoTests.Tests
@@ -8,54 +12,47 @@ namespace TaskTwoTests.Tests
     [TestClass]
     public class RecursiveTest
     {
+        public List<TestClass> ObjectClasses { get; set; }
+        public List<TestClass> DeserializedClasses { get; set; }
+        const string path = @"RecursiveTests.txt";
+
         [TestMethod]
         public void RecursiveClassesTest()
         {
-            ClassA clsA = new ClassA();
-            ClassB clsB = new ClassB();
-            ClassC clsC = new ClassC();
+            TestClass firstClass = new TestClass() {Id = 1};
+            TestClass secondClass = new TestClass() {Id = 2};
+            TestClass thirdClass = new TestClass() {Id = 3};
 
-            clsA.ClassB = clsB;
-            clsB.ClassC = clsC;
-            clsC.ClassA = clsA;
+            firstClass.AnotherTestClass = secondClass;
+            secondClass.AnotherTestClass = thirdClass;
+            thirdClass.AnotherTestClass = firstClass;
 
-            // serialize ClassA to string via Json.NET
-            string jsonForClassA = JsonConvert.SerializeObject(clsA, Formatting.Indented,
-                new JsonSerializerSettings
-                {
-                    TypeNameHandling = TypeNameHandling.Auto,
-                    MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
-                    PreserveReferencesHandling = PreserveReferencesHandling.Objects,
-                    ReferenceLoopHandling = ReferenceLoopHandling.Serialize
-                });
+            TestSerializer serializer = new TestSerializer();
 
-            // create clsA_test object from deserialized string
-            ClassA clsA_test = JsonConvert.DeserializeObject<ClassA>(jsonForClassA,
-                        new JsonSerializerSettings
-                        {
-                            TypeNameHandling = TypeNameHandling.Auto,
-                            MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
-                            PreserveReferencesHandling = PreserveReferencesHandling.Objects,
-                            ReferenceLoopHandling = ReferenceLoopHandling.Serialize
-                        });
+            ObjectClasses = new List<TestClass>();
+            ObjectClasses.Add(firstClass);
+            ObjectClasses.Add(secondClass);
+            ObjectClasses.Add(thirdClass);
 
-            // serialize object created above to get it serialized form
-            string jsonForDeserializedObject = JsonConvert.SerializeObject(clsA_test, Formatting.Indented,
-                new JsonSerializerSettings
-                {
-                    TypeNameHandling = TypeNameHandling.Auto,
-                    MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
-                    PreserveReferencesHandling = PreserveReferencesHandling.Objects,
-                    ReferenceLoopHandling = ReferenceLoopHandling.Serialize
-                });
+            Assert.AreEqual(1, firstClass.Id);
+            Assert.AreEqual(2, secondClass.Id);
+            Assert.AreEqual(3, thirdClass.Id);
 
-            // log both serialized versions of object to console
-            Console.WriteLine(jsonForClassA);
-            Console.WriteLine("===");
-            Console.WriteLine(jsonForDeserializedObject);
+            using (Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                serializer.Serialize(ObjectClasses, stream);
+            }
 
-            // compare objects before and after serialization, using their serialized forms
-            Assert.AreEqual(jsonForClassA, jsonForDeserializedObject);
+            DeserializedClasses = new List<TestClass>();
+
+            using (Stream stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
+            {
+                DeserializedClasses = serializer.deserialize(stream);
+            }
+
+            Assert.AreEqual(1, DeserializedClasses[0].Id);
+            Assert.AreEqual(2, DeserializedClasses[1].Id);
+            Assert.AreEqual(3, DeserializedClasses[2].Id);
         }
     }
 }

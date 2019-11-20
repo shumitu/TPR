@@ -34,7 +34,9 @@ namespace TaskTwoTests.TestClasses
                     toFile += otherClassId;
                     toFile += ";";
                     toFile += firstClassId;
+                    toFile += "\n";
                 }
+                Console.Write(toFile);
                 writer.WriteLine(toFile);
             }
         }
@@ -69,7 +71,7 @@ namespace TaskTwoTests.TestClasses
                         };
                         if (classes.ContainsKey(dataSet[1]))
                         {
-                            deserializedClass.AnotherTestClass = classes[dataSet[2]];
+                            deserializedClass.AnotherTestClass = classes[dataSet[1]];
                         }
                         else
                         {
