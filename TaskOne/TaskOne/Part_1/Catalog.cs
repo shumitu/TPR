@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 namespace Task_1.Part_1
 {
     [Serializable]
-    public class Catalog : ICloneable
+    public class Catalog : ICloneable, SerialInterface
     {
         private int bookId;
         private string author;

@@ -9,27 +9,27 @@ namespace TaskTwo.OurSerializer
 {
     public class OurSerializer : ISerializer
     {
-        private string serializeddata { get; set; }
+        private string SerializedData { get; set; }
         private Dictionary<long, Object> deserializedobjects { get; set; }
-        public List<string[]> deserializeddata { get; set; }
+        public List<string[]> DeserializedData { get; set; }
         public string Path { get; set; }
-        public string deserializedstring { get; set; }
+        public string DeserializedString { get; set; }
         private Char delimeter = '-';
 
 
         public OurSerializer()
         {
             deserializedobjects = new Dictionary<long, Object>();
-            deserializeddata = new List<string[]>();
+            DeserializedData = new List<string[]>();
         }
     
 
         public void Serialize(DataContext context, Stream stream)
         {
             ObjectIDGenerator generator = new ObjectIDGenerator();
-            serializeddata = PrepareSerialization(context, generator);
+            SerializedData = PrepareSerialization(context, generator);
             StreamWriter outputFile = new StreamWriter(stream);
-            outputFile.WriteLine(serializeddata);
+            outputFile.WriteLine(SerializedData);
             outputFile.Flush();
         }
 
@@ -41,12 +41,12 @@ namespace TaskTwo.OurSerializer
             string line = "";
             while ((line = sr.ReadLine()) != null)
             {
-                deserializedstring = "";
+                DeserializedString = "";
                 while ((line = sr.ReadLine()) != null)
                 {
-                    deserializedstring += line;
+                    DeserializedString += line;
                     Char[] separator = { delimeter };
-                    deserializeddata.Add(line.Split(separator));
+                    DeserializedData.Add(line.Split(separator));
                 }
             }
 
@@ -58,11 +58,11 @@ namespace TaskTwo.OurSerializer
         private void DeserializeDecision(DataContext context)
         {
             string dataType = "";
-            foreach (string[] data in this.deserializeddata)
+            foreach (string[] data in this.DeserializedData)
             {
                 switch (dataType)
                 {
-                    case "Task_1.Part_1.Person":
+                    case "Task_1.Part_1.Register":
                         Register reg = new Register();
                         reg.Deserialize(data, this.deserializedobjects);
                         context.lists.Add(reg);

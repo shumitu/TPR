@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 namespace Task_1.Part_1
 {
     [Serializable]
-    public class StatusDescription : ICloneable
+    public class StatusDescription : ICloneable, SerialInterface
     {
         private Catalog catalog;
         private double price;

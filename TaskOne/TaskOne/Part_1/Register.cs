@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 namespace Task_1.Part_1
 {
     [Serializable]
-    public class Register : ICloneable
+    public class Register : ICloneable, SerialInterface
     {
         private int personId;
         private string firstName;
