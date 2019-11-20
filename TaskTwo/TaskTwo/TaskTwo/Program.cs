@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Task_1.Part_1;
 using Task_1.Part_4;
 using TaskTwo.Data;
@@ -42,12 +43,15 @@ namespace TaskTwo
             DataContext context = new DataContext();
             EmptyData empty = new EmptyData();
             DataRepository data = new DataRepository(empty);
+            DataContext deserialized = null;
+            string path = @"..\\..\\Files\\Context.dat";
 
 
             while (choose != 12)
             {
                 Console.Write("\nEnter your choose: ");
                 choose = Convert.ToInt32(Console.ReadLine());
+
 
                 switch (choose)
                 {
@@ -76,18 +80,17 @@ namespace TaskTwo
 
                     case 4:
                         Console.WriteLine("Exporting to .dat");
-                        OurExport OurExporter = new OurExport();
-                        OurExporter.SerializeRegister(data);
-                        OurExporter.SerializeCatalog(data);
-                        OurExporter.SerializeStatusDescription(data);
-                        OurExporter.SerializeEvent(data);
+                        Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
+                        OurSerializer.OurSerializer serializer = new OurSerializer.OurSerializer();
+                        serializer.Serialize(context, stream);
+                        stream.Close();
                         Show();
                         break;
 
                     case 5:
                         Console.WriteLine("Exporting to .dat (whole Context)");
-                        OurContextSerialization wholecontext = new OurContextSerialization(data);
-                        wholecontext.SerializeWhole();
+                        //OurContextSerialization wholecontext = new OurContextSerialization(data);
+                        //wholecontext.SerializeWhole();
                         Show();
                         break;
 
@@ -105,13 +108,16 @@ namespace TaskTwo
 
                     case 8:
                         Console.WriteLine("Importing from .dat");
-                        data = new DataRepository(new OurImport());
+                        OurSerializer.OurSerializer deserializer = new OurSerializer.OurSerializer();
+                        Stream stream2 = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
+                        deserialized = deserializer.Deserialize(stream2);
+                        stream2.Close();
                         Show();
                         break;
 
                     case 9:
                         Console.WriteLine("Importing from .dat (whole Context)");
-                        data = new DataRepository(new OurContextSerialization());
+                        //data = new DataRepository(new OurContextSerialization());
                         Show();
                         break;
 

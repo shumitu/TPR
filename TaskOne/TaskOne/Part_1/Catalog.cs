@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Task_1.Part_1
 {
     [Serializable]
-    public class Catalog
+    public class Catalog : ICloneable
     {
         private int bookId;
         private string author;
@@ -28,6 +29,18 @@ namespace Task_1.Part_1
             this.author = author;
             this.title = title;
             this.year = year;
+        }
+
+
+        public Catalog() { }
+
+
+        public Catalog(Catalog cat)
+        {
+            BookId = cat.bookId;
+            Author = cat.author;
+            Title = cat.title;
+            Year = cat.year;
         }
 
 
@@ -96,5 +109,32 @@ namespace Task_1.Part_1
             return bookId == other.bookId && Author == other.author && Title == other.title && Year == other.year;
         }
 
+
+        public string Serialize(ObjectIDGenerator generator)
+        {
+            string data = "";
+            data += this.GetType().FullName + "-";
+            data += generator.GetId(this, out bool firstTime).ToString() + "-";
+            data += this.BookId.ToString() + "-";
+            data += this.Author + "-";
+            data += this.Title + "-";
+            data += this.Year + "-";
+            return data;
+        }
+
+
+        public void Deserialize(string[] data, Dictionary<long, Object> deserialized)
+        {
+            this.BookId = int.Parse(data[2]);
+            this.Author = data[3];
+            this.Title = data[4];
+            this.Year = int.Parse(data[5]);
+        }
+
+
+        public object Clone()
+        {
+            return new Catalog(this);
+        }
     }
 }

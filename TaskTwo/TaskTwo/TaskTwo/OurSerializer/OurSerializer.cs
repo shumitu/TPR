@@ -1,57 +1,127 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using Task_1.Part_1;
 
 namespace TaskTwo.OurSerializer
 {
-    public static class OurSerializer
+    public class OurSerializer : ISerializer
     {
-        public static void Serialize(string filename, object objectToSerialize)
+        private string serializeddata { get; set; }
+        private Dictionary<long, Object> deserializedobjects { get; set; }
+        public List<string[]> deserializeddata { get; set; }
+        public string Path { get; set; }
+        public string deserializedstring { get; set; }
+        private Char delimeter = '-';
+
+
+        public OurSerializer()
         {
-            if (objectToSerialize == null)
-            {
-                throw new ArgumentNullException("Object cannot be null");
-            }
+            deserializedobjects = new Dictionary<long, Object>();
+            deserializeddata = new List<string[]>();
+        }
+    
 
-            Stream stream = null;
-            try
-            {
-                stream = File.Open(filename, FileMode.Create);
-                BinaryFormatter bFormatter = new BinaryFormatter();
-                bFormatter.Serialize(stream, objectToSerialize);
-            }
+        public void Serialize(DataContext context, Stream stream)
+        {
+            ObjectIDGenerator generator = new ObjectIDGenerator();
+            serializeddata = PrepareSerialization(context, generator);
+            StreamWriter outputFile = new StreamWriter(stream);
+            outputFile.WriteLine(serializeddata);
+            outputFile.Flush();
+        }
 
-            finally
+
+        public DataContext Deserialize(Stream stream)
+        {
+            DataContext context = new DataContext();
+            StreamReader sr = new StreamReader(stream);
+            string line = "";
+            while ((line = sr.ReadLine()) != null)
             {
-                if (stream != null)
+                deserializedstring = "";
+                while ((line = sr.ReadLine()) != null)
                 {
-                    stream.Close();
+                    deserializedstring += line;
+                    Char[] separator = { delimeter };
+                    deserializeddata.Add(line.Split(separator));
                 }
+            }
+
+            DeserializeDecision(context);
+            return context;
+        }
+
+
+        private void DeserializeDecision(DataContext context)
+        {
+            string dataType = "";
+            foreach (string[] data in this.deserializeddata)
+            {
+                switch (dataType)
+                {
+                    case "Task_1.Part_1.Person":
+                        Register reg = new Register();
+                        reg.Deserialize(data, this.deserializedobjects);
+                        context.lists.Add(reg);
+                        this.deserializedobjects.Add(long.Parse(data[1]), reg);
+                        break;
+
+                    case "Task_1.Part_1.Catalog":
+                        Catalog cat = new Catalog();
+                        cat.Deserialize(data, this.deserializedobjects);
+                        context.catalogs.Add(cat.BookId, cat);
+                        this.deserializedobjects.Add(long.Parse(data[1]), cat);
+                        break;
+
+                    case "Task_1.Part_1.Event":
+                        Event evt = new Event();
+                        evt.Deserialize(data, this.deserializedobjects);
+                        context.events.Add(evt);
+                        this.deserializedobjects.Add(long.Parse(data[1]), evt);
+                        break;
+
+                    case "Task_1.Part_1.StatusDescription":
+                        StatusDescription desc = new StatusDescription();
+                        desc.Deserialize(data, this.deserializedobjects);
+                        context.descriptions.Add(desc);
+                        this.deserializedobjects.Add(long.Parse(data[1]), desc);
+                        break;
+
+                    default:
+                        break;
+                }
+
             }
         }
 
 
-        public static T Deserialize<T>(string filename)
+        public string PrepareSerialization(DataContext context, ObjectIDGenerator generator)
         {
-            T objectToSerialize = default(T);
-            Stream stream = null;
+            String stringStream = "";
 
-            try
+            foreach (Register reg in context.lists)
             {
-                stream = File.Open(filename, FileMode.Open);
-                BinaryFormatter bFormatter = new BinaryFormatter();
-                objectToSerialize = (T)bFormatter.Deserialize(stream);
+                stringStream += reg.Serialize(generator) + "\n";
             }
 
-            finally
+            foreach (KeyValuePair<int, Catalog> cat in context.catalogs)
             {
-                if (stream != null)
-                {
-                    stream.Close();
-                }
+                stringStream += cat.Value.Serialize(generator) + "\n";
             }
 
-            return objectToSerialize;
+            foreach (StatusDescription desc in context.descriptions)
+            {
+                stringStream += desc.Serialize(generator) + "\n";
+            }
+
+            foreach (Event evt in context.events)
+            {
+                stringStream += evt.Serialize(generator) + "\n";
+            }
+            return stringStream;
         }
     }
 }

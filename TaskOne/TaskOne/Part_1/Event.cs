@@ -1,15 +1,28 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Task_1.Part_1
 {
     [Serializable]
 
-    public class Event
+    public class Event : ICloneable
     {
         public Register person;
         public StatusDescription description;
         public DateTime date;
+
+
+        public Event() { }
+
+
+        public Event (Event evt)
+        {
+            Person = evt.person;
+            Description = evt.description;
+            Date = evt.Date;
+        }
 
 
         public Register Person
@@ -67,6 +80,31 @@ namespace Task_1.Part_1
             return base.Equals(obj);
         }
 
+
+        public virtual string Serialize(ObjectIDGenerator generator)
+        {
+            string data = "";
+            data += this.GetType().FullName + "-";
+            data += generator.GetId(this, out bool firstTime).ToString() + "-";
+            data += generator.GetId(this.Person, out firstTime).ToString() + "-";
+            data += generator.GetId(this.Description, out firstTime).ToString() + "-";
+            data += this.Date + "-";
+            return data;
+        }
+
+
+        public void Deserialize(string[] data, Dictionary<long, Object> deserialized)
+        {
+            this.Person = (Register)deserialized[long.Parse(data[2])];
+            this.Description = (StatusDescription)deserialized[long.Parse(data[3])];
+            this.Date = DateTime.Parse(data[4]);
+        }
+
+
+        public object Clone()
+        {
+            return new Event(this);
+        }
     }
 
 

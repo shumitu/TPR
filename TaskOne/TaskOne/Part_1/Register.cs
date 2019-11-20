@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Task_1.Part_1
 {
     [Serializable]
-    public class Register
+    public class Register : ICloneable
     {
         private int personId;
         private string firstName;
@@ -20,6 +22,17 @@ namespace Task_1.Part_1
             this.personId = personId;
             this.firstName = firstName;
             this.lastName = lastName;
+        }
+
+
+        public Register() { }
+
+
+        public Register(Register reg)
+        {
+            PersonId = reg.personId;
+            FirstName = reg.firstName;
+            LastName = reg.lastName;
         }
 
 
@@ -72,6 +85,32 @@ namespace Task_1.Part_1
         {
             Register other = (Register)obj;
             return PersonId == other.PersonId && FirstName == other.firstName && LastName == other.lastName;
+        }
+
+
+        public string Serialize(ObjectIDGenerator generator)
+        {
+            string data = "";
+            data += this.GetType().FullName + "-";
+            data += generator.GetId(this, out bool firstTime).ToString() + "-";
+            data += this.PersonId.ToString() + "-";
+            data += this.FirstName.ToString() + "-";
+            data += this.LastName.ToString() + "-";
+            return data;
+        }
+
+
+        public void Deserialize(string[] data, Dictionary<long, Object> deserialized)
+        {
+            this.PersonId = int.Parse(data[2]);
+            this.FirstName = data[3];
+            this.LastName = data[4];
+        }
+
+
+        public object Clone()
+        {
+            return new Register(this);
         }
     }
 }

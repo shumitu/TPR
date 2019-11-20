@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace Task_1.Part_1
 {
     [Serializable]
-    public class StatusDescription
+    public class StatusDescription : ICloneable
     {
         private Catalog catalog;
         private double price;
@@ -23,6 +24,18 @@ namespace Task_1.Part_1
             this.price = price;
             this.description = description;
             this.date = date;
+        }
+
+
+        public StatusDescription() { }
+
+
+        public StatusDescription(StatusDescription desc)
+        {
+            Catalog = desc.catalog;
+            Price = desc.price;
+            Description = desc.description;
+            Date = desc.date;
         }
 
 
@@ -94,5 +107,32 @@ namespace Task_1.Part_1
             return base.Equals(obj);
         }
 
+
+        public string Serialize(ObjectIDGenerator generator)
+        {
+            string data = "";
+            data += this.GetType().FullName + "-";
+            data += generator.GetId(this, out bool firstTime).ToString() + "-";
+            data += generator.GetId(this.Catalog, out firstTime).ToString() + "-";
+            data += this.Price.ToString() + "-";
+            data += this.Description.ToString() + "-";
+            data += this.Date + "-";
+            return data;
+        }
+
+
+        public void Deserialize(string[] data, Dictionary<long, Object> deserialized)
+        {
+            this.Catalog = (Catalog)deserialized[long.Parse(data[2])];
+            this.Price = double.Parse(data[3]);
+            this.Description = data[4];
+            this.Date = DateTime.Parse(data[5]);
+        }
+
+
+        public object Clone()
+        {
+            return new StatusDescription(this);
+        }
     }
 }
