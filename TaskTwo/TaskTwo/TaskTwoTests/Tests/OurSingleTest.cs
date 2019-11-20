@@ -30,8 +30,9 @@ namespace TaskTwoTests.Tests
 
             MemoryStream ms = new MemoryStream();
             serializer.Serialize(context, ms);
-            ms.Position = 0;
-            DataContext deserialized = serializer.Deserialize(ms);
+            MemoryStream ms2 = new MemoryStream(ms.ToArray());
+            ms2.Position = 0;
+            DataContext deserialized = serializer.Deserialize(ms2);
 
             Assert.AreEqual(deserialized.lists[0], reg1);
             Assert.AreEqual(deserialized.lists[1], reg2);
@@ -61,8 +62,9 @@ namespace TaskTwoTests.Tests
 
             MemoryStream ms = new MemoryStream();
             serializer.Serialize(context, ms);
-            ms.Position = 0;
-            DataContext deserialized = serializer.Deserialize(ms);
+            MemoryStream ms2 = new MemoryStream(ms.ToArray());
+            ms2.Position = 0;
+            DataContext deserialized = serializer.Deserialize(ms2);
 
             Assert.AreEqual(deserialized.catalogs[0], cat1);
             Assert.AreEqual(deserialized.catalogs[1], cat2);
@@ -91,8 +93,9 @@ namespace TaskTwoTests.Tests
 
             MemoryStream ms = new MemoryStream();
             serializer.Serialize(context, ms);
-            ms.Position = 0;
-            DataContext deserialized = serializer.Deserialize(ms);
+            MemoryStream ms2 = new MemoryStream(ms.ToArray());
+            ms2.Position = 0;
+            DataContext deserialized = serializer.Deserialize(ms2);
 
             Assert.AreEqual(deserialized.descriptions[0], desc1);
             Assert.AreEqual(deserialized.descriptions[1], desc2);
@@ -131,8 +134,9 @@ namespace TaskTwoTests.Tests
 
             MemoryStream ms = new MemoryStream();
             serializer.Serialize(context, ms);
-            ms.Position = 0;
-            DataContext deserialized = serializer.Deserialize(ms);
+            MemoryStream ms2 = new MemoryStream(ms.ToArray());
+            ms2.Position = 0;
+            DataContext deserialized = serializer.Deserialize(ms2);
 
             Assert.AreEqual(deserialized.events[0], ev1);
             Assert.AreEqual(deserialized.events[1], ev2);

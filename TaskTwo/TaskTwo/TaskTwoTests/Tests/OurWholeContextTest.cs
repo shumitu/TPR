@@ -13,7 +13,7 @@ namespace TaskTwoTests.Tests
         [TestMethod]
         public void ContextSerializationTest()
         {
-            DataRepository data = new DataRepository(new DefinedData());
+            DataRepository data = new DataRepository(new ConsoleDataFill());
             DataContext context = new DataContext();
 
             Register reg1 = new Register(1, "Jan", "Kowalski");
@@ -42,8 +42,9 @@ namespace TaskTwoTests.Tests
 
             MemoryStream ms = new MemoryStream();
             serializer.Serialize(context, ms);
-            ms.Position = 0;
-            DataContext deserialized = serializer.Deserialize(ms);
+            MemoryStream ms2 = new MemoryStream(ms.ToArray());
+            ms2.Position = 0;
+            DataContext deserialized = serializer.Deserialize(ms2);
 
 
             CollectionAssert.AreEquivalent(context.catalogs, deserialized.catalogs);
