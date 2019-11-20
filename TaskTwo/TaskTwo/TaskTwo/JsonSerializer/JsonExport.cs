@@ -25,7 +25,7 @@ namespace TaskTwo.JsonSerializer
                     string json = JsonConvert.SerializeObject(constant, Formatting.Indented,
                         new JsonSerializerSettings
                         {
-                            TypeNameHandling = TypeNameHandling.All,
+                            TypeNameHandling = TypeNameHandling.Auto,
                             MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
                             PreserveReferencesHandling = PreserveReferencesHandling.Objects
                         });
@@ -49,7 +49,7 @@ namespace TaskTwo.JsonSerializer
                     IEnumerable<Catalog> constant = data.GetAllFromCatalog();
                     string json = JsonConvert.SerializeObject(constant, Formatting.Indented, new JsonSerializerSettings
                     {
-                        TypeNameHandling = TypeNameHandling.All,
+                        TypeNameHandling = TypeNameHandling.Auto,
                         MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
                         PreserveReferencesHandling = PreserveReferencesHandling.Objects
                     });
@@ -73,7 +73,7 @@ namespace TaskTwo.JsonSerializer
                     IEnumerable<StatusDescription> constant = data.GetAllStatusDescriptions();
                     string json = JsonConvert.SerializeObject(constant, Formatting.Indented, new JsonSerializerSettings
                     {
-                        TypeNameHandling = TypeNameHandling.All,
+                        TypeNameHandling = TypeNameHandling.Auto,
                         MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
                         PreserveReferencesHandling = PreserveReferencesHandling.Objects
                     });
@@ -97,7 +97,7 @@ namespace TaskTwo.JsonSerializer
                     IEnumerable<Event> constant = data.GetAllEvents();
                     string json = JsonConvert.SerializeObject(constant, Formatting.Indented, new JsonSerializerSettings
                     {
-                        TypeNameHandling = TypeNameHandling.All,
+                        TypeNameHandling = TypeNameHandling.Auto,
                         MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
                         PreserveReferencesHandling = PreserveReferencesHandling.Objects
                     });

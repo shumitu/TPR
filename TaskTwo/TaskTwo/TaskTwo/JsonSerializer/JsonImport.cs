@@ -29,7 +29,7 @@ namespace TaskTwo.Data
 
                     List<Register> deserializedRegisters = JsonConvert.DeserializeObject<List<Register>>(JsonString, new JsonSerializerSettings
                     {
-                        TypeNameHandling = TypeNameHandling.All,
+                        TypeNameHandling = TypeNameHandling.Auto,
                         MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
                         PreserveReferencesHandling = PreserveReferencesHandling.Objects
                     });
@@ -55,7 +55,7 @@ namespace TaskTwo.Data
 
                     List<Catalog> deserializedCatalogs = JsonConvert.DeserializeObject<List<Catalog>>(JsonString, new JsonSerializerSettings
                     {
-                        TypeNameHandling = TypeNameHandling.All,
+                        TypeNameHandling = TypeNameHandling.Auto,
                         MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
                         PreserveReferencesHandling = PreserveReferencesHandling.Objects
                     });
@@ -81,7 +81,7 @@ namespace TaskTwo.Data
 
                     List<StatusDescription> deserializedDescriptions = JsonConvert.DeserializeObject<List<StatusDescription>>(JsonString, new JsonSerializerSettings
                     {
-                        TypeNameHandling = TypeNameHandling.All,
+                        TypeNameHandling = TypeNameHandling.Auto,
                         MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
                         PreserveReferencesHandling = PreserveReferencesHandling.Objects
                     });
@@ -107,14 +107,14 @@ namespace TaskTwo.Data
 
                     List<Event> deserializedEvents = JsonConvert.DeserializeObject<List<Event>>(JsonString, new JsonSerializerSettings
                     {
-                        TypeNameHandling = TypeNameHandling.All,
+                        TypeNameHandling = TypeNameHandling.Auto,
                         MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
                         PreserveReferencesHandling = PreserveReferencesHandling.Objects
                     });
 
-                    for (int i = 0; i < deserializedEvents.Count; i++)
+                    foreach (var singleEvent in deserializedEvents)
                     {
-                        context.events.Add(deserializedEvents[i]);
+                        context.events.Add(singleEvent);
                     }
                 }
             }

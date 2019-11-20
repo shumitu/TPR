@@ -4,9 +4,9 @@ using Task_1.Part_2;
 
 namespace TaskTwo.Data
 {
-    public class DefinedData : IDataFill
+    public class ConsoleDataFill : IDataFill
     {
-        public DefinedData()
+        public ConsoleDataFill()
         {
 
         }

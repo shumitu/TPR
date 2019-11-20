@@ -44,7 +44,7 @@ namespace TaskTwoTests.Tests
         [TestMethod]
         public void CatalogSerializationTest()
         {
-            DataRepository data = new DataRepository(new DefinedData());
+            DataRepository data = new DataRepository(new ConsoleDataFill());
 
             Catalog cat1 = new Catalog(0, "Jo Nesbo", "Nóż", 2019);
             Catalog cat2 = new Catalog(1, "Jo Nesbo", "Pragnienie", 2018);
@@ -105,7 +105,7 @@ namespace TaskTwoTests.Tests
         [TestMethod]
         public void EventsSerializationTest()
         {
-            DataRepository data = new DataRepository(new DefinedData());
+            DataRepository data = new DataRepository(new ConsoleDataFill());
             DataContext context = new DataContext();
 
             Register reg1 = new Register(1, "Jan", "Kowalski");

@@ -30,7 +30,7 @@ namespace TaskTwo.JsonSerializer
                     string json = JsonConvert.SerializeObject(cont, Formatting.Indented,
                          new JsonSerializerSettings
                          {
-                             TypeNameHandling = TypeNameHandling.All,
+                             TypeNameHandling = TypeNameHandling.Auto,
                              MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
                              PreserveReferencesHandling = PreserveReferencesHandling.Objects
                          });
@@ -44,20 +44,19 @@ namespace TaskTwo.JsonSerializer
         }
         public DataContext DeserializeWhole()
         {
-            string JsonString = null;
             DataContext deserialized = null;
 
             try
             {
                 using (StreamReader reader = new StreamReader("..\\..\\Files\\WholeContext.json"))
                 {
-                    JsonString = reader.ReadToEnd();
+                    var JsonString = reader.ReadToEnd();
                     // remove last new line
                     JsonString = JsonString.Remove(JsonString.Length - 2);
 
                     deserialized = JsonConvert.DeserializeObject<DataContext>(JsonString,
                         new JsonSerializerSettings {
-                            TypeNameHandling = TypeNameHandling.All,
+                            TypeNameHandling = TypeNameHandling.Auto,
                             MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
                             PreserveReferencesHandling = PreserveReferencesHandling.Objects,
                         });
@@ -97,10 +96,18 @@ namespace TaskTwo.JsonSerializer
                 Console.WriteLine("The file could not be read: " + e.Message);
             }
 
-            context.lists = deserialized.lists;
-            context.catalogs = deserialized.catalogs;
-            context.descriptions = deserialized.descriptions;
-            context.events = deserialized.events;
+            try
+            {
+                context.lists = deserialized.lists;
+                context.catalogs = deserialized.catalogs;
+                context.descriptions = deserialized.descriptions;
+                context.events = deserialized.events;
+            }
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
 
         }
     }
