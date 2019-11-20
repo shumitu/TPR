@@ -127,8 +127,6 @@ namespace TaskTwoTests.Tests
             context.events.Add(ev1);
             context.events.Add(ev2);
 
-            IEnumerable<Event> constant = data.GetAllEvents();
-
             IOurSerializer serializer = new OurSerializer();
 
             MemoryStream ms = new MemoryStream();

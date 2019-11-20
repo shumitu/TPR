@@ -60,6 +60,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\OurSingleTest.cs" />
     <Compile Include="Tests\RecursiveTest.cs" />
+    <Compile Include="Tests\OurWholeContextTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
