@@ -36,8 +36,10 @@ namespace TaskTwoTests.TestClasses
                     toFile += firstClassId;
                     toFile += "\n";
                 }
+
+                toFile.Trim('\n');
                 Console.Write(toFile);
-                writer.WriteLine(toFile);
+                writer.Write(toFile);
             }
         }
 

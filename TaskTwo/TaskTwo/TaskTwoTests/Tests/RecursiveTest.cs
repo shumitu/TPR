@@ -53,6 +53,11 @@ namespace TaskTwoTests.Tests
             Assert.AreEqual(1, DeserializedClasses[0].Id);
             Assert.AreEqual(2, DeserializedClasses[1].Id);
             Assert.AreEqual(3, DeserializedClasses[2].Id);
+
+            foreach (TestClass deserializedClass in DeserializedClasses)
+            {
+                Assert.AreNotEqual(null, deserializedClass.AnotherTestClass);
+            }
         }
     }
 }
