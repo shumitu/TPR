@@ -14,7 +14,7 @@ namespace TaskTwoTests.Tests
     {
         public List<TestClass> ObjectClasses { get; set; }
         public List<TestClass> DeserializedClasses { get; set; }
-        const string path = @"RecursiveTests.txt";
+        const string path = @"..\\..\\..\\TaskTwo\\Files\\RecursiveTests.txt";
 
         [TestMethod]
         public void RecursiveClassesTest()
