@@ -2,24 +2,23 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
 using Task_1.Part_1;
 
 namespace TaskTwo.OurSerializer
 {
-    public class OurSerializer : ISerializer
+    public class OurSerializer : IOurSerializer
     {
         private string SerializedData { get; set; }
-        private Dictionary<long, Object> deserializedobjects { get; set; }
+        private Dictionary<long, Object> DeserializedObj { get; set; }
         public List<string[]> DeserializedData { get; set; }
         public string Path { get; set; }
         public string DeserializedString { get; set; }
-        private Char delimeter = ';';
+        private Char DataSeparator = ';';
 
 
         public OurSerializer()
         {
-            deserializedobjects = new Dictionary<long, Object>();
+            DeserializedObj = new Dictionary<long, Object>();
             DeserializedData = new List<string[]>();
         }
     
@@ -38,15 +37,15 @@ namespace TaskTwo.OurSerializer
         {
             DataContext context = new DataContext();
             StreamReader sr = new StreamReader(stream);
-            string line = "";
-            while ((line = sr.ReadLine()) != null)
+            var fileDataLine = "";
+            while ((fileDataLine = sr.ReadLine()) != null)
             {
                 DeserializedString = "";
-                while ((line = sr.ReadLine()) != null)
+                while ((fileDataLine = sr.ReadLine()) != null)
                 {
-                    DeserializedString += line;
-                    Char[] separator = { delimeter };
-                    DeserializedData.Add(line.Split(separator));
+                    DeserializedString += fileDataLine;
+                    char[] separator = { DataSeparator };
+                    DeserializedData.Add(fileDataLine.Split(separator));
                 }
             }
 
@@ -57,52 +56,47 @@ namespace TaskTwo.OurSerializer
 
         private void DeserializeDecision(DataContext context)
         {
-            string dataType = "";
-            foreach (string[] data in this.DeserializedData)
+            foreach (string[] data in DeserializedData)
             {
-                dataType = data[0];
+                var dataType = data[0];
 
                 switch (dataType)
                 {
                     case "Task_1.Part_1.Register":
                         Register reg = new Register();
-                        reg.Deserialize(data, this.deserializedobjects);
+                        reg.Deserialize(data, DeserializedObj);
                         context.lists.Add(reg);
-                        this.deserializedobjects.Add(long.Parse(data[1]), reg);
+                        DeserializedObj.Add(long.Parse(data[1]), reg);
                         break;
 
                     case "Task_1.Part_1.Catalog":
                         Catalog cat = new Catalog();
-                        cat.Deserialize(data, this.deserializedobjects);
+                        cat.Deserialize(data, DeserializedObj);
                         context.catalogs.Add(cat.BookId, cat);
-                        this.deserializedobjects.Add(long.Parse(data[1]), cat);
+                        DeserializedObj.Add(long.Parse(data[1]), cat);
                         break;
 
                     case "Task_1.Part_1.Event":
                         Event evt = new Event();
-                        evt.Deserialize(data, this.deserializedobjects);
+                        evt.Deserialize(data, DeserializedObj);
                         context.events.Add(evt);
-                        this.deserializedobjects.Add(long.Parse(data[1]), evt);
+                        DeserializedObj.Add(long.Parse(data[1]), evt);
                         break;
 
                     case "Task_1.Part_1.StatusDescription":
                         StatusDescription desc = new StatusDescription();
-                        desc.Deserialize(data, this.deserializedobjects);
+                        desc.Deserialize(data, DeserializedObj);
                         context.descriptions.Add(desc);
-                        this.deserializedobjects.Add(long.Parse(data[1]), desc);
-                        break;
-
-                    default:
+                        DeserializedObj.Add(long.Parse(data[1]), desc);
                         break;
                 }
-
             }
         }
 
 
         public string PrepareSerialization(DataContext context, ObjectIDGenerator generator)
         {
-            String stringStream = "";
+            string stringStream = "";
 
             foreach (Register reg in context.lists)
             {

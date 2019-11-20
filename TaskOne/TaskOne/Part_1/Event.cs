@@ -7,7 +7,7 @@ namespace Task_1.Part_1
 {
     [Serializable]
 
-    public class Event : ICloneable, SerialInterface
+    public class Event : ICloneable
     {
         public Register person;
         public StatusDescription description;

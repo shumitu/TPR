@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Runtime.Serialization;
+﻿using System.IO;
+using Task_1.Part_1;
 
 namespace TaskTwo.OurSerializer
 {
-    public interface IOwnSerializer
+    public interface IOurSerializer
     {
-        string Serialization(ObjectIDGenerator idGenerator);
-        void Deserialization(string[] data, Dictionary<long, Object> deserializedObjects);
+        void Serialize(DataContext dataContext, Stream outputStream);
+        DataContext Deserialize(Stream inputStream);
     }
 }

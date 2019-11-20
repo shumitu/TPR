@@ -52,7 +52,6 @@
     <Compile Include="JsonSerializer\JsonExport.cs" />
     <Compile Include="JsonSerializer\JsonImport.cs" />
     <Compile Include="OurSerializer\IOurSerializer.cs" />
-    <Compile Include="OurSerializer\ISerializer.cs" />
     <Compile Include="OurSerializer\OurSerializer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

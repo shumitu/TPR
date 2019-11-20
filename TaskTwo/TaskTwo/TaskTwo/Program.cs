@@ -81,9 +81,7 @@ namespace TaskTwo
                     case 4:
                         Console.WriteLine("Exporting to .dat");
                         Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None);
-                     //   OurSerializer.OurSerializer serializer = new OurSerializer.OurSerializer();
-                    //    serializer.Serialize(context, stream);
-                        ISerializer serializer = new OurSerializer.OurSerializer();
+                        IOurSerializer serializer = new OurSerializer.OurSerializer();
                         serializer.Serialize(data.context, stream);
                         stream.Close();
                         Show();
@@ -110,9 +108,8 @@ namespace TaskTwo
 
                     case 8:
                         Console.WriteLine("Importing from .dat");
-                     //   OurSerializer.OurSerializer deserializer = new OurSerializer.OurSerializer();
                         Stream stream2 = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
-                        ISerializer deserializer = new OurSerializer.OurSerializer();
+                        IOurSerializer deserializer = new OurSerializer.OurSerializer();
                         deserializer.Deserialize(stream2);
                         stream2.Close();
                         Show();
