@@ -47,8 +47,8 @@ namespace TaskTwoTests.Tests
             Assert.AreEqual(reg2, reg2Test);
             Assert.AreEqual(reg3, reg3Test);
             Assert.AreEqual(reg4, reg4Test);
-
         }
+
 
         [TestMethod]
         public void CatalogSerializationTest()
@@ -88,8 +88,8 @@ namespace TaskTwoTests.Tests
             Assert.AreEqual(cat2, cat2Test);
             Assert.AreEqual(cat3, cat3Test);
             Assert.AreEqual(cat4, cat4Test);
-
         }
+
 
         [TestMethod]
         public void DescSerializationTest()
@@ -126,8 +126,8 @@ namespace TaskTwoTests.Tests
 
             Assert.AreEqual(desc1, desc1Test);
             Assert.AreEqual(desc2, desc2Test);
-
         }
+
 
         [TestMethod]
         public void EventsSerializationTest()
@@ -175,7 +175,6 @@ namespace TaskTwoTests.Tests
 
             Assert.AreEqual(ev1, ev1Test);
             Assert.AreEqual(ev2, ev2Test);
-
         }
     }
 }

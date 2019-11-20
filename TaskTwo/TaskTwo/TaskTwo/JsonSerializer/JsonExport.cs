@@ -15,7 +15,6 @@ namespace TaskTwo.JsonSerializer
 
         public void SerializeRegister(DataRepository data)
         {
-
             try
             {
                 using (FileStream file = new FileStream("..\\..\\Files\\Register.json", FileMode.Create, FileAccess.Write))

@@ -108,8 +108,6 @@ namespace TaskTwo.JsonSerializer
             {
                 Console.WriteLine(e.Message);
             }
-
-
         }
     }
 }

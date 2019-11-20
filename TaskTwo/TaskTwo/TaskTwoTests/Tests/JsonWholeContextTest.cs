@@ -59,8 +59,7 @@ namespace TaskTwoTests.Tests
             CollectionAssert.AreEqual(context.events, deserialized.events);
             CollectionAssert.AreEqual(context.catalogs, deserialized.catalogs);
 
-            CollectionAssert.Equals(context, deserialized);
-            
+            CollectionAssert.Equals(context, deserialized);            
         }
     }
 }

@@ -122,7 +122,6 @@ namespace TaskTwo.Data
             {
                 Console.WriteLine("The file could not be read: " + e.Message);
             }
-
         }
     }
 }
