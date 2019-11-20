@@ -26,18 +26,17 @@ namespace TaskTwoTests.Tests
             context.lists.Add(reg3);
             context.lists.Add(reg4);
 
-            OurSerializer.Serialize(@"..\\..\\..\\TaskTwo\\Files\\TestRegister.dat", context.lists);
-            List<Register> savedregister = OurSerializer.Deserialize<List<Register>>(@"..\\..\\..\\TaskTwo\\Files\\TestRegister.dat");
+            IOurSerializer serializer = new OurSerializer();
 
-            Register reg1Test = savedregister[0];
-            Register reg2Test = savedregister[1];
-            Register reg3Test = savedregister[2];
-            Register reg4Test = savedregister[3];
+            MemoryStream ms = new MemoryStream();
+            serializer.Serialize(context, ms);
+            ms.Position = 0;
+            DataContext deserialized = serializer.Deserialize(ms);
 
-            Assert.AreEqual(reg1, reg1Test);
-            Assert.AreEqual(reg2, reg2Test);
-            Assert.AreEqual(reg3, reg3Test);
-            Assert.AreEqual(reg4, reg4Test);
+            Assert.AreEqual(deserialized.lists[0], reg1);
+            Assert.AreEqual(deserialized.lists[1], reg2);
+            Assert.AreEqual(deserialized.lists[2], reg3);
+            Assert.AreEqual(deserialized.lists[3], reg4);
         }
 
 
@@ -48,30 +47,27 @@ namespace TaskTwoTests.Tests
 
             Catalog cat1 = new Catalog(0, "Jo Nesbo", "Nóż", 2019);
             Catalog cat2 = new Catalog(1, "Jo Nesbo", "Pragnienie", 2018);
-            Catalog cat3 = new Catalog(3, "Jo Nesbo", "Policja", 2017);
-            Catalog cat4 = new Catalog(4, "Jo Nesbo", "Upiory", 2016);
+            Catalog cat3 = new Catalog(2, "Jo Nesbo", "Policja", 2017);
+            Catalog cat4 = new Catalog(3, "Jo Nesbo", "Upiory", 2016);
 
-            DataContext context = new DataContext();           
+            DataContext context = new DataContext();
 
             context.catalogs.Add(0, cat1);
             context.catalogs.Add(1, cat2);
             context.catalogs.Add(2, cat3);
             context.catalogs.Add(3, cat4);
 
-            IEnumerable<Catalog> constant = data.GetAllFromCatalog();
+            IOurSerializer serializer = new OurSerializer();
 
-            OurSerializer.Serialize(@"..\\..\\..\\TaskTwo\\Files\\TestCatalog.dat", constant);
-            IEnumerable<Catalog> savedcatalog = OurSerializer.Deserialize<IEnumerable<Catalog>>(@"..\\..\\..\\TaskTwo\\Files\\TestCatalog.dat");
+            MemoryStream ms = new MemoryStream();
+            serializer.Serialize(context, ms);
+            ms.Position = 0;
+            DataContext deserialized = serializer.Deserialize(ms);
 
-            Catalog cat1Test = context.catalogs[0];
-            Catalog cat2Test = context.catalogs[1];
-            Catalog cat3Test = context.catalogs[2];
-            Catalog cat4Test = context.catalogs[3];
-
-            Assert.AreEqual(cat1, cat1Test);
-            Assert.AreEqual(cat2, cat2Test);
-            Assert.AreEqual(cat3, cat3Test);
-            Assert.AreEqual(cat4, cat4Test);
+            Assert.AreEqual(deserialized.catalogs[0], cat1);
+            Assert.AreEqual(deserialized.catalogs[1], cat2);
+            Assert.AreEqual(deserialized.catalogs[2], cat3);
+            Assert.AreEqual(deserialized.catalogs[3], cat4);
         }
 
 
@@ -91,14 +87,15 @@ namespace TaskTwoTests.Tests
             context.descriptions.Add(desc1);
             context.descriptions.Add(desc2);
 
-            OurSerializer.Serialize(@"..\\..\\..\\TaskTwo\\Files\\TestStatus.dat", context.descriptions);
-            List<StatusDescription> saveddescription = OurSerializer.Deserialize<List<StatusDescription>>(@"..\\..\\..\\TaskTwo\\Files\\TestStatus.dat");
+            IOurSerializer serializer = new OurSerializer();
 
-            StatusDescription desc1Test = saveddescription[0];
-            StatusDescription desc2Test = saveddescription[1];
+            MemoryStream ms = new MemoryStream();
+            serializer.Serialize(context, ms);
+            ms.Position = 0;
+            DataContext deserialized = serializer.Deserialize(ms);
 
-            Assert.AreEqual(desc1, desc1Test);
-            Assert.AreEqual(desc2, desc2Test);
+            Assert.AreEqual(deserialized.descriptions[0], desc1);
+            Assert.AreEqual(deserialized.descriptions[1], desc2);
         }
 
 
@@ -132,14 +129,15 @@ namespace TaskTwoTests.Tests
 
             IEnumerable<Event> constant = data.GetAllEvents();
 
-            OurSerializer.Serialize(@"..\\..\\..\\TaskTwo\\Files\\TestEvent.dat", constant);
-            IEnumerable<Event> savedevent = OurSerializer.Deserialize<IEnumerable<Event>>(@"..\\..\\..\\TaskTwo\\Files\\TestEvent.dat");
+            IOurSerializer serializer = new OurSerializer();
 
-            Event ev1Test = context.events[0];
-            Event ev2Test = context.events[1];
+            MemoryStream ms = new MemoryStream();
+            serializer.Serialize(context, ms);
+            ms.Position = 0;
+            DataContext deserialized = serializer.Deserialize(ms);
 
-            Assert.AreEqual(ev1, ev1Test);
-            Assert.AreEqual(ev2, ev2Test);
+            Assert.AreEqual(deserialized.events[0], ev1);
+            Assert.AreEqual(deserialized.events[1], ev2);
         }
     }
 }
