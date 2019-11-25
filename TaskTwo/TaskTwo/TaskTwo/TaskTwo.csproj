@@ -61,12 +61,6 @@
     <None Include="Files\INFO.md" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\TaskOne\TaskOne\Task_1.csproj">
-      <Project>{493264CF-EFED-4AC0-97C7-90637B787AA2}</Project>
-      <Name>Task_1</Name>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
