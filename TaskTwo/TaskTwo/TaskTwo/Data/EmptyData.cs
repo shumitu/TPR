@@ -1,10 +1,8 @@
 ﻿using System;
-using Task_1.Part_1;
-using Task_1.Part_2;
 
 namespace TaskTwo.Data
 {
-    public class EmptyData : IDataFill
+    public class EmptyData
     {
         public EmptyData()
         {
@@ -12,9 +10,9 @@ namespace TaskTwo.Data
         }
 
 
-        public void Fill(DataContext context)
-        {
-            
-        }
+        //public void Fill(DataContext context)
+        //{
+
+        //}
     }
 }

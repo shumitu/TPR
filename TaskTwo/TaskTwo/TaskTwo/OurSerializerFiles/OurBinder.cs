@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Runtime.Serialization;
 
-namespace TaskTwo.OurSerializer
+namespace TaskTwo.OurSerializerFiles
 {
     public class OurBinder : SerializationBinder
     {

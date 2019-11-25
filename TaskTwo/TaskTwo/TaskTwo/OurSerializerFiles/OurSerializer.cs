@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
 
-namespace TaskTwo.OurSerializer
+namespace TaskTwo.OurSerializerFiles
 {
     public class OurSerializer : Formatter
     {

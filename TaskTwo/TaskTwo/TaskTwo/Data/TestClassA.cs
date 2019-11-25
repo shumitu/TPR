@@ -4,26 +4,26 @@ using System.Runtime.Serialization;
 namespace TaskTwoTests.TestClasses
 {
     [Serializable]
-    public class TestClass
+    public class TestClassA : ISerializable
     {
-        public TestClass AnotherTestClass { get; set; }
+        public TestClassB AnotherTestClassB { get; set; }
         public float Id { get; set; }
         public DateTime Date { get; set; }
         public string Text { get; set; }
 
 
-        public TestClass(TestClass anotherTestClass, float id, DateTime date, string text)
+        public TestClassA(TestClassB anotherTestClassB, float id, DateTime date, string text)
         {
-            AnotherTestClass = anotherTestClass;
+            AnotherTestClassB = anotherTestClassB;
             Id = id;
             Date = date;
             Text = text;          
         }
 
 
-        public TestClass(SerializationInfo info, StreamingContext context)
+        public TestClassA(SerializationInfo info, StreamingContext context)
         {
-            AnotherTestClass = (TestClass)info.GetValue("AnotherTestClass", typeof(TestClass));
+            AnotherTestClassB = (TestClassB)info.GetValue("AnotherTestClass", typeof(TestClassB));
             Id = info.GetSingle("Id");
             Date = info.GetDateTime("Date");
             Text = info.GetString("Text");            
@@ -32,7 +32,7 @@ namespace TaskTwoTests.TestClasses
 
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
-            info.AddValue("AnotherTestClass", AnotherTestClass, typeof(TestClass));
+            info.AddValue("AnotherTestClass", AnotherTestClassB, typeof(TestClassB));
             info.AddValue("Id", Id);
             info.AddValue("Date", Date);
             info.AddValue("Text", Text);
