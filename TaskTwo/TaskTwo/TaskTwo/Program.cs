@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using Task_1.Part_1;
+using Task_1.Part_4;
 using TaskTwo.Data;
 using TaskTwo.JsonSerializer;
 using TaskTwo.OurSerializer;
@@ -31,6 +33,10 @@ namespace TaskTwo
             Show();
 
             int choose = 0;
+
+            DataContext context = new DataContext();
+            EmptyData empty = new EmptyData();
+            DataRepository data = new DataRepository(empty);
             const string path = @"..\\..\\Files\\Context.txt";
 
 
@@ -44,76 +50,76 @@ namespace TaskTwo
                 {
                     case 1:
                         Console.WriteLine("Filling with defined data...");
-                        //data = new DataRepository(new ConsoleDataFill());
+                        data = new DataRepository(new ConsoleDataFill());
                         Show();
                         break;
 
                     case 2:
                         Console.WriteLine("Exporting to .json");
-                        //JsonExport jsonExporter = new JsonExport();
-                        //jsonExporter.SerializeRegister(data);
-                        //jsonExporter.SerializeCatalog(data);
-                        //jsonExporter.SerializeStatusDescription(data);
-                        //jsonExporter.SerializeEvent(data);
+                        JsonExport jsonExporter = new JsonExport();
+                        jsonExporter.SerializeRegister(data);
+                        jsonExporter.SerializeCatalog(data);
+                        jsonExporter.SerializeStatusDescription(data);
+                        jsonExporter.SerializeEvent(data);
                         Show();
                         break;
 
                     case 3:
                         Console.WriteLine("Exporting to .json (whole Context)");
-                        //JsonContextSerialization wholeContent = new JsonContextSerialization(data);
-                        //wholeContent.SerializeWhole();
+                        JsonContextSerialization wholeContent = new JsonContextSerialization(data);
+                        wholeContent.SerializeWhole();
                         Show();
                         break;
 
                     case 4:
                         Console.WriteLine("Exporting to .txt (whole Context)");
-                        //using (Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
-                        //{
-                        //    IOurSerializer serializer = new OurSerializer.OurSerializer();
-                        //    serializer.Serialize(data.context, stream);
-                        //}
+                        using (Stream stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None))
+                        {
+                            IOurSerializer serializer = new OurSerializer.OurSerializer();
+                            serializer.Serialize(data.context, stream);
+                        }
                         Show();
                         break;
 
                     case 5:
                         Console.WriteLine("Importing from .json");
-                        //data = new DataRepository(new JsonImport());
+                        data = new DataRepository(new JsonImport());
                         Show();
                         break;
 
                     case 6:
                         Console.WriteLine("Importing from .json (whole Context)");
-                        //data = new DataRepository(new JsonContextSerialization());
+                        data = new DataRepository(new JsonContextSerialization());
                         Show();
                         break;
 
                     case 7:
                         Console.WriteLine("Importing from .dat (whole Context)");
-                        //using (Stream stream2 = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
-                        //{
-                        //    data = new DataRepository(new OurSerializer.OurSerializer(stream2));
-                        //}
+                        using (Stream stream2 = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
+                        {
+                            data = new DataRepository(new OurSerializer.OurSerializer(stream2));
+                        }
                         Show();
                         break;
 
                     case 8:
                         Console.WriteLine("Showing data\n");
-                        //DataService service = new DataService(data);
-                        //Console.WriteLine("\nCatalogs:\n");
-                        //service.View(data.GetAllRegisters());
-                        //Console.WriteLine("\nRegisters:\n");
-                        //service.View(data.GetAllFromCatalog());
-                        //Console.WriteLine("\nDescriptions:\n");
-                        //service.View(data.GetAllStatusDescriptions());
-                        //Console.WriteLine("\nEvents:\n");
-                        //service.View(data.GetAllEvents());
+                        DataService service = new DataService(data);
+                        Console.WriteLine("\nCatalogs:\n");
+                        service.View(data.GetAllRegisters());
+                        Console.WriteLine("\nRegisters:\n");
+                        service.View(data.GetAllFromCatalog());
+                        Console.WriteLine("\nDescriptions:\n");
+                        service.View(data.GetAllStatusDescriptions());
+                        Console.WriteLine("\nEvents:\n");
+                        service.View(data.GetAllEvents());
                         Show();
                         break;
 
                     case 9:
                         Console.WriteLine("Clearing data");
-                        //EmptyData empty2 = new EmptyData();
-                        //data = new DataRepository(empty2);
+                        EmptyData empty2 = new EmptyData();
+                        data = new DataRepository(empty2);
                         Show();
                         break;
 
