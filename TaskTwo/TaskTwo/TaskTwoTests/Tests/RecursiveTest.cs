@@ -8,16 +8,16 @@ namespace TaskTwoTests.Tests
     [TestClass]
     public class RecursiveTest
     {
-        public List<TestClassC> ObjectClasses { get; set; }
-        public List<TestClassC> DeserializedClasses { get; set; }
+        public List<TestClass> ObjectClasses { get; set; }
+        public List<TestClass> DeserializedClasses { get; set; }
         const string path = @"..\\..\\..\\TaskTwo\\Files\\RecursiveTests.txt";
 
         [TestMethod]
         public void RecursiveClassesTest()
         {
-            TestClassC firstClass = new TestClassC() {Id = 1};
-            TestClassC secondClass = new TestClassC() {Id = 2};
-            TestClassC thirdClass = new TestClassC() {Id = 3};
+            TestClass firstClass = new TestClass() {Id = 1};
+            TestClass secondClass = new TestClass() {Id = 2};
+            TestClass thirdClass = new TestClass() {Id = 3};
 
             firstClass.AnotherTestClass = secondClass;
             secondClass.AnotherTestClass = thirdClass;
@@ -25,7 +25,7 @@ namespace TaskTwoTests.Tests
 
             TestSerializer serializer = new TestSerializer();
 
-            ObjectClasses = new List<TestClassC>();
+            ObjectClasses = new List<TestClass>();
             ObjectClasses.Add(firstClass);
             ObjectClasses.Add(secondClass);
             ObjectClasses.Add(thirdClass);
@@ -43,7 +43,7 @@ namespace TaskTwoTests.Tests
                 serializer.Serialize(ObjectClasses, stream);
             }
 
-            DeserializedClasses = new List<TestClassC>();
+            DeserializedClasses = new List<TestClass>();
 
             using (Stream stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
@@ -58,7 +58,7 @@ namespace TaskTwoTests.Tests
             Assert.AreSame(DeserializedClasses[0], DeserializedClasses[2].AnotherTestClass);
             Assert.AreSame(DeserializedClasses[2], DeserializedClasses[1].AnotherTestClass);
 
-            foreach (TestClassC deserializedClass in DeserializedClasses)
+            foreach (TestClass deserializedClass in DeserializedClasses)
             {
                 Assert.AreNotEqual(null, deserializedClass.AnotherTestClass);
             }
