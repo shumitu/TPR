@@ -61,6 +61,7 @@
     <Compile Include="Tests\OurSingleTest.cs" />
     <Compile Include="Tests\RecursiveTest.cs" />
     <Compile Include="Tests\OurWholeContextTest.cs" />
+    <Compile Include="Tests\OurNewSerializerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.Serialization;
 using Task_1.Part_1;
 using Task_1.Part_4;
 using TaskTwo.Data;
@@ -27,7 +28,9 @@ namespace TaskTwo
                 Console.WriteLine("[7] Import from .txt (whole Context)");
                 Console.WriteLine("[8] Show data");
                 Console.WriteLine("[9] Clear data");
-                Console.WriteLine("[10] Exit program\n\n");
+                Console.WriteLine("[10] Create test classes and export to .txt");
+                Console.WriteLine("[11] Import test classes from .txt");
+                Console.WriteLine("[12] Exit program\n\n");
             }
 
             Show();
@@ -40,16 +43,15 @@ namespace TaskTwo
             const string path = @"..\\..\\Files\\Context.txt";
 
 
-            while (choose != 10)
+            while (choose != 12)
             {
                 Console.Write("\nEnter your choose: ");
                 choose = Convert.ToInt32(Console.ReadLine());
 
-
                 switch (choose)
                 {
                     case 1:
-                        Console.WriteLine("Filling with defined data...");
+                        Console.WriteLine("Filling with defined data");
                         data = new DataRepository(new ConsoleDataFill());
                         Show();
                         break;
@@ -123,12 +125,63 @@ namespace TaskTwo
                         Show();
                         break;
 
+
                     case 10:
+                        Console.WriteLine("Creating test classes and exporting to .txt");
+                        TestClassA clsA = new TestClassA(null, 1.5f, new DateTime(2019, 11, 10, 0, 0, 0), "This is TestClassA");
+                        TestClassB clsB = new TestClassB(null, 2.5f, new DateTime(2019, 11, 11, 0, 0, 0), "This is TestClassB");
+                        TestClassC clsC = new TestClassC(null, 3.5f, new DateTime(2019, 11, 12, 0, 0, 0), "This is TestClassC");
+                        clsA.AnotherTestClassB = clsB;
+                        clsB.AnotherTestClassC = clsC;
+                        clsC.AnotherTestClassA = clsA;
+                        using (FileStream s = new FileStream("..\\..\\Files\\TestClassA.txt", FileMode.Create))
+                        {
+                            IFormatter f = new OurNewSerializer.OurNewSerializer();
+                            f.Serialize(s, clsA);
+                        }
+                        using (FileStream s = new FileStream("..\\..\\Files\\TestClassB.txt", FileMode.Create))
+                        {
+                            IFormatter f = new OurNewSerializer.OurNewSerializer();
+                            f.Serialize(s, clsB);
+                        }
+                        using (FileStream s = new FileStream("..\\..\\Files\\TestClassC.txt", FileMode.Create))
+                        {
+                            IFormatter f = new OurNewSerializer.OurNewSerializer();
+                            f.Serialize(s, clsC);
+                        }
+                        Show();
+                        break;
+                                            
+
+                    case 11:
+                        Console.WriteLine("Importing test classes from .txt");
+                        using (FileStream s = new FileStream("..\\..\\Files\\TestClassA.txt", FileMode.Open))
+                        {
+                            IFormatter f = new OurNewSerializer.OurNewSerializer();
+                            TestClassA testClassA = (TestClassA)f.Deserialize(s);
+                            Console.WriteLine(testClassA.AnotherTestClassB.AnotherTestClassC.AnotherTestClassA.Text);
+                        }
+                        using (FileStream s = new FileStream("..\\..\\Files\\TestClassB.txt", FileMode.Open))
+                        {
+                            IFormatter f = new OurNewSerializer.OurNewSerializer();
+                            TestClassB testClassB = (TestClassB)f.Deserialize(s);
+                            Console.WriteLine(testClassB.AnotherTestClassC.AnotherTestClassA.AnotherTestClassB.Text);
+                        }
+                        using (FileStream s = new FileStream("..\\..\\Files\\TestClassC.txt", FileMode.Open))
+                        {
+                            IFormatter f = new OurNewSerializer.OurNewSerializer();
+                            TestClassC testClassC = (TestClassC)f.Deserialize(s);
+                            Console.WriteLine(testClassC.AnotherTestClassA.AnotherTestClassB.AnotherTestClassC.Text);
+                        }
+                        Show();
+                        break;
+
+                    case 12:
                         Environment.Exit(0);
                         break;
 
                     default:
-                        Console.WriteLine("Wrong choose");
+                        Console.WriteLine("Wrong choose, try again");
                         Show();
                         break;
                 }

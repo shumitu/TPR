@@ -48,9 +48,14 @@
   <ItemGroup>
     <Compile Include="Data\ConsoleDataFill.cs" />
     <Compile Include="Data\EmptyData.cs" />
+    <Compile Include="Data\TestClassA.cs" />
+    <Compile Include="Data\TestClassB.cs" />
+    <Compile Include="Data\TestClassC.cs" />
     <Compile Include="JsonSerializer\JsonContextSerialization.cs" />
     <Compile Include="JsonSerializer\JsonExport.cs" />
     <Compile Include="JsonSerializer\JsonImport.cs" />
+    <Compile Include="OurNewSerializer\OurBinder.cs" />
+    <Compile Include="OurNewSerializer\OurNewSerializer.cs" />
     <Compile Include="OurSerializer\IOurSerializer.cs" />
     <Compile Include="OurSerializer\OurSerializer.cs" />
     <Compile Include="Program.cs" />
