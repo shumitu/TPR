@@ -14,9 +14,9 @@ namespace TaskTwoTests.Tests
         [TestMethod]
         public void TestClassASerializationATest()
         {
-            TestClassA clsA = new TestClassA(null, 1.5f, new DateTime(2019, 11, 10, 0, 0, 0), "This is TestClassA");
-            TestClassB clsB = new TestClassB(null, 2.5f, new DateTime(2019, 11, 11, 0, 0, 0), "This is TestClassB");
-            TestClassC clsC = new TestClassC(null, 3.5f, new DateTime(2019, 11, 12, 0, 0, 0), "This is TestClassC");
+            TestClassA clsA = new TestClassA(null, 12.34f, new DateTime(2019, 05, 04, 0, 0, 0), "This is TestClassA");
+            TestClassB clsB = new TestClassB(null, 34.56f, new DateTime(2019, 04, 22,0, 0, 0), "This is TestClassB");
+            TestClassC clsC = new TestClassC(null, 56.78f, new DateTime(2019, 12, 28, 0, 0, 0), "This is TestClassC");
             clsA.AnotherTestClassB = clsB;
             clsB.AnotherTestClassC = clsC;
             clsC.AnotherTestClassA = clsA;
@@ -31,9 +31,9 @@ namespace TaskTwoTests.Tests
 
             Console.WriteLine(result);
 
-            Assert.AreEqual(result, "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassA;1;TaskTwo.Data.TestClassB=AnotherTestClassB=2;System.Single=Id=1.50;System.DateTime=Date=2019-11-09 23:00:00;System.String=Text=\"This is TestClassA\"\n"
-                                  + "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassB;2;TaskTwo.Data.TestClassC=AnotherTestClassC=3;System.Single=Id=2.50;System.DateTime=Date=2019-11-10 23:00:00;System.String=Text=\"This is TestClassB\"\n"
-                                  + "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassC;3;TaskTwo.Data.TestClassA=AnotherTestClassA=1;System.Single=Id=3.50;System.DateTime=Date=2019-11-11 23:00:00;System.String=Text=\"This is TestClassC\"\n"
+            Assert.AreEqual(result, "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassA;1;TaskTwo.Data.TestClassB=AnotherTestClassB=2;System.Single=Id=12.34;System.DateTime=Date=2019-05-03 22:00:00;System.String=Text=\"This is TestClassA\"\n"
+                                  + "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassB;2;TaskTwo.Data.TestClassC=AnotherTestClassC=3;System.Single=Id=34.56;System.DateTime=Date=2019-04-21 22:00:00;System.String=Text=\"This is TestClassB\"\n"
+                                  + "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassC;3;TaskTwo.Data.TestClassA=AnotherTestClassA=1;System.Single=Id=56.78;System.DateTime=Date=2019-12-27 23:00:00;System.String=Text=\"This is TestClassC\"\n"
             );
             File.Delete("..\\..\\..\\TaskTwo\\Files\\test.txt");
         }
@@ -42,9 +42,9 @@ namespace TaskTwoTests.Tests
         [TestMethod]
         public void TestClassBSerializationTest()
         {
-            TestClassA clsA = new TestClassA(null, 1.5f, new DateTime(2019, 11, 10, 0, 0, 0), "This is TestClassA");
-            TestClassB clsB = new TestClassB(null, 2.5f, new DateTime(2019, 11, 11, 0, 0, 0), "This is TestClassB");
-            TestClassC clsC = new TestClassC(null, 3.5f, new DateTime(2019, 11, 12, 0, 0, 0), "This is TestClassC");
+            TestClassA clsA = new TestClassA(null, 12.34f, new DateTime(2019, 05, 04, 0, 0, 0), "This is TestClassA");
+            TestClassB clsB = new TestClassB(null, 34.56f, new DateTime(2019, 04, 22,0, 0, 0), "This is TestClassB");
+            TestClassC clsC = new TestClassC(null, 56.78f, new DateTime(2019, 12, 28, 0, 0, 0), "This is TestClassC");
             clsA.AnotherTestClassB = clsB;
             clsB.AnotherTestClassC = clsC;
             clsC.AnotherTestClassA = clsA;
@@ -56,9 +56,9 @@ namespace TaskTwoTests.Tests
             }
 
             string result = File.ReadAllText("..\\..\\..\\TaskTwo\\Files\\test.txt");
-            Assert.AreEqual(result, "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassB;1;TaskTwo.Data.TestClassC=AnotherTestClassC=2;System.Single=Id=2.50;System.DateTime=Date=2019-11-10 23:00:00;System.String=Text=\"This is TestClassB\"\n"
-                                  + "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassC;2;TaskTwo.Data.TestClassA=AnotherTestClassA=3;System.Single=Id=3.50;System.DateTime=Date=2019-11-11 23:00:00;System.String=Text=\"This is TestClassC\"\n"
-                                  + "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassA;3;TaskTwo.Data.TestClassB=AnotherTestClassB=1;System.Single=Id=1.50;System.DateTime=Date=2019-11-09 23:00:00;System.String=Text=\"This is TestClassA\"\n"
+            Assert.AreEqual(result, "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassB;1;TaskTwo.Data.TestClassC=AnotherTestClassC=2;System.Single=Id=34.56;System.DateTime=Date=2019-04-21 22:00:00;System.String=Text=\"This is TestClassB\"\n"
+                                  + "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassC;2;TaskTwo.Data.TestClassA=AnotherTestClassA=3;System.Single=Id=56.78;System.DateTime=Date=2019-12-27 23:00:00;System.String=Text=\"This is TestClassC\"\n"
+                                  + "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassA;3;TaskTwo.Data.TestClassB=AnotherTestClassB=1;System.Single=Id=12.34;System.DateTime=Date=2019-05-03 22:00:00;System.String=Text=\"This is TestClassA\"\n"
             );
             File.Delete("..\\..\\..\\TaskTwo\\Files\\test.txt");
         }
@@ -67,9 +67,9 @@ namespace TaskTwoTests.Tests
         [TestMethod]
         public void TestClassCSerializationTest()
         {
-            TestClassA clsA = new TestClassA(null, 1.5f, new DateTime(2019, 11, 10, 0, 0, 0), "This is TestClassA");
-            TestClassB clsB = new TestClassB(null, 2.5f, new DateTime(2019, 11, 11, 0, 0, 0), "This is TestClassB");
-            TestClassC clsC = new TestClassC(null, 3.5f, new DateTime(2019, 11, 12, 0, 0, 0), "This is TestClassC");
+            TestClassA clsA = new TestClassA(null, 12.34f, new DateTime(2019, 05, 04, 0, 0, 0), "This is TestClassA");
+            TestClassB clsB = new TestClassB(null, 34.56f, new DateTime(2019, 04, 22,0, 0, 0), "This is TestClassB");
+            TestClassC clsC = new TestClassC(null, 56.78f, new DateTime(2019, 12, 28, 0, 0, 0), "This is TestClassC");
             clsA.AnotherTestClassB = clsB;
             clsB.AnotherTestClassC = clsC;
             clsC.AnotherTestClassA = clsA;
@@ -81,9 +81,9 @@ namespace TaskTwoTests.Tests
             }
 
             string result = File.ReadAllText("..\\..\\..\\TaskTwo\\Files\\test.txt");
-            Assert.AreEqual(result, "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassC;1;TaskTwo.Data.TestClassA=AnotherTestClassA=2;System.Single=Id=3.50;System.DateTime=Date=2019-11-11 23:00:00;System.String=Text=\"This is TestClassC\"\n"
-                                  + "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassA;2;TaskTwo.Data.TestClassB=AnotherTestClassB=3;System.Single=Id=1.50;System.DateTime=Date=2019-11-09 23:00:00;System.String=Text=\"This is TestClassA\"\n"
-                                  + "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassB;3;TaskTwo.Data.TestClassC=AnotherTestClassC=1;System.Single=Id=2.50;System.DateTime=Date=2019-11-10 23:00:00;System.String=Text=\"This is TestClassB\"\n"
+            Assert.AreEqual(result, "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassC;1;TaskTwo.Data.TestClassA=AnotherTestClassA=2;System.Single=Id=56.78;System.DateTime=Date=2019-12-27 23:00:00;System.String=Text=\"This is TestClassC\"\n"
+                                  + "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassA;2;TaskTwo.Data.TestClassB=AnotherTestClassB=3;System.Single=Id=12.34;System.DateTime=Date=2019-05-03 22:00:00;System.String=Text=\"This is TestClassA\"\n"
+                                  + "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassB;3;TaskTwo.Data.TestClassC=AnotherTestClassC=1;System.Single=Id=34.56;System.DateTime=Date=2019-04-21 22:00:00;System.String=Text=\"This is TestClassB\"\n"
             );
             File.Delete("..\\..\\..\\TaskTwo\\Files\\test.txt");
         }
@@ -94,9 +94,9 @@ namespace TaskTwoTests.Tests
         [TestMethod]
         public void TestClassADeserializationATest()
         {
-            TestClassA clsA = new TestClassA(null, 1.5f, new DateTime(2019, 11, 10, 0, 0, 0), "This is TestClassA");
-            TestClassB clsB = new TestClassB(null, 2.5f, new DateTime(2019, 11, 11, 0, 0, 0), "This is TestClassB");
-            TestClassC clsC = new TestClassC(null, 3.5f, new DateTime(2019, 11, 12, 0, 0, 0), "This is TestClassC");
+            TestClassA clsA = new TestClassA(null, 12.34f, new DateTime(2019, 05, 04, 0, 0, 0), "This is TestClassA");
+            TestClassB clsB = new TestClassB(null, 34.56f, new DateTime(2019, 04, 22,0, 0, 0), "This is TestClassB");
+            TestClassC clsC = new TestClassC(null, 56.78f, new DateTime(2019, 12, 28, 0, 0, 0), "This is TestClassC");
             clsA.AnotherTestClassB = clsB;
             clsB.AnotherTestClassC = clsC;
             clsC.AnotherTestClassA = clsA;
@@ -120,9 +120,9 @@ namespace TaskTwoTests.Tests
         [TestMethod]
         public void TestClassBDeserializationTest()
         {
-            TestClassA clsA = new TestClassA(null, 1.5f, new DateTime(2019, 11, 10, 0, 0, 0), "This is TestClassA");
-            TestClassB clsB = new TestClassB(null, 2.5f, new DateTime(2019, 11, 11, 0, 0, 0), "This is TestClassB");
-            TestClassC clsC = new TestClassC(null, 3.5f, new DateTime(2019, 11, 12, 0, 0, 0), "This is TestClassC");
+            TestClassA clsA = new TestClassA(null, 12.34f, new DateTime(2019, 05, 04, 0, 0, 0), "This is TestClassA");
+            TestClassB clsB = new TestClassB(null, 34.56f, new DateTime(2019, 04, 22,0, 0, 0), "This is TestClassB");
+            TestClassC clsC = new TestClassC(null, 56.78f, new DateTime(2019, 12, 28, 0, 0, 0), "This is TestClassC");
             clsA.AnotherTestClassB = clsB;
             clsB.AnotherTestClassC = clsC;
             clsC.AnotherTestClassA = clsA;
@@ -146,9 +146,9 @@ namespace TaskTwoTests.Tests
         [TestMethod]
         public void TestClassCDeserializationTest()
         {
-            TestClassA clsA = new TestClassA(null, 1.5f, new DateTime(2019, 11, 10, 0, 0, 0), "This is TestClassA");
-            TestClassB clsB = new TestClassB(null, 2.5f, new DateTime(2019, 11, 11, 0, 0, 0), "This is TestClassB");
-            TestClassC clsC = new TestClassC(null, 3.5f, new DateTime(2019, 11, 12, 0, 0, 0), "This is TestClassC");
+            TestClassA clsA = new TestClassA(null, 12.34f, new DateTime(2019, 05, 04, 0, 0, 0), "This is TestClassA");
+            TestClassB clsB = new TestClassB(null, 34.56f, new DateTime(2019, 04, 22,0, 0, 0), "This is TestClassB");
+            TestClassC clsC = new TestClassC(null, 56.78f, new DateTime(2019, 12, 28, 0, 0, 0), "This is TestClassC");
             clsA.AnotherTestClassB = clsB;
             clsB.AnotherTestClassC = clsC;
             clsC.AnotherTestClassA = clsA;

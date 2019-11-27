@@ -52,6 +52,7 @@
     <Compile Include="Data\TestClassB.cs" />
     <Compile Include="Data\TestClassC.cs" />
     <Compile Include="JsonSerializer\JsonContextSerialization.cs" />
+    <Compile Include="OurNewSerializer\PartialEmptyFragments.cs" />
     <Compile Include="OurNewSerializer\OurBinder.cs" />
     <Compile Include="OurNewSerializer\OurNewSerializer.cs" />
     <Compile Include="OurSerializer\IOurSerializer.cs" />
