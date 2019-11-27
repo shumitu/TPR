@@ -7,6 +7,7 @@ using TaskTwo.OurNewSerializer;
 
 namespace TaskTwoTests.Tests
 {
+
     [TestClass]
     public class OurNewSerializerTest
     {

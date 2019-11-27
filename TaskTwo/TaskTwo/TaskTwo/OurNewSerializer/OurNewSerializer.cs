@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Threading;
 
 namespace TaskTwo.OurNewSerializer
 {
@@ -16,7 +17,6 @@ namespace TaskTwo.OurNewSerializer
         private List<string> DeserializeInfo { get; }
         private Dictionary<string, object> References { get; }
 
-
         public OurNewSerializer()
         {
             Binder = new OurBinder();
@@ -29,6 +29,7 @@ namespace TaskTwo.OurNewSerializer
 
         public override void Serialize(Stream serializationStream, object desiredObjToSerialize)
         {
+
             if (desiredObjToSerialize is ISerializable data)
             {
                 SerializationInfo infoAboutObject = new SerializationInfo(desiredObjToSerialize.GetType(), new FormatterConverter());
@@ -308,7 +309,7 @@ namespace TaskTwo.OurNewSerializer
                     info.AddValue(name, Single.Parse(val, System.Globalization.CultureInfo.InvariantCulture));
                     break;
                 case "System.DateTime":
-                    info.AddValue(name, DateTime.Parse(val, System.Globalization.CultureInfo.InvariantCulture));
+                    info.AddValue(name, DateTime.Parse(val, null, System.Globalization.DateTimeStyles.AssumeLocal));
                     break;
                 case "System.String":
                     info.AddValue(name, val);
