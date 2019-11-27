@@ -271,14 +271,6 @@ namespace TaskTwo.OurNewSerializer
 
         #region private
 
-
-
-        private Type GetTypeFromSplitDeserializeInfoRow(string[] splitDeserializeRow)
-        {
-            return Binder.BindToType(splitDeserializeRow[0], splitDeserializeRow[1]);
-        }
-
-
         private void GetInfoFromDeserializedInfoRow(SerializationInfo info, string[] splitedDeserializationInfoRow)
         {
             for (int i = 3; i < splitedDeserializationInfoRow.Length; i++)
@@ -290,7 +282,7 @@ namespace TaskTwo.OurNewSerializer
                 {
                     if (!data[0].Equals("null"))
                     {
-                        SaveParsedValueToSerializationInfo(info, Type.GetType(data[0]), data[1], data[2]);
+                        SaveValueToSerializedInformation(info, Type.GetType(data[0]), data[1], data[2]);
                     }
                     else
                     {
@@ -308,7 +300,7 @@ namespace TaskTwo.OurNewSerializer
         }
 
 
-        private void SaveParsedValueToSerializationInfo(SerializationInfo info, Type type, string name, string val)
+        private void SaveValueToSerializedInformation(SerializationInfo info, Type type, string name, string val)
         {
             switch (type.ToString())
             {
@@ -316,7 +308,7 @@ namespace TaskTwo.OurNewSerializer
                     info.AddValue(name, Single.Parse(val, System.Globalization.CultureInfo.InvariantCulture));
                     break;
                 case "System.DateTime":
-                    info.AddValue(name, DateTime.Parse(val));
+                    info.AddValue(name, DateTime.Parse(val, System.Globalization.CultureInfo.InvariantCulture));
                     break;
                 case "System.String":
                     info.AddValue(name, val);
