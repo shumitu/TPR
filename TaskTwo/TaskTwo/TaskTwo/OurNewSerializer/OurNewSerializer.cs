@@ -32,6 +32,7 @@ namespace TaskTwo.OurNewSerializer
             // Clones myCI and modifies the DTFI and NFI instances associated with the clone.
             CultureInfo myCIclone = (CultureInfo) myCI.Clone();
             myCIclone.DateTimeFormat.DateSeparator = "-";
+            myCIclone.DateTimeFormat.ShortDatePattern = "yyyy-MM-dd";
 
             Thread.CurrentThread.CurrentCulture = myCIclone;
             Thread.CurrentThread.CurrentUICulture = myCIclone;
