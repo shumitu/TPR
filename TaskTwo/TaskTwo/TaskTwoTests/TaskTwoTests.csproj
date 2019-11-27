@@ -53,13 +53,10 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestClasses\TestClass.cs" />
-    <Compile Include="TestClasses\TestSerializer.cs" />
     <Compile Include="Tests\JsonSingleTest.cs" />
     <Compile Include="Tests\JsonWholeContextTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\OurSingleTest.cs" />
-    <Compile Include="Tests\RecursiveTest.cs" />
     <Compile Include="Tests\OurWholeContextTest.cs" />
     <Compile Include="Tests\OurNewSerializerTest.cs" />
   </ItemGroup>

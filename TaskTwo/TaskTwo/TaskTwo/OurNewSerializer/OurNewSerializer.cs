@@ -25,9 +25,9 @@ namespace TaskTwo.OurNewSerializer
                 SerializationInfo infoAboutObject = new SerializationInfo(desiredObjToSerialize.GetType(), new FormatterConverter());
                 Binder.BindToName(desiredObjToSerialize.GetType(), out string assemblyName, out string typeName);
 
-                DataRow += assemblyName 
-                           + "|" + typeName
-                           + "|" + this.m_idGenerator.GetId(desiredObjToSerialize, out bool firstTime);
+                DataRow += assemblyName + ";"
+                                        + typeName + ";"
+                                        + this.m_idGenerator.GetId(desiredObjToSerialize, out bool firstTime);
 
                 data.GetObjectData(infoAboutObject, Context);
 
@@ -36,7 +36,7 @@ namespace TaskTwo.OurNewSerializer
                     WriteMember(singleObjItem.Name, singleObjItem.Value);
                 }
 
-                DataToSave.Add(DataRow + "\n");
+                dataToSave.Add(DataRow + "\n");
                 DataRow = "";
 
                 while (m_objectQueue.Count != 0)
@@ -50,7 +50,7 @@ namespace TaskTwo.OurNewSerializer
                 {
                     using (StreamWriter writer = new StreamWriter(serializationStream))
                     {
-                        foreach (string line in DataToSave)
+                        foreach (string line in dataToSave)
                         {
                             writer.Write(line);
                         }
@@ -75,26 +75,35 @@ namespace TaskTwo.OurNewSerializer
 
                     while ((line = reader.ReadLine()) != null)
                     {
-                        DeserializeInfo.Add(line);
+                        deserializeInfo.Add(line);
                     }
                 }
 
-                foreach (string item in DeserializeInfo)
+                foreach (string item in deserializeInfo)
                 {
                     String[] splits = item.Split('|');
                     References.Add(splits[2], FormatterServices.GetSafeUninitializedObject(Binder.BindToType(splits[0], splits[1])));
                 }
             }
 
-            foreach (string singleDataRow in DeserializeInfo)
+            foreach (string singleDataRow in deserializeInfo)
             {
                 string[] dividedDataRow = singleDataRow.Split('|');
-                Type objectDeserializeType = Binder.BindToType(dividedDataRow[0], dividedDataRow[1]);
-                SerializationInfo info = new SerializationInfo(objectDeserializeType, new FormatterConverter());
-                GetSerializationInfoFromDeserializeInfoRow(info, dividedDataRow);
-                Type[] constructorTypes = { info.GetType(), Context.GetType() };
-                object[] constuctorParameters = { info, Context };
-                References[dividedDataRow[2]].GetType().GetConstructor(constructorTypes).Invoke(References[dividedDataRow[2]], constuctorParameters);
+                Type typeOfDeserializedObj = Binder.BindToType(dividedDataRow[0], dividedDataRow[1]);
+
+                if (typeOfDeserializedObj != null)
+                {
+                    SerializationInfo info = new SerializationInfo(typeOfDeserializedObj, new FormatterConverter());
+                    GetInfoFromDeserializedInfoRow(info, dividedDataRow);
+                    Type[] arrayOfConstructorTypes = { info.GetType(), Context.GetType() };
+                    object[] arrayOfConstructorParams = { info, Context };
+                    References[dividedDataRow[2]]
+                        .GetType()
+                        .GetConstructor(arrayOfConstructorTypes)
+                        ?.Invoke(References[dividedDataRow[2]],
+                            arrayOfConstructorParams);
+                }
+
             }
             return References["1"];
         }
@@ -105,7 +114,7 @@ namespace TaskTwo.OurNewSerializer
 
         protected override void WriteDateTime(DateTime value, string name)
         {
-            DataRow += "|" + value.GetType() + "=" + name + "=" + value.ToUniversalTime().ToString();
+            DataRow += ";" + value.GetType() + "=" + name + "=" + value.ToUniversalTime().ToString();
         }
 
 
@@ -124,7 +133,7 @@ namespace TaskTwo.OurNewSerializer
 
         protected void WriteString(object obj, string name)
         {
-            DataRow += "|" + obj.GetType() + "=" + name + "=" + "\"" + (String)obj + "\"";
+            DataRow += ";" + obj.GetType() + "=" + name + "=" + "\"" + (String)obj + "\"";
         }
 
 
@@ -132,7 +141,7 @@ namespace TaskTwo.OurNewSerializer
         {
             if (obj != null)
             {
-                DataRow += "|" + obj.GetType() + "=" + name + "=" + this.m_idGenerator.GetId(obj, out bool firstTime).ToString();
+                DataRow += ";" + obj.GetType() + "=" + name + "=" + this.m_idGenerator.GetId(obj, out bool firstTime).ToString();
                 if (firstTime)
                 {
                     this.m_objectQueue.Enqueue(obj);
@@ -140,21 +149,38 @@ namespace TaskTwo.OurNewSerializer
             }
             else
             {
-                DataRow += "|" + "null" + "=" + name + "=-1";
+                DataRow += ";" + "null" + "=" + name + "=-1";
             }
         }
 
 
         protected override void WriteSingle(float value, string name)
         {
-            DataRow += "|" + value.GetType() + "=" + name + "=" + value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture);
+            DataRow += ";" + value.GetType() + "=" + name + "=" + value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture);
         }
 
 
         #endregion
 
 
-        #region notimplemented
+        #region notImplemented
+
+        protected override void WriteBoolean(bool value, string name)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        protected override void WriteByte(byte value, string name)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        protected override void WriteChar(char value, string name)
+        {
+            throw new NotImplementedException();
+        }
 
 
         protected override void WriteSByte(sbyte value, string name)
@@ -228,25 +254,6 @@ namespace TaskTwo.OurNewSerializer
             throw new NotImplementedException();
         }
 
-
-        protected override void WriteBoolean(bool value, string name)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        protected override void WriteByte(byte value, string name)
-        {
-            throw new NotImplementedException();
-        }
-
-
-        protected override void WriteChar(char value, string name)
-        {
-            throw new NotImplementedException();
-        }
-
-
         #endregion
 
 
@@ -254,8 +261,8 @@ namespace TaskTwo.OurNewSerializer
 
 
         private string DataRow = "";
-        private List<string> DataToSave = new List<string>();
-        private List<string> DeserializeInfo = new List<string>();
+        private List<string> dataToSave = new List<string>();
+        private List<string> deserializeInfo = new List<string>();
         private Dictionary<string, object> References = new Dictionary<string, object>();
 
 
@@ -265,7 +272,7 @@ namespace TaskTwo.OurNewSerializer
         }
 
 
-        private void GetSerializationInfoFromDeserializeInfoRow(SerializationInfo info, string[] splitedDeserializationInfoRow)
+        private void GetInfoFromDeserializedInfoRow(SerializationInfo info, string[] splitedDeserializationInfoRow)
         {
             for (int i = 3; i < splitedDeserializationInfoRow.Length; i++)
             {
