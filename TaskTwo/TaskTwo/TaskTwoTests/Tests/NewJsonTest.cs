@@ -11,9 +11,9 @@ namespace TaskTwoTests.Tests
         [TestMethod]
         public void TestClassADeserializationTest()
         {
-            TestClassA clsA = new TestClassA(null, 1.5f, new DateTime(2019, 11, 10, 0, 0, 0), "This is TestClassA");
-            TestClassB clsB = new TestClassB(null, 2.5f, new DateTime(2019, 11, 11, 0, 0, 0), "This is TestClassB");
-            TestClassC clsC = new TestClassC(null, 3.5f, new DateTime(2019, 11, 12, 0, 0, 0), "This is TestClassC");
+            TestClassA clsA = new TestClassA(null, 12.34f, new DateTime(2019, 05, 04, 0, 0, 0), "This is TestClassA");
+            TestClassB clsB = new TestClassB(null, 34.56f, new DateTime(2019, 04, 22, 0, 0, 0), "This is TestClassB");
+            TestClassC clsC = new TestClassC(null, 56.78f, new DateTime(2019, 12, 28, 0, 0, 0), "This is TestClassC");
             clsA.AnotherTestClassB = clsB;
             clsB.AnotherTestClassC = clsC;
             clsC.AnotherTestClassA = clsA;
@@ -52,9 +52,9 @@ namespace TaskTwoTests.Tests
         [TestMethod]
         public void TestClassBDeserializationTest()
         {
-            TestClassA clsA = new TestClassA(null, 1.5f, new DateTime(2019, 11, 10, 0, 0, 0), "This is TestClassA");
-            TestClassB clsB = new TestClassB(null, 2.5f, new DateTime(2019, 11, 11, 0, 0, 0), "This is TestClassB");
-            TestClassC clsC = new TestClassC(null, 3.5f, new DateTime(2019, 11, 12, 0, 0, 0), "This is TestClassC");
+            TestClassA clsA = new TestClassA(null, 12.34f, new DateTime(2019, 05, 04, 0, 0, 0), "This is TestClassA");
+            TestClassB clsB = new TestClassB(null, 34.56f, new DateTime(2019, 04, 22, 0, 0, 0), "This is TestClassB");
+            TestClassC clsC = new TestClassC(null, 56.78f, new DateTime(2019, 12, 28, 0, 0, 0), "This is TestClassC");
             clsA.AnotherTestClassB = clsB;
             clsB.AnotherTestClassC = clsC;
             clsC.AnotherTestClassA = clsA;
@@ -93,9 +93,9 @@ namespace TaskTwoTests.Tests
         [TestMethod]
         public void TestClassCDeserializationTest()
         {
-            TestClassA clsA = new TestClassA(null, 1.5f, new DateTime(2019, 11, 10, 0, 0, 0), "This is TestClassA");
-            TestClassB clsB = new TestClassB(null, 2.5f, new DateTime(2019, 11, 11, 0, 0, 0), "This is TestClassB");
-            TestClassC clsC = new TestClassC(null, 3.5f, new DateTime(2019, 11, 12, 0, 0, 0), "This is TestClassC");
+            TestClassA clsA = new TestClassA(null, 12.34f, new DateTime(2019, 05, 04, 0, 0, 0), "This is TestClassA");
+            TestClassB clsB = new TestClassB(null, 34.56f, new DateTime(2019, 04, 22, 0, 0, 0), "This is TestClassB");
+            TestClassC clsC = new TestClassC(null, 56.78f, new DateTime(2019, 12, 28, 0, 0, 0), "This is TestClassC");
             clsA.AnotherTestClassB = clsB;
             clsB.AnotherTestClassC = clsC;
             clsC.AnotherTestClassA = clsA;
