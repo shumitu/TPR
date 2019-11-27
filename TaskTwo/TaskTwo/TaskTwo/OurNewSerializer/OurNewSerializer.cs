@@ -8,15 +8,24 @@ namespace TaskTwo.OurNewSerializer
     public class OurNewSerializer : Formatter
     {
         public override ISurrogateSelector SurrogateSelector { get; set; }
-        public override SerializationBinder Binder { get; set; }
-        public override StreamingContext Context { get; set; }
-        
+        public sealed override SerializationBinder Binder { get; set; }
+        public sealed override StreamingContext Context { get; set; }
+
+        private string DataRow { get; set; }
+        private List<string> DataToSave { get; }
+        private List<string> DeserializeInfo { get; }
+        private Dictionary<string, object> References { get; }
+
 
         public OurNewSerializer()
         {
             Binder = new OurBinder();
             Context = new StreamingContext(StreamingContextStates.File);
-        }
+            DataRow = "";
+            DataToSave = new List<string>();
+            DeserializeInfo = new List<string>();
+            References = new Dictionary<string, object>();
+    }
 
         public override void Serialize(Stream serializationStream, object desiredObjToSerialize)
         {
@@ -27,7 +36,7 @@ namespace TaskTwo.OurNewSerializer
 
                 DataRow += assemblyName + ";"
                                         + typeName + ";"
-                                        + this.m_idGenerator.GetId(desiredObjToSerialize, out bool firstTime);
+                                        + m_idGenerator.GetId(desiredObjToSerialize, out bool firstTime);
 
                 data.GetObjectData(infoAboutObject, Context);
 
@@ -36,7 +45,7 @@ namespace TaskTwo.OurNewSerializer
                     WriteMember(singleObjItem.Name, singleObjItem.Value);
                 }
 
-                dataToSave.Add(DataRow + "\n");
+                DataToSave.Add(DataRow + "\n");
                 DataRow = "";
 
                 while (m_objectQueue.Count != 0)
@@ -50,7 +59,7 @@ namespace TaskTwo.OurNewSerializer
                 {
                     using (StreamWriter writer = new StreamWriter(serializationStream))
                     {
-                        foreach (string line in dataToSave)
+                        foreach (string line in DataToSave)
                         {
                             writer.Write(line);
                         }
@@ -75,20 +84,20 @@ namespace TaskTwo.OurNewSerializer
 
                     while ((line = reader.ReadLine()) != null)
                     {
-                        deserializeInfo.Add(line);
+                        DeserializeInfo.Add(line);
                     }
                 }
 
-                foreach (string item in deserializeInfo)
+                foreach (string item in DeserializeInfo)
                 {
-                    String[] splits = item.Split('|');
+                    String[] splits = item.Split(';');
                     References.Add(splits[2], FormatterServices.GetSafeUninitializedObject(Binder.BindToType(splits[0], splits[1])));
                 }
             }
 
-            foreach (string singleDataRow in deserializeInfo)
+            foreach (string singleDataRow in DeserializeInfo)
             {
-                string[] dividedDataRow = singleDataRow.Split('|');
+                string[] dividedDataRow = singleDataRow.Split(';');
                 Type typeOfDeserializedObj = Binder.BindToType(dividedDataRow[0], dividedDataRow[1]);
 
                 if (typeOfDeserializedObj != null)
@@ -114,13 +123,16 @@ namespace TaskTwo.OurNewSerializer
 
         protected override void WriteDateTime(DateTime value, string name)
         {
-            DataRow += ";" + value.GetType() + "=" + name + "=" + value.ToUniversalTime().ToString();
+            DataRow +=
+                ";" + value.GetType()
+                    + "=" + name
+                    + "=" + value.ToUniversalTime().ToString();
         }
 
 
         protected override void WriteObjectRef(object obj, string name, Type memberType)
         {
-            if (memberType.Equals(typeof(String)))
+            if (memberType == typeof(String))
             {
                 WriteString(obj, name);
             }
@@ -141,10 +153,10 @@ namespace TaskTwo.OurNewSerializer
         {
             if (obj != null)
             {
-                DataRow += ";" + obj.GetType() + "=" + name + "=" + this.m_idGenerator.GetId(obj, out bool firstTime).ToString();
+                DataRow += ";" + obj.GetType() + "=" + name + "=" + m_idGenerator.GetId(obj, out bool firstTime).ToString();
                 if (firstTime)
                 {
-                    this.m_objectQueue.Enqueue(obj);
+                    m_objectQueue.Enqueue(obj);
                 }
             }
             else
@@ -259,11 +271,6 @@ namespace TaskTwo.OurNewSerializer
 
         #region private
 
-
-        private string DataRow = "";
-        private List<string> dataToSave = new List<string>();
-        private List<string> deserializeInfo = new List<string>();
-        private Dictionary<string, object> References = new Dictionary<string, object>();
 
 
         private Type GetTypeFromSplitDeserializeInfoRow(string[] splitDeserializeRow)
