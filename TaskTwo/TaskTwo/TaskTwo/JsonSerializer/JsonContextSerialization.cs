@@ -51,11 +51,11 @@ namespace TaskTwo.JsonSerializer
             {
                 using (StreamReader reader = new StreamReader("..\\..\\Files\\WholeContext.json"))
                 {
-                    var JsonString = reader.ReadToEnd();
+                    var jsonString = reader.ReadToEnd();
                     // remove last new line
-                    JsonString = JsonString.Remove(JsonString.Length - 2);
+                    jsonString = jsonString.Remove(jsonString.Length - 2);
 
-                    deserialized = JsonConvert.DeserializeObject<DataContext>(JsonString,
+                    deserialized = JsonConvert.DeserializeObject<DataContext>(jsonString,
                         new JsonSerializerSettings {
                             TypeNameHandling = TypeNameHandling.Auto,
                             MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
@@ -73,18 +73,17 @@ namespace TaskTwo.JsonSerializer
 
         public void Fill(DataContext context)
         {
-            string JsonString = null;
             DataContext deserialized = null;
 
             try
             {
                 using (StreamReader reader = new StreamReader("..\\..\\Files\\WholeContext.json"))
                 {
-                    JsonString = reader.ReadToEnd();
+                    var jsonString = reader.ReadToEnd();
                     // remove last new line
-                    JsonString = JsonString.Remove(JsonString.Length - 2);
+                    jsonString = jsonString.Remove(jsonString.Length - 2);
 
-                    deserialized = JsonConvert.DeserializeObject<DataContext>(JsonString, new JsonSerializerSettings
+                    deserialized = JsonConvert.DeserializeObject<DataContext>(jsonString, new JsonSerializerSettings
                     {
                         TypeNameHandling = TypeNameHandling.All,
                         MetadataPropertyHandling = MetadataPropertyHandling.ReadAhead,
