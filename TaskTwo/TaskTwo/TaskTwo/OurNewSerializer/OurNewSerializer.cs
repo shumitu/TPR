@@ -37,16 +37,16 @@ namespace TaskTwo.OurNewSerializer
         }
 
 
-        public override void Serialize(Stream serializationStream, object graph)
+        public override void Serialize(Stream serializationStream, object desiredObjToSerialize)
         {
-            if (graph is ISerializable data)
+            if (desiredObjToSerialize is ISerializable data)
             {
-                SerializationInfo info = new SerializationInfo(graph.GetType(), new FormatterConverter());
-                Binder.BindToName(graph.GetType(), out string assemblyName, out string typeName);
-                DataRow += assemblyName + "|" + typeName + "|" + this.m_idGenerator.GetId(graph, out bool firstTime);
-                data.GetObjectData(info, Context);
+                SerializationInfo infoAboutObject = new SerializationInfo(desiredObjToSerialize.GetType(), new FormatterConverter());
+                Binder.BindToName(desiredObjToSerialize.GetType(), out string assemblyName, out string typeName);
+                DataRow += assemblyName + "|" + typeName + "|" + this.m_idGenerator.GetId(desiredObjToSerialize, out bool firstTime);
+                data.GetObjectData(infoAboutObject, Context);
 
-                foreach (SerializationEntry item in info)
+                foreach (SerializationEntry item in infoAboutObject)
                 {
                     WriteMember(item.Name, item.Value);
                 }
@@ -63,7 +63,7 @@ namespace TaskTwo.OurNewSerializer
             }
             else
             {
-                throw new ArgumentException("Chosen graph is not Iserializable");
+                throw new ArgumentException("Chosen desiredObjToSerialize is not Iserializable");
             }
         }
 

@@ -47,14 +47,15 @@ namespace TaskTwo.OurSerializer
         public DataContext Deserialize(Stream stream)
         {
             DataContext context = new DataContext();
-            StreamReader sr = new StreamReader(stream);
-            var fileDataLine = "";
-            while ((fileDataLine = sr.ReadLine()) != null)
+            using (StreamReader sr = new StreamReader(stream))
             {
-                char[] separator = { DataSeparator };
-                DeserializedData.Add(fileDataLine.Split(separator));
+                var fileDataLine = "";
+                while ((fileDataLine = sr.ReadLine()) != null)
+                {
+                    char[] separator = { DataSeparator };
+                    DeserializedData.Add(fileDataLine.Split(separator));
+                }
             }
-
             DeserializeDecision(context);
             return context;
         }
