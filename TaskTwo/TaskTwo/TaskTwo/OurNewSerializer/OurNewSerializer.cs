@@ -88,10 +88,9 @@ namespace TaskTwo.OurNewSerializer
         {
             if (serializationStream != null)
             {
+                String line;
                 using (StreamReader reader = new StreamReader(serializationStream))
                 {
-                    String line;
-
                     while ((line = reader.ReadLine()) != null)
                     {
                         DeserializeInfo.Add(line);
@@ -128,15 +127,12 @@ namespace TaskTwo.OurNewSerializer
         }
 
 
-        #region WriteRegion
-
-
         protected override void WriteDateTime(DateTime value, string name)
         {
             DataRow +=
                 ";" + value.GetType()
                     + "=" + name
-                    + "=" + value.ToUniversalTime().ToString();
+                    + "=" + value.ToUniversalTime();
         }
 
 
@@ -163,7 +159,7 @@ namespace TaskTwo.OurNewSerializer
         {
             if (obj != null)
             {
-                DataRow += ";" + obj.GetType() + "=" + name + "=" + m_idGenerator.GetId(obj, out bool firstTime).ToString();
+                DataRow += ";" + obj.GetType() + "=" + name + "=" + m_idGenerator.GetId(obj, out bool firstTime);
                 if (firstTime)
                 {
                     m_objectQueue.Enqueue(obj);
@@ -178,13 +174,9 @@ namespace TaskTwo.OurNewSerializer
 
         protected override void WriteSingle(float value, string name)
         {
-            DataRow += ";" + value.GetType() + "=" + name + "=" + value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture);
+            DataRow += ";" + value.GetType() + "=" + name + "=" + value.ToString("0.00", CultureInfo.InvariantCulture);
         }
 
-
-        #endregion
-
-        #region private
 
         private void GetInfoFromDeserializedInfoRow(SerializationInfo info, string[] splitedDeserializationInfoRow)
         {
@@ -220,10 +212,10 @@ namespace TaskTwo.OurNewSerializer
             switch (type.ToString())
             {
                 case "System.Single":
-                    info.AddValue(name, Single.Parse(val, System.Globalization.CultureInfo.InvariantCulture));
+                    info.AddValue(name, Single.Parse(val, CultureInfo.InvariantCulture));
                     break;
                 case "System.DateTime":
-                    info.AddValue(name, DateTime.Parse(val, null, System.Globalization.DateTimeStyles.AssumeLocal));
+                    info.AddValue(name, DateTime.Parse(val, null, DateTimeStyles.AssumeLocal));
                     break;
                 case "System.String":
                     info.AddValue(name, val);
@@ -231,7 +223,5 @@ namespace TaskTwo.OurNewSerializer
             }
         }
 
-
-        #endregion
     }
 }

@@ -17,7 +17,7 @@ namespace TaskTwo.JsonSerializer
 
         public JsonContextSerialization(DataRepository rep)
         {
-            this.cont = rep.context;
+            cont = rep.context;
         }
 
         public void SerializeWhole()

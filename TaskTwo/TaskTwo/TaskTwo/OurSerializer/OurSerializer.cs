@@ -12,8 +12,6 @@ namespace TaskTwo.OurSerializer
         private string SerializedData { get; set; }
         private Dictionary<long, object> DeserializedObj { get; set; }
         public List<string[]> DeserializedData { get; set; }
-        public string Path { get; set; }
-        public string DeserializedString { get; set; }
         private char DataSeparator = ';';
         private Stream InputStream { get; set; }
 
