@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Threading;
@@ -25,7 +26,16 @@ namespace TaskTwo.OurNewSerializer
             DataToSave = new List<string>();
             DeserializeInfo = new List<string>();
             References = new Dictionary<string, object>();
-    }
+
+            CultureInfo myCI = new CultureInfo("pl-PL", false);
+
+            // Clones myCI and modifies the DTFI and NFI instances associated with the clone.
+            CultureInfo myCIclone = (CultureInfo) myCI.Clone();
+            myCIclone.DateTimeFormat.DateSeparator = "-";
+
+            Thread.CurrentThread.CurrentCulture = myCIclone;
+            Thread.CurrentThread.CurrentUICulture = myCIclone;
+        }
 
         public override void Serialize(Stream serializationStream, object desiredObjToSerialize)
         {

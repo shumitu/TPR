@@ -31,9 +31,9 @@ namespace TaskTwoTests.Tests
 
             Console.WriteLine(result);
 
-            Assert.AreEqual(result, "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassA;1;TaskTwo.Data.TestClassB=AnotherTestClassB=2;System.Single=Id=1.50;System.DateTime=Date=09-11-2019 23:00:00;System.String=Text=\"This is TestClassA\"\n"
-                                  + "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassB;2;TaskTwo.Data.TestClassC=AnotherTestClassC=3;System.Single=Id=2.50;System.DateTime=Date=10-11-2019 23:00:00;System.String=Text=\"This is TestClassB\"\n"
-                                  + "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassC;3;TaskTwo.Data.TestClassA=AnotherTestClassA=1;System.Single=Id=3.50;System.DateTime=Date=11-11-2019 23:00:00;System.String=Text=\"This is TestClassC\"\n"
+            Assert.AreEqual(result, "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassA;1;TaskTwo.Data.TestClassB=AnotherTestClassB=2;System.Single=Id=1.50;System.DateTime=Date=2019-11-09 23:00:00;System.String=Text=\"This is TestClassA\"\n"
+                                  + "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassB;2;TaskTwo.Data.TestClassC=AnotherTestClassC=3;System.Single=Id=2.50;System.DateTime=Date=2019-11-10 23:00:00;System.String=Text=\"This is TestClassB\"\n"
+                                  + "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassC;3;TaskTwo.Data.TestClassA=AnotherTestClassA=1;System.Single=Id=3.50;System.DateTime=Date=2019-11-11 23:00:00;System.String=Text=\"This is TestClassC\"\n"
             );
             File.Delete("..\\..\\..\\TaskTwo\\Files\\test.txt");
         }
@@ -56,9 +56,9 @@ namespace TaskTwoTests.Tests
             }
 
             string result = File.ReadAllText("..\\..\\..\\TaskTwo\\Files\\test.txt");
-            Assert.AreEqual(result, "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassB;1;TaskTwo.Data.TestClassC=AnotherTestClassC=2;System.Single=Id=2.50;System.DateTime=Date=10-11-2019 23:00:00;System.String=Text=\"This is TestClassB\"\n"
-                                  + "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassC;2;TaskTwo.Data.TestClassA=AnotherTestClassA=3;System.Single=Id=3.50;System.DateTime=Date=11-11-2019 23:00:00;System.String=Text=\"This is TestClassC\"\n"
-                                  + "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassA;3;TaskTwo.Data.TestClassB=AnotherTestClassB=1;System.Single=Id=1.50;System.DateTime=Date=09-11-2019 23:00:00;System.String=Text=\"This is TestClassA\"\n"
+            Assert.AreEqual(result, "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassB;1;TaskTwo.Data.TestClassC=AnotherTestClassC=2;System.Single=Id=2.50;System.DateTime=Date=2019-11-10 23:00:00;System.String=Text=\"This is TestClassB\"\n"
+                                  + "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassC;2;TaskTwo.Data.TestClassA=AnotherTestClassA=3;System.Single=Id=3.50;System.DateTime=Date=2019-11-11 23:00:00;System.String=Text=\"This is TestClassC\"\n"
+                                  + "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassA;3;TaskTwo.Data.TestClassB=AnotherTestClassB=1;System.Single=Id=1.50;System.DateTime=Date=2019-11-09 23:00:00;System.String=Text=\"This is TestClassA\"\n"
             );
             File.Delete("..\\..\\..\\TaskTwo\\Files\\test.txt");
         }
@@ -81,9 +81,9 @@ namespace TaskTwoTests.Tests
             }
 
             string result = File.ReadAllText("..\\..\\..\\TaskTwo\\Files\\test.txt");
-            Assert.AreEqual(result, "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassC;1;TaskTwo.Data.TestClassA=AnotherTestClassA=2;System.Single=Id=3.50;System.DateTime=Date=11-11-2019 23:00:00;System.String=Text=\"This is TestClassC\"\n"
-                                  + "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassA;2;TaskTwo.Data.TestClassB=AnotherTestClassB=3;System.Single=Id=1.50;System.DateTime=Date=09-11-2019 23:00:00;System.String=Text=\"This is TestClassA\"\n"
-                                  + "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassB;3;TaskTwo.Data.TestClassC=AnotherTestClassC=1;System.Single=Id=2.50;System.DateTime=Date=10-11-2019 23:00:00;System.String=Text=\"This is TestClassB\"\n"
+            Assert.AreEqual(result, "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassC;1;TaskTwo.Data.TestClassA=AnotherTestClassA=2;System.Single=Id=3.50;System.DateTime=Date=2019-11-11 23:00:00;System.String=Text=\"This is TestClassC\"\n"
+                                  + "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassA;2;TaskTwo.Data.TestClassB=AnotherTestClassB=3;System.Single=Id=1.50;System.DateTime=Date=2019-11-09 23:00:00;System.String=Text=\"This is TestClassA\"\n"
+                                  + "TaskTwo, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;TaskTwo.Data.TestClassB;3;TaskTwo.Data.TestClassC=AnotherTestClassC=1;System.Single=Id=2.50;System.DateTime=Date=2019-11-10 23:00:00;System.String=Text=\"This is TestClassB\"\n"
             );
             File.Delete("..\\..\\..\\TaskTwo\\Files\\test.txt");
         }
