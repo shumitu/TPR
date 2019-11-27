@@ -11,6 +11,9 @@ namespace TaskTwo.Data
         public string Text { get; set; }
 
 
+        public TestClassC() { }
+
+
         public TestClassC(TestClassA anotherTestClassA, float id, DateTime date, string text)
         {
             AnotherTestClassA = anotherTestClassA;

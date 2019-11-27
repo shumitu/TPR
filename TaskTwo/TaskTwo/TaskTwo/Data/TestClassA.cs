@@ -8,7 +8,10 @@ namespace TaskTwo.Data
         public TestClassB AnotherTestClassB { get; set; }
         public float Id { get; set; }
         public DateTime Date { get; set; }
-        public string Text { get; set; }        
+        public string Text { get; set; }
+
+
+        public TestClassA() { }
 
 
         public TestClassA(TestClassB anotherTestClassB, float id, DateTime date, string text)
