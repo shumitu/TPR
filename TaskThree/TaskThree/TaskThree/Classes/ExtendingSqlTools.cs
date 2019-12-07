@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using TaskThree.Files;
 
 namespace TaskThree.Classes
@@ -32,9 +33,10 @@ namespace TaskThree.Classes
             List<ProductVendor> vendorsList)
         {
             string resultOfQuery = "";
-            var result = productsList.Join(vendorsList, singleProduct => singleProduct.ProductID,
-                singleVendor => singleVendor.ProductID,
-                (singleProduct, singleVendor) => singleProduct.Name + " - " + singleVendor.Vendor.Name).ToList();
+            var result = productsList.Join(vendorsList,
+                        singleProduct => singleProduct.ProductID,
+                        singleVendor => singleVendor.ProductID,
+                        (singleProduct, singleVendor) => singleProduct.Name + " - " + singleVendor.Vendor.Name).ToList();
 
             foreach (var singleLine in result)
             {
@@ -45,5 +47,25 @@ namespace TaskThree.Classes
 
             return resultOfQuery;
         }
+
+        public static string GetProductsReturnWithSuppliersOther(this List<Product> productsList,
+            List<ProductVendor> vendorsList)
+        {
+            string resultOfQuery = "";
+            var result = (from product in productsList
+                        from vendor in vendorsList
+                        where vendor.ProductID.Equals(product.ProductID)
+                        select product.Name + " - " + vendor.Vendor.Name).ToList();
+
+            foreach (var singleLine in result)
+            {
+                resultOfQuery += singleLine + "\n";
+            }
+
+            resultOfQuery = resultOfQuery.Remove(resultOfQuery.Length - 2);
+
+            return resultOfQuery;
+        }
+
     }
 }
