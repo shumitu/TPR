@@ -5,15 +5,16 @@ using TaskThree.Files;
 
 namespace TaskThree.MyProduct
 {
-    class MyProductDataContext
+    public class MyProductDataContext
     {
-        public List<MyProduct> myProducts { get; private set; }
+        public static List<MyProduct> myProducts { get; private set; }
+
 
         public MyProductDataContext(DataDataContext myDataContext)
         {
             int i = 0;
 
-            this.myProducts = myDataContext.Product.AsEnumerable().Select(product => new MyProduct(product, i++)).ToList();
-        }      
+            myProducts = myDataContext.Product.AsEnumerable().Select(product => new MyProduct(product, i++)).ToList();
+        }
     }
 }

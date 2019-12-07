@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TaskThree;
 using TaskThree.Classes;
 using TaskThree.Files;
 

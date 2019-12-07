@@ -54,6 +54,7 @@
     <Compile Include="BasicSqlToolsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ExtendingSqlToolsTest.cs" />
+    <Compile Include="MyProductToolsTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
