@@ -6,7 +6,7 @@ using TaskThree.Files;
 
 namespace TaskThree
 {
-    class Tools
+    public class Tools
     {
         public static List<Product> GetProductsByName(string name)
         {
@@ -126,7 +126,7 @@ namespace TaskThree
                                   where product.ProductSubcategory.ProductCategory.Name.Equals(category.Name)
                                   select product.StandardCost).ToList().Sum();
 
-                return (int)answer;
+                return (double)answer;
             }
         }
     }

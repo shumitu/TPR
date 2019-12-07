@@ -56,7 +56,6 @@
     </Compile>
     <Compile Include="Tools.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Files\Data.dbml">
