@@ -1,24 +1,25 @@
 ﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TaskThree;
+using TaskThree.Classes;
 using TaskThree.Files;
 
 
 namespace TaskThreeTests
 {
     [TestClass]
-    public class ToolsTest
+    public class BasicSqlToolsTest
     {
         [TestMethod]
         public void ProductsByName()
         {
-            List<Product> list = Tools.GetProductsByName("Reflector");
+            List<Product> list = BasicSqlTools.GetProductsByName("Paint");
 
-            Assert.AreEqual(list.Count, 1);
+            Assert.AreEqual(list.Count, 5);
 
             foreach (Product product in list)
             {
-                Assert.IsTrue(product.Name.Contains("Reflector"));
+                Assert.IsTrue(product.Name.Contains("Paint"));
             }
         }
 
@@ -26,25 +27,27 @@ namespace TaskThreeTests
         [TestMethod]
         public void ProductsByVendorName()
         {
-            List<Product> list = Tools.GetProductsByVendorName("Australia Bike Retailer");
+            List<Product> list = BasicSqlTools.GetProductsByVendorName("Australia Bike Retailer");
 
             Assert.AreEqual(list.Count, 16);
+
         }
 
 
         [TestMethod]
         public void ProductNamesByVendorName()
         {
-            List<string> list = Tools.GetProductNamesByVendorName("Allenson Cycles");
+            List<string> list = BasicSqlTools.GetProductNamesByVendorName("Allenson Cycles");
 
             Assert.AreEqual(list[0], "Seat Post");
+            Assert.AreEqual(list.Count, 1);
         }
 
 
         [TestMethod]
         public void ProductVendorByProductName()
         {
-            string name = Tools.GetProductVendorByProductName("Bearing Ball");
+            string name = BasicSqlTools.GetProductVendorByProductName("Bearing Ball");
 
             Assert.AreEqual(name, "Wood Fitness");
         }
@@ -53,7 +56,7 @@ namespace TaskThreeTests
         [TestMethod]
         public void ProductsWithNRecentReviews()
         {
-            List<Product> list = Tools.GetProductsWithNRecentReviews(2);
+            List<Product> list = BasicSqlTools.GetProductsWithNRecentReviews(2);
 
             Assert.AreEqual(list.Count, 1);
             Assert.IsNotNull(list.Find(product => product.ProductID == 937));
@@ -63,7 +66,7 @@ namespace TaskThreeTests
         [TestMethod]
         public void NRecentlyReviewedProducts()
         {
-            List<Product> list = Tools.GetNRecentlyReviewedProducts(2);
+            List<Product> list = BasicSqlTools.GetNRecentlyReviewedProducts(2);
 
             Assert.AreEqual(list.Count, 2);
             Assert.AreEqual(list[0].Name, "HL Mountain Pedal");
@@ -74,7 +77,7 @@ namespace TaskThreeTests
         [TestMethod]
         public void NProductsFromCategory()
         {
-            List<Product> list = Tools.GetNProductsFromCategory("Components", 5);
+            List<Product> list = BasicSqlTools.GetNProductsFromCategory("Components", 5);
 
             Assert.AreEqual(list.Count, 5);
         }
@@ -85,7 +88,7 @@ namespace TaskThreeTests
         {
             ProductCategory category = new ProductCategory();
             category.Name = "Bikes";
-            double totalCost = Tools.GetTotalStandardCostByCategory(category);
+            double totalCost = BasicSqlTools.GetTotalStandardCostByCategory(category);
 
             Assert.AreEqual(totalCost, 92092,823);
         }

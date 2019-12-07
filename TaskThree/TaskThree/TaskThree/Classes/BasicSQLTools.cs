@@ -5,7 +5,7 @@ using TaskThree.Files;
 
 namespace TaskThree.Classes
 {
-    public class Tools
+    public class BasicSqlTools
     {
         public static List<Product> GetProductsByName(string namePart)
         {
@@ -115,7 +115,7 @@ namespace TaskThree.Classes
         }
 
 
-        public static double GetTotalStandardCostByCategory(ProductCategory category)
+        public static int GetTotalStandardCostByCategory(ProductCategory category)
         {
             using (DataDataContext dataContext = new DataDataContext())
             {
@@ -125,7 +125,7 @@ namespace TaskThree.Classes
                                   where product.ProductSubcategory.ProductCategory.Name.Equals(category.Name)
                                   select product.StandardCost).ToList().Sum();
 
-                return (double)answer;
+                return (int)answer;
             }
         }
     }
