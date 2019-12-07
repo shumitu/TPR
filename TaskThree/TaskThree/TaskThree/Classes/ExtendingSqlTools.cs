@@ -41,6 +41,8 @@ namespace TaskThree.Classes
                 resultOfQuery += singleLine + "\n";
             }
 
+            resultOfQuery = resultOfQuery.Remove(resultOfQuery.Length - 2);
+
             return resultOfQuery;
         }
     }
