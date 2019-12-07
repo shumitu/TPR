@@ -12,7 +12,7 @@ namespace TaskThree.MyProduct
 
         public MyProductDataContext(DataDataContext myDataContext)
         {
-            int i = 0;
+            var i = 0;
 
             MyProducts = myDataContext.Product.AsEnumerable().Select(product => new MyProduct(product, i++)).ToList();
         }
