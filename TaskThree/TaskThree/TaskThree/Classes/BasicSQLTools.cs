@@ -5,7 +5,7 @@ using TaskThree.Files;
 
 namespace TaskThree.Classes
 {
-    public class BasicSqlTools
+    public static class BasicSqlTools
     {
         public static List<Product> GetProductsByName(string namePart)
         {
