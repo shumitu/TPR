@@ -8,7 +8,7 @@ namespace TaskThree.MyProduct
     {
         public static List<MyProduct> GetMyProductsByName(string nameContains)
         {
-            return (from product in MyProductDataContext.myProducts
+            return (from product in MyProductDataContext.MyProducts
                     where product.Name.ToLower().Contains(nameContains.ToLower())
                     select product).ToList();
         }
@@ -16,7 +16,7 @@ namespace TaskThree.MyProduct
 
         public static List<MyProduct> GetMyProductsWithNRecentReviews(int howManyReviews)
         {
-            return (from product in MyProductDataContext.myProducts
+            return (from product in MyProductDataContext.MyProducts
                     where product.ProductReview.Count == howManyReviews
                     select product).ToList();
         }
@@ -24,7 +24,7 @@ namespace TaskThree.MyProduct
 
         public static List<MyProduct> GetNMyProductsFromCategory(string categoryName, int number)
         {
-            return (from product in MyProductDataContext.myProducts
+            return (from product in MyProductDataContext.MyProducts
                     where product.ProductSubcategory != null && product.ProductSubcategory.ProductCategory.Name.Equals(categoryName)
                     select product).Take(number).ToList();
         }

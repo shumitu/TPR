@@ -85,8 +85,7 @@ namespace TaskThreeTests
         [TestMethod]
         public void TotalStandardCostByCategory()
         {
-            ProductCategory category = new ProductCategory();
-            category.Name = "Bikes";
+            ProductCategory category = new ProductCategory {Name = "Bikes"};
             double totalCost = BasicSqlTools.GetTotalStandardCostByCategory(category);
 
             Assert.AreEqual(totalCost, 92092,823);

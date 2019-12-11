@@ -72,7 +72,6 @@ namespace TaskThree.Classes
         {
             using (DataDataContext dataContext = new DataDataContext())
             {
-                Table<ProductReview> reviews = dataContext.GetTable<ProductReview>();
 
                 Table<Product> products = dataContext.GetTable<Product>();               
 
