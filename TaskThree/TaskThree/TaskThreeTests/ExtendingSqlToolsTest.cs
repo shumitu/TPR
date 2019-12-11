@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Linq;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TaskThree.Classes;
 using TaskThree.Files;
+
 
 namespace TaskThreeTests
 {
@@ -28,6 +28,7 @@ namespace TaskThreeTests
             }
         }
 
+
         [TestMethod]
         public void ListProductsWithoutCategoryOther()
         {
@@ -44,6 +45,7 @@ namespace TaskThreeTests
                 Assert.AreEqual(resultList.Count, 209);
             }
         }
+
 
         [TestMethod]
         public void GetProductsReturnWithSuppliers()
@@ -68,6 +70,7 @@ namespace TaskThreeTests
             }
         }
 
+
         [TestMethod]
         public void GetProductsReturnWithSuppliersOther()
         {
@@ -91,6 +94,7 @@ namespace TaskThreeTests
             }
         }
 
+
         [TestMethod]
         public void ListProductsAsPage()
         {
@@ -105,7 +109,6 @@ namespace TaskThreeTests
                 int no = productsList.Count;
                 resultList = productsList.GetProductsReturnThemAsPage(no / 10 + 1, 10);
                 Assert.AreEqual(resultList.Count, no % 10);
-
             }
         }
     }

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net.Sockets;
 using TaskThree.Files;
 
 
@@ -52,6 +51,7 @@ namespace TaskThree.Classes
             return resultOfQuery;
         }
 
+
         public static string GetProductsReturnWithSuppliersOther(this List<Product> productsList,
             List<ProductVendor> vendorsList)
         {
@@ -70,6 +70,5 @@ namespace TaskThree.Classes
 
             return resultOfQuery;
         }
-
     }
 }
