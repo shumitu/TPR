@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Linq;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TaskThree.Classes;
 using TaskThree.Files;
+
 
 namespace TaskThreeTests
 {
@@ -28,6 +28,7 @@ namespace TaskThreeTests
             }
         }
 
+
         [TestMethod]
         public void ListProductsWithoutCategoryOther()
         {
@@ -44,6 +45,7 @@ namespace TaskThreeTests
                 Assert.AreEqual(resultList.Count, 209);
             }
         }
+
 
         [TestMethod]
         public void ListProductsAsPage()
@@ -67,6 +69,5 @@ namespace TaskThreeTests
                 Assert.IsTrue(lines.Contains("HL Road Pedal - Compete Enterprises, Inc"));
             }
         }
-
     }
 }

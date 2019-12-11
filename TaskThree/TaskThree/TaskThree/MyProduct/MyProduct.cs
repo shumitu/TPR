@@ -12,7 +12,9 @@ namespace TaskThree.MyProduct
             foreach (var property in product.GetType().GetProperties())
             {
                 if (property.CanWrite)
+                {
                     property.SetValue(this, property.GetValue(product));
+                }
             }
 
             this.Modify = modify;

@@ -2,6 +2,7 @@
 using System.Linq;
 using TaskThree.Files;
 
+
 namespace TaskThree.Classes
 {
     public static class ExtendingSqlTools
@@ -14,10 +15,12 @@ namespace TaskThree.Classes
             return result;
         }
 
+
         public static List<Product> GetProductsWithoutAnyCategoryOther(this List<Product> productsList)
         {
             return productsList.Where(prod => prod.ProductSubcategory == null).ToList();
         }
+
 
         public static List<Product> GetProductsReturnThemAsPage(this List<Product> productsList, int numberOfPage,
             int numberOfProduct)
@@ -27,6 +30,7 @@ namespace TaskThree.Classes
 
             return (List<Product>) result;
         }
+
 
         public static string GetProductsReturnWithSuppliers(this List<Product> productsList,
             List<ProductVendor> vendorsList)
