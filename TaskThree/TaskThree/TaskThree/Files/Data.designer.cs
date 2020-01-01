@@ -12145,11 +12145,11 @@ namespace TaskThree.Files
 		
 		private EntitySet<ProductModelIllustration> _ProductModelIllustration;
 		
-		private EntitySet<ProductModelIllustration1> _ProductModelIllustration1;
-		
 		private EntitySet<ProductModelProductDescriptionCulture> _ProductModelProductDescriptionCulture;
 		
 		private EntitySet<ProductModelProductDescriptionCulture1> _ProductModelProductDescriptionCulture1;
+		
+		private EntitySet<ProductModelIllustration1> _ProductModelIllustration1;
 		
 		private EntitySet<Product1> _Product1;
 		
@@ -12175,9 +12175,9 @@ namespace TaskThree.Files
 		{
 			this._Product = new EntitySet<Product>(new Action<Product>(this.attach_Product), new Action<Product>(this.detach_Product));
 			this._ProductModelIllustration = new EntitySet<ProductModelIllustration>(new Action<ProductModelIllustration>(this.attach_ProductModelIllustration), new Action<ProductModelIllustration>(this.detach_ProductModelIllustration));
-			this._ProductModelIllustration1 = new EntitySet<ProductModelIllustration1>(new Action<ProductModelIllustration1>(this.attach_ProductModelIllustration1), new Action<ProductModelIllustration1>(this.detach_ProductModelIllustration1));
 			this._ProductModelProductDescriptionCulture = new EntitySet<ProductModelProductDescriptionCulture>(new Action<ProductModelProductDescriptionCulture>(this.attach_ProductModelProductDescriptionCulture), new Action<ProductModelProductDescriptionCulture>(this.detach_ProductModelProductDescriptionCulture));
 			this._ProductModelProductDescriptionCulture1 = new EntitySet<ProductModelProductDescriptionCulture1>(new Action<ProductModelProductDescriptionCulture1>(this.attach_ProductModelProductDescriptionCulture1), new Action<ProductModelProductDescriptionCulture1>(this.detach_ProductModelProductDescriptionCulture1));
+			this._ProductModelIllustration1 = new EntitySet<ProductModelIllustration1>(new Action<ProductModelIllustration1>(this.attach_ProductModelIllustration1), new Action<ProductModelIllustration1>(this.detach_ProductModelIllustration1));
 			this._Product1 = new EntitySet<Product1>(new Action<Product1>(this.attach_Product1), new Action<Product1>(this.detach_Product1));
 			OnCreated();
 		}
@@ -12328,19 +12328,6 @@ namespace TaskThree.Files
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ProductModel1_ProductModelIllustration1", Storage="_ProductModelIllustration1", ThisKey="ProductModelID", OtherKey="ProductModelID")]
-		public EntitySet<ProductModelIllustration1> ProductModelIllustration1
-		{
-			get
-			{
-				return this._ProductModelIllustration1;
-			}
-			set
-			{
-				this._ProductModelIllustration1.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ProductModel1_ProductModelProductDescriptionCulture", Storage="_ProductModelProductDescriptionCulture", ThisKey="ProductModelID", OtherKey="ProductModelID")]
 		public EntitySet<ProductModelProductDescriptionCulture> ProductModelProductDescriptionCulture
 		{
@@ -12364,6 +12351,19 @@ namespace TaskThree.Files
 			set
 			{
 				this._ProductModelProductDescriptionCulture1.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ProductModel1_ProductModelIllustration1", Storage="_ProductModelIllustration1", ThisKey="ProductModelID", OtherKey="ProductModelID")]
+		public EntitySet<ProductModelIllustration1> ProductModelIllustration1
+		{
+			get
+			{
+				return this._ProductModelIllustration1;
+			}
+			set
+			{
+				this._ProductModelIllustration1.Assign(value);
 			}
 		}
 		
@@ -12424,18 +12424,6 @@ namespace TaskThree.Files
 			entity.ProductModel1 = null;
 		}
 		
-		private void attach_ProductModelIllustration1(ProductModelIllustration1 entity)
-		{
-			this.SendPropertyChanging();
-			entity.ProductModel1 = this;
-		}
-		
-		private void detach_ProductModelIllustration1(ProductModelIllustration1 entity)
-		{
-			this.SendPropertyChanging();
-			entity.ProductModel1 = null;
-		}
-		
 		private void attach_ProductModelProductDescriptionCulture(ProductModelProductDescriptionCulture entity)
 		{
 			this.SendPropertyChanging();
@@ -12455,6 +12443,18 @@ namespace TaskThree.Files
 		}
 		
 		private void detach_ProductModelProductDescriptionCulture1(ProductModelProductDescriptionCulture1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.ProductModel1 = null;
+		}
+		
+		private void attach_ProductModelIllustration1(ProductModelIllustration1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.ProductModel1 = this;
+		}
+		
+		private void detach_ProductModelIllustration1(ProductModelIllustration1 entity)
 		{
 			this.SendPropertyChanging();
 			entity.ProductModel1 = null;
@@ -13712,33 +13712,33 @@ namespace TaskThree.Files
 		
 		private EntitySet<ProductCostHistory> _ProductCostHistory;
 		
-		private EntitySet<ProductCostHistory1> _ProductCostHistory1;
-		
 		private EntitySet<ProductInventory> _ProductInventory;
-		
-		private EntitySet<ProductInventory1> _ProductInventory1;
 		
 		private EntitySet<ProductListPriceHistory> _ProductListPriceHistory;
 		
-		private EntitySet<ProductListPriceHistory1> _ProductListPriceHistory1;
-		
 		private EntitySet<ProductProductPhoto> _ProductProductPhoto;
-		
-		private EntitySet<ProductProductPhoto1> _ProductProductPhoto1;
 		
 		private EntitySet<ProductReview> _ProductReview;
 		
-		private EntitySet<ProductReview1> _ProductReview1;
-		
 		private EntitySet<TransactionHistory> _TransactionHistory;
-		
-		private EntitySet<TransactionHistory1> _TransactionHistory1;
 		
 		private EntitySet<WorkOrder> _WorkOrder;
 		
+		private EntitySet<ProductVendor> _ProductVendor;
+		
+		private EntitySet<ProductReview1> _ProductReview1;
+		
+		private EntitySet<TransactionHistory1> _TransactionHistory1;
+		
 		private EntitySet<WorkOrder1> _WorkOrder1;
 		
-		private EntitySet<ProductVendor> _ProductVendor;
+		private EntitySet<ProductProductPhoto1> _ProductProductPhoto1;
+		
+		private EntitySet<ProductListPriceHistory1> _ProductListPriceHistory1;
+		
+		private EntitySet<ProductInventory1> _ProductInventory1;
+		
+		private EntitySet<ProductCostHistory1> _ProductCostHistory1;
 		
 		private EntityRef<ProductModel> _ProductModel;
 		
@@ -13817,20 +13817,20 @@ namespace TaskThree.Files
 			this._BillOfMaterials = new EntitySet<BillOfMaterials>(new Action<BillOfMaterials>(this.attach_BillOfMaterials), new Action<BillOfMaterials>(this.detach_BillOfMaterials));
 			this._BillOfMaterials1 = new EntitySet<BillOfMaterials>(new Action<BillOfMaterials>(this.attach_BillOfMaterials1), new Action<BillOfMaterials>(this.detach_BillOfMaterials1));
 			this._ProductCostHistory = new EntitySet<ProductCostHistory>(new Action<ProductCostHistory>(this.attach_ProductCostHistory), new Action<ProductCostHistory>(this.detach_ProductCostHistory));
-			this._ProductCostHistory1 = new EntitySet<ProductCostHistory1>(new Action<ProductCostHistory1>(this.attach_ProductCostHistory1), new Action<ProductCostHistory1>(this.detach_ProductCostHistory1));
 			this._ProductInventory = new EntitySet<ProductInventory>(new Action<ProductInventory>(this.attach_ProductInventory), new Action<ProductInventory>(this.detach_ProductInventory));
-			this._ProductInventory1 = new EntitySet<ProductInventory1>(new Action<ProductInventory1>(this.attach_ProductInventory1), new Action<ProductInventory1>(this.detach_ProductInventory1));
 			this._ProductListPriceHistory = new EntitySet<ProductListPriceHistory>(new Action<ProductListPriceHistory>(this.attach_ProductListPriceHistory), new Action<ProductListPriceHistory>(this.detach_ProductListPriceHistory));
-			this._ProductListPriceHistory1 = new EntitySet<ProductListPriceHistory1>(new Action<ProductListPriceHistory1>(this.attach_ProductListPriceHistory1), new Action<ProductListPriceHistory1>(this.detach_ProductListPriceHistory1));
 			this._ProductProductPhoto = new EntitySet<ProductProductPhoto>(new Action<ProductProductPhoto>(this.attach_ProductProductPhoto), new Action<ProductProductPhoto>(this.detach_ProductProductPhoto));
-			this._ProductProductPhoto1 = new EntitySet<ProductProductPhoto1>(new Action<ProductProductPhoto1>(this.attach_ProductProductPhoto1), new Action<ProductProductPhoto1>(this.detach_ProductProductPhoto1));
 			this._ProductReview = new EntitySet<ProductReview>(new Action<ProductReview>(this.attach_ProductReview), new Action<ProductReview>(this.detach_ProductReview));
-			this._ProductReview1 = new EntitySet<ProductReview1>(new Action<ProductReview1>(this.attach_ProductReview1), new Action<ProductReview1>(this.detach_ProductReview1));
 			this._TransactionHistory = new EntitySet<TransactionHistory>(new Action<TransactionHistory>(this.attach_TransactionHistory), new Action<TransactionHistory>(this.detach_TransactionHistory));
-			this._TransactionHistory1 = new EntitySet<TransactionHistory1>(new Action<TransactionHistory1>(this.attach_TransactionHistory1), new Action<TransactionHistory1>(this.detach_TransactionHistory1));
 			this._WorkOrder = new EntitySet<WorkOrder>(new Action<WorkOrder>(this.attach_WorkOrder), new Action<WorkOrder>(this.detach_WorkOrder));
-			this._WorkOrder1 = new EntitySet<WorkOrder1>(new Action<WorkOrder1>(this.attach_WorkOrder1), new Action<WorkOrder1>(this.detach_WorkOrder1));
 			this._ProductVendor = new EntitySet<ProductVendor>(new Action<ProductVendor>(this.attach_ProductVendor), new Action<ProductVendor>(this.detach_ProductVendor));
+			this._ProductReview1 = new EntitySet<ProductReview1>(new Action<ProductReview1>(this.attach_ProductReview1), new Action<ProductReview1>(this.detach_ProductReview1));
+			this._TransactionHistory1 = new EntitySet<TransactionHistory1>(new Action<TransactionHistory1>(this.attach_TransactionHistory1), new Action<TransactionHistory1>(this.detach_TransactionHistory1));
+			this._WorkOrder1 = new EntitySet<WorkOrder1>(new Action<WorkOrder1>(this.attach_WorkOrder1), new Action<WorkOrder1>(this.detach_WorkOrder1));
+			this._ProductProductPhoto1 = new EntitySet<ProductProductPhoto1>(new Action<ProductProductPhoto1>(this.attach_ProductProductPhoto1), new Action<ProductProductPhoto1>(this.detach_ProductProductPhoto1));
+			this._ProductListPriceHistory1 = new EntitySet<ProductListPriceHistory1>(new Action<ProductListPriceHistory1>(this.attach_ProductListPriceHistory1), new Action<ProductListPriceHistory1>(this.detach_ProductListPriceHistory1));
+			this._ProductInventory1 = new EntitySet<ProductInventory1>(new Action<ProductInventory1>(this.attach_ProductInventory1), new Action<ProductInventory1>(this.detach_ProductInventory1));
+			this._ProductCostHistory1 = new EntitySet<ProductCostHistory1>(new Action<ProductCostHistory1>(this.attach_ProductCostHistory1), new Action<ProductCostHistory1>(this.detach_ProductCostHistory1));
 			this._ProductModel = default(EntityRef<ProductModel>);
 			this._ProductModel1 = default(EntityRef<ProductModel1>);
 			this._ProductSubcategory = default(EntityRef<ProductSubcategory>);
@@ -14397,19 +14397,6 @@ namespace TaskThree.Files
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product1_ProductCostHistory1", Storage="_ProductCostHistory1", ThisKey="ProductID", OtherKey="ProductID")]
-		public EntitySet<ProductCostHistory1> ProductCostHistory1
-		{
-			get
-			{
-				return this._ProductCostHistory1;
-			}
-			set
-			{
-				this._ProductCostHistory1.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product1_ProductInventory", Storage="_ProductInventory", ThisKey="ProductID", OtherKey="ProductID")]
 		public EntitySet<ProductInventory> ProductInventory
 		{
@@ -14420,19 +14407,6 @@ namespace TaskThree.Files
 			set
 			{
 				this._ProductInventory.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product1_ProductInventory1", Storage="_ProductInventory1", ThisKey="ProductID", OtherKey="ProductID")]
-		public EntitySet<ProductInventory1> ProductInventory1
-		{
-			get
-			{
-				return this._ProductInventory1;
-			}
-			set
-			{
-				this._ProductInventory1.Assign(value);
 			}
 		}
 		
@@ -14449,19 +14423,6 @@ namespace TaskThree.Files
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product1_ProductListPriceHistory1", Storage="_ProductListPriceHistory1", ThisKey="ProductID", OtherKey="ProductID")]
-		public EntitySet<ProductListPriceHistory1> ProductListPriceHistory1
-		{
-			get
-			{
-				return this._ProductListPriceHistory1;
-			}
-			set
-			{
-				this._ProductListPriceHistory1.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product1_ProductProductPhoto", Storage="_ProductProductPhoto", ThisKey="ProductID", OtherKey="ProductID")]
 		public EntitySet<ProductProductPhoto> ProductProductPhoto
 		{
@@ -14472,19 +14433,6 @@ namespace TaskThree.Files
 			set
 			{
 				this._ProductProductPhoto.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product1_ProductProductPhoto1", Storage="_ProductProductPhoto1", ThisKey="ProductID", OtherKey="ProductID")]
-		public EntitySet<ProductProductPhoto1> ProductProductPhoto1
-		{
-			get
-			{
-				return this._ProductProductPhoto1;
-			}
-			set
-			{
-				this._ProductProductPhoto1.Assign(value);
 			}
 		}
 		
@@ -14501,19 +14449,6 @@ namespace TaskThree.Files
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product1_ProductReview1", Storage="_ProductReview1", ThisKey="ProductID", OtherKey="ProductID")]
-		public EntitySet<ProductReview1> ProductReview1
-		{
-			get
-			{
-				return this._ProductReview1;
-			}
-			set
-			{
-				this._ProductReview1.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product1_TransactionHistory", Storage="_TransactionHistory", ThisKey="ProductID", OtherKey="ProductID")]
 		public EntitySet<TransactionHistory> TransactionHistory
 		{
@@ -14524,19 +14459,6 @@ namespace TaskThree.Files
 			set
 			{
 				this._TransactionHistory.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product1_TransactionHistory1", Storage="_TransactionHistory1", ThisKey="ProductID", OtherKey="ProductID")]
-		public EntitySet<TransactionHistory1> TransactionHistory1
-		{
-			get
-			{
-				return this._TransactionHistory1;
-			}
-			set
-			{
-				this._TransactionHistory1.Assign(value);
 			}
 		}
 		
@@ -14553,6 +14475,45 @@ namespace TaskThree.Files
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product1_ProductVendor", Storage="_ProductVendor", ThisKey="ProductID", OtherKey="ProductID")]
+		public EntitySet<ProductVendor> ProductVendor
+		{
+			get
+			{
+				return this._ProductVendor;
+			}
+			set
+			{
+				this._ProductVendor.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product1_ProductReview1", Storage="_ProductReview1", ThisKey="ProductID", OtherKey="ProductID")]
+		public EntitySet<ProductReview1> ProductReview1
+		{
+			get
+			{
+				return this._ProductReview1;
+			}
+			set
+			{
+				this._ProductReview1.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product1_TransactionHistory1", Storage="_TransactionHistory1", ThisKey="ProductID", OtherKey="ProductID")]
+		public EntitySet<TransactionHistory1> TransactionHistory1
+		{
+			get
+			{
+				return this._TransactionHistory1;
+			}
+			set
+			{
+				this._TransactionHistory1.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product1_WorkOrder1", Storage="_WorkOrder1", ThisKey="ProductID", OtherKey="ProductID")]
 		public EntitySet<WorkOrder1> WorkOrder1
 		{
@@ -14566,16 +14527,55 @@ namespace TaskThree.Files
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product1_ProductVendor", Storage="_ProductVendor", ThisKey="ProductID", OtherKey="ProductID")]
-		public EntitySet<ProductVendor> ProductVendor
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product1_ProductProductPhoto1", Storage="_ProductProductPhoto1", ThisKey="ProductID", OtherKey="ProductID")]
+		public EntitySet<ProductProductPhoto1> ProductProductPhoto1
 		{
 			get
 			{
-				return this._ProductVendor;
+				return this._ProductProductPhoto1;
 			}
 			set
 			{
-				this._ProductVendor.Assign(value);
+				this._ProductProductPhoto1.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product1_ProductListPriceHistory1", Storage="_ProductListPriceHistory1", ThisKey="ProductID", OtherKey="ProductID")]
+		public EntitySet<ProductListPriceHistory1> ProductListPriceHistory1
+		{
+			get
+			{
+				return this._ProductListPriceHistory1;
+			}
+			set
+			{
+				this._ProductListPriceHistory1.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product1_ProductInventory1", Storage="_ProductInventory1", ThisKey="ProductID", OtherKey="ProductID")]
+		public EntitySet<ProductInventory1> ProductInventory1
+		{
+			get
+			{
+				return this._ProductInventory1;
+			}
+			set
+			{
+				this._ProductInventory1.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Product1_ProductCostHistory1", Storage="_ProductCostHistory1", ThisKey="ProductID", OtherKey="ProductID")]
+		public EntitySet<ProductCostHistory1> ProductCostHistory1
+		{
+			get
+			{
+				return this._ProductCostHistory1;
+			}
+			set
+			{
+				this._ProductCostHistory1.Assign(value);
 			}
 		}
 		
@@ -14907,18 +14907,6 @@ namespace TaskThree.Files
 			entity.Product1 = null;
 		}
 		
-		private void attach_ProductCostHistory1(ProductCostHistory1 entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product1 = this;
-		}
-		
-		private void detach_ProductCostHistory1(ProductCostHistory1 entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product1 = null;
-		}
-		
 		private void attach_ProductInventory(ProductInventory entity)
 		{
 			this.SendPropertyChanging();
@@ -14926,18 +14914,6 @@ namespace TaskThree.Files
 		}
 		
 		private void detach_ProductInventory(ProductInventory entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product1 = null;
-		}
-		
-		private void attach_ProductInventory1(ProductInventory1 entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product1 = this;
-		}
-		
-		private void detach_ProductInventory1(ProductInventory1 entity)
 		{
 			this.SendPropertyChanging();
 			entity.Product1 = null;
@@ -14955,18 +14931,6 @@ namespace TaskThree.Files
 			entity.Product1 = null;
 		}
 		
-		private void attach_ProductListPriceHistory1(ProductListPriceHistory1 entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product1 = this;
-		}
-		
-		private void detach_ProductListPriceHistory1(ProductListPriceHistory1 entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product1 = null;
-		}
-		
 		private void attach_ProductProductPhoto(ProductProductPhoto entity)
 		{
 			this.SendPropertyChanging();
@@ -14974,18 +14938,6 @@ namespace TaskThree.Files
 		}
 		
 		private void detach_ProductProductPhoto(ProductProductPhoto entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product1 = null;
-		}
-		
-		private void attach_ProductProductPhoto1(ProductProductPhoto1 entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product1 = this;
-		}
-		
-		private void detach_ProductProductPhoto1(ProductProductPhoto1 entity)
 		{
 			this.SendPropertyChanging();
 			entity.Product1 = null;
@@ -15003,18 +14955,6 @@ namespace TaskThree.Files
 			entity.Product1 = null;
 		}
 		
-		private void attach_ProductReview1(ProductReview1 entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product1 = this;
-		}
-		
-		private void detach_ProductReview1(ProductReview1 entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product1 = null;
-		}
-		
 		private void attach_TransactionHistory(TransactionHistory entity)
 		{
 			this.SendPropertyChanging();
@@ -15022,18 +14962,6 @@ namespace TaskThree.Files
 		}
 		
 		private void detach_TransactionHistory(TransactionHistory entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product1 = null;
-		}
-		
-		private void attach_TransactionHistory1(TransactionHistory1 entity)
-		{
-			this.SendPropertyChanging();
-			entity.Product1 = this;
-		}
-		
-		private void detach_TransactionHistory1(TransactionHistory1 entity)
 		{
 			this.SendPropertyChanging();
 			entity.Product1 = null;
@@ -15051,6 +14979,42 @@ namespace TaskThree.Files
 			entity.Product1 = null;
 		}
 		
+		private void attach_ProductVendor(ProductVendor entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product1 = this;
+		}
+		
+		private void detach_ProductVendor(ProductVendor entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product1 = null;
+		}
+		
+		private void attach_ProductReview1(ProductReview1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product1 = this;
+		}
+		
+		private void detach_ProductReview1(ProductReview1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product1 = null;
+		}
+		
+		private void attach_TransactionHistory1(TransactionHistory1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product1 = this;
+		}
+		
+		private void detach_TransactionHistory1(TransactionHistory1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product1 = null;
+		}
+		
 		private void attach_WorkOrder1(WorkOrder1 entity)
 		{
 			this.SendPropertyChanging();
@@ -15063,13 +15027,49 @@ namespace TaskThree.Files
 			entity.Product1 = null;
 		}
 		
-		private void attach_ProductVendor(ProductVendor entity)
+		private void attach_ProductProductPhoto1(ProductProductPhoto1 entity)
 		{
 			this.SendPropertyChanging();
 			entity.Product1 = this;
 		}
 		
-		private void detach_ProductVendor(ProductVendor entity)
+		private void detach_ProductProductPhoto1(ProductProductPhoto1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product1 = null;
+		}
+		
+		private void attach_ProductListPriceHistory1(ProductListPriceHistory1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product1 = this;
+		}
+		
+		private void detach_ProductListPriceHistory1(ProductListPriceHistory1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product1 = null;
+		}
+		
+		private void attach_ProductInventory1(ProductInventory1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product1 = this;
+		}
+		
+		private void detach_ProductInventory1(ProductInventory1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product1 = null;
+		}
+		
+		private void attach_ProductCostHistory1(ProductCostHistory1 entity)
+		{
+			this.SendPropertyChanging();
+			entity.Product1 = this;
+		}
+		
+		private void detach_ProductCostHistory1(ProductCostHistory1 entity)
 		{
 			this.SendPropertyChanging();
 			entity.Product1 = null;

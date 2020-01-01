@@ -519,9 +519,9 @@
       <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Association Name="ProductModel1_Product" Member="Product" ThisKey="ProductModelID" OtherKey="ProductModelID" Type="Product" />
       <Association Name="ProductModel1_ProductModelIllustration" Member="ProductModelIllustration" ThisKey="ProductModelID" OtherKey="ProductModelID" Type="ProductModelIllustration" />
-      <Association Name="ProductModel1_ProductModelIllustration1" Member="ProductModelIllustration1" ThisKey="ProductModelID" OtherKey="ProductModelID" Type="ProductModelIllustration1" />
       <Association Name="ProductModel1_ProductModelProductDescriptionCulture" Member="ProductModelProductDescriptionCulture" ThisKey="ProductModelID" OtherKey="ProductModelID" Type="ProductModelProductDescriptionCulture" />
       <Association Name="ProductModel1_ProductModelProductDescriptionCulture1" Member="ProductModelProductDescriptionCulture1" ThisKey="ProductModelID" OtherKey="ProductModelID" Type="ProductModelProductDescriptionCulture1" />
+      <Association Name="ProductModel1_ProductModelIllustration1" Member="ProductModelIllustration1" ThisKey="ProductModelID" OtherKey="ProductModelID" Type="ProductModelIllustration1" />
       <Association Name="ProductModel1_Product1" Member="Product1" ThisKey="ProductModelID" OtherKey="ProductModelID" Type="Product1" />
     </Type>
   </Table>
@@ -611,20 +611,20 @@
       <Association Name="Product1_BillOfMaterials" Member="BillOfMaterials" ThisKey="ProductID" OtherKey="ComponentID" Type="BillOfMaterials" />
       <Association Name="Product1_BillOfMaterials1" Member="BillOfMaterials1" ThisKey="ProductID" OtherKey="ProductAssemblyID" Type="BillOfMaterials" />
       <Association Name="Product1_ProductCostHistory" Member="ProductCostHistory" ThisKey="ProductID" OtherKey="ProductID" Type="ProductCostHistory" />
-      <Association Name="Product1_ProductCostHistory1" Member="ProductCostHistory1" ThisKey="ProductID" OtherKey="ProductID" Type="ProductCostHistory1" />
       <Association Name="Product1_ProductInventory" Member="ProductInventory" ThisKey="ProductID" OtherKey="ProductID" Type="ProductInventory" />
-      <Association Name="Product1_ProductInventory1" Member="ProductInventory1" ThisKey="ProductID" OtherKey="ProductID" Type="ProductInventory1" />
       <Association Name="Product1_ProductListPriceHistory" Member="ProductListPriceHistory" ThisKey="ProductID" OtherKey="ProductID" Type="ProductListPriceHistory" />
-      <Association Name="Product1_ProductListPriceHistory1" Member="ProductListPriceHistory1" ThisKey="ProductID" OtherKey="ProductID" Type="ProductListPriceHistory1" />
       <Association Name="Product1_ProductProductPhoto" Member="ProductProductPhoto" ThisKey="ProductID" OtherKey="ProductID" Type="ProductProductPhoto" />
-      <Association Name="Product1_ProductProductPhoto1" Member="ProductProductPhoto1" ThisKey="ProductID" OtherKey="ProductID" Type="ProductProductPhoto1" />
       <Association Name="Product1_ProductReview" Member="ProductReview" ThisKey="ProductID" OtherKey="ProductID" Type="ProductReview" />
-      <Association Name="Product1_ProductReview1" Member="ProductReview1" ThisKey="ProductID" OtherKey="ProductID" Type="ProductReview1" />
       <Association Name="Product1_TransactionHistory" Member="TransactionHistory" ThisKey="ProductID" OtherKey="ProductID" Type="TransactionHistory" />
-      <Association Name="Product1_TransactionHistory1" Member="TransactionHistory1" ThisKey="ProductID" OtherKey="ProductID" Type="TransactionHistory1" />
       <Association Name="Product1_WorkOrder" Member="WorkOrder" ThisKey="ProductID" OtherKey="ProductID" Type="WorkOrder" />
-      <Association Name="Product1_WorkOrder1" Member="WorkOrder1" ThisKey="ProductID" OtherKey="ProductID" Type="WorkOrder1" />
       <Association Name="Product1_ProductVendor" Member="ProductVendor" ThisKey="ProductID" OtherKey="ProductID" Type="ProductVendor" />
+      <Association Name="Product1_ProductReview1" Member="ProductReview1" ThisKey="ProductID" OtherKey="ProductID" Type="ProductReview1" />
+      <Association Name="Product1_TransactionHistory1" Member="TransactionHistory1" ThisKey="ProductID" OtherKey="ProductID" Type="TransactionHistory1" />
+      <Association Name="Product1_WorkOrder1" Member="WorkOrder1" ThisKey="ProductID" OtherKey="ProductID" Type="WorkOrder1" />
+      <Association Name="Product1_ProductProductPhoto1" Member="ProductProductPhoto1" ThisKey="ProductID" OtherKey="ProductID" Type="ProductProductPhoto1" />
+      <Association Name="Product1_ProductListPriceHistory1" Member="ProductListPriceHistory1" ThisKey="ProductID" OtherKey="ProductID" Type="ProductListPriceHistory1" />
+      <Association Name="Product1_ProductInventory1" Member="ProductInventory1" ThisKey="ProductID" OtherKey="ProductID" Type="ProductInventory1" />
+      <Association Name="Product1_ProductCostHistory1" Member="ProductCostHistory1" ThisKey="ProductID" OtherKey="ProductID" Type="ProductCostHistory1" />
       <Association Name="ProductModel_Product1" Member="ProductModel" ThisKey="ProductModelID" OtherKey="ProductModelID" Type="ProductModel" IsForeignKey="true" />
       <Association Name="ProductModel1_Product1" Member="ProductModel1" ThisKey="ProductModelID" OtherKey="ProductModelID" Type="ProductModel1" IsForeignKey="true" />
       <Association Name="ProductSubcategory_Product1" Member="ProductSubcategory" ThisKey="ProductSubcategoryID" OtherKey="ProductSubcategoryID" Type="ProductSubcategory" IsForeignKey="true" />

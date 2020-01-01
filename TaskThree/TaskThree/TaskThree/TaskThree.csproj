@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1C29AE74-6140-4617-B16E-D46FC6AA89C3}</ProjectGuid>
+    <ProjectGuid>{3CC21265-C0C7-430B-8EAB-84FE14CE399E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TaskThree</RootNamespace>
@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\DataContext.cs" />
+    <Compile Include="Classes\DataRepository.cs" />
     <Compile Include="Classes\ExtendingSqlTools.cs" />
     <Compile Include="Files\Data.designer.cs">
       <AutoGen>True</AutoGen>
