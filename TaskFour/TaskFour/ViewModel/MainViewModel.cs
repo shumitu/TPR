@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 using TaskThree.Classes;
 using TaskThree.Files;
 using ViewModel.Interfaces;
@@ -18,10 +19,10 @@ namespace ViewModel
         public DataRepository DataRepository { get; set; }
 
 
-        public Command AddProductCommand { get; private set; }
-        public Command ModifyProductCommand { get; private set; }
-        public Command DeleteProductCommand { get; private set; }
-        public Command ChangeSelectedProduct { get; private set; }
+        public ICommand AddProductCommand { get; private set; }
+        public ICommand UpdateProductCommand { get; private set; }
+        public ICommand RemoveProductCommand { get; private set; }
+        public ICommand ChangeSelectedProduct { get; private set; }
         public IWindow MainWindow { get; set; }
         public IWindow AddWindow { get; set; }
 
@@ -57,6 +58,7 @@ namespace ViewModel
             {
                 products = value;
                 RaisePropertyChanged("Products");
+
             }
         }
 
@@ -449,10 +451,7 @@ namespace ViewModel
 
         public bool SizeCheck
         {
-            get
-            {
-                return sizeCheck;
-            }
+            get { return sizeCheck; }
             set
             {
                 sizeCheck = value;
@@ -483,7 +482,7 @@ namespace ViewModel
             }
             set
             {
-                weightUnitMeasureCodeCheck = value;
+               weightUnitMeasureCodeCheck = value;
                 RaisePropertyChanged("WeightUnitMeasureCodeCheck");
             }
         }
@@ -687,6 +686,7 @@ namespace ViewModel
         private void SaveData(Product product, out string message)
         {
             message = "";
+
             CheckProduct(product);
 
             if (Name != null && Name != "")
@@ -740,11 +740,9 @@ namespace ViewModel
         {
             Product productToAdd = new Product();
             SaveData(productToAdd, out string message);
-
             if (message != "")
             {
                 MainWindow.ShowPopup(message);
-
             }
             else if (DataRepository.Add(productToAdd))
             {
@@ -772,7 +770,7 @@ namespace ViewModel
             }
             else
             {
-                MainWindow.ShowPopup("Select product");
+                MainWindow.ShowPopup("Select a product");
             }
         }
 
@@ -780,10 +778,8 @@ namespace ViewModel
         private void UpdateProduct()
         {
             SaveData(Product, out string message);
-
             if (message != "")
             {
-
                 MainWindow.ShowPopup(message);
             }
             else if (DataRepository.Update(Product))
@@ -792,7 +788,7 @@ namespace ViewModel
             }
             else
             {
-                MainWindow.ShowPopup("Product modify failed");
+                MainWindow.ShowPopup("Product modification failed");
             }
         }
 
@@ -977,7 +973,6 @@ namespace ViewModel
         private string GetProductSubcategoryName(int index)
         {
             List<Product> products = DataRepository.GetAllProducts();
-
             return (from product in products
                     where product.ProductSubcategoryID != null && product.ProductSubcategoryID == index
                     select product.ProductSubcategory.Name).First();
@@ -987,7 +982,6 @@ namespace ViewModel
         private string GetProductModelName(int index)
         {
             List<Product> products = DataRepository.GetAllProducts();
-
             return (from product in products
                     where product.ProductModelID != null && product.ProductModelID == index
                     select product.ProductModel.Name).First();
@@ -1041,25 +1035,34 @@ namespace ViewModel
         }
 
 
+        public void OnProductsChanged()
+        {
+            this.Products = DataRepository.GetAllProducts();
+        }
+
+
         public MainViewModel()
         {
             AddProductCommand = new Command(AddProduct);
-            ModifyProductCommand = new Command(UpdateProduct);
-            DeleteProductCommand = new Command(DeleteProduct);
+            UpdateProductCommand = new Command(UpdateProduct);
+            RemoveProductCommand = new Command(DeleteProduct);
             ChangeSelectedProduct = new Command(OnProductChanged);
 
             DataRepository = new DataRepository();
+            DataRepository.ChangeInCollection += OnProductsChanged;
 
             Products = DataRepository.GetAllProducts();
             Product = new Product();
             Product.SellStartDate = DateTime.Now;
 
+
             InitComboBox();
+
 
             if (Product != null)
             {
                 InitUpdateProduct();
-            }                
+            }
         }
     }
 }

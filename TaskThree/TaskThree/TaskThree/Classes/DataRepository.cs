@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Linq;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TaskThree.Files;
 
 
@@ -12,6 +8,8 @@ namespace TaskThree.Classes
     public class DataRepository
     {
         private DataContext dataContext;
+        public delegate void OwnHandler();
+        public event OwnHandler ChangeInCollection;
 
 
         public DataRepository()
@@ -23,6 +21,7 @@ namespace TaskThree.Classes
         public bool Add(Product product)
         {
             bool result = dataContext.AddProduct(product);
+            ChangeInCollection?.Invoke();
             return result;
         }
 
@@ -35,8 +34,9 @@ namespace TaskThree.Classes
 
         public bool Remove(int productId)
         {
-            Product product = Get(productId);
-            bool result = dataContext.RemoveProduct(product.ProductID);
+            Product product = dataContext.GetProduct(productId);
+            bool result = dataContext.RemoveProduct(product);
+            ChangeInCollection?.Invoke();
             return result;
         }
 
@@ -44,6 +44,7 @@ namespace TaskThree.Classes
         public bool Update(Product item)
         {
             bool result = dataContext.UpdateProduct(item);
+            ChangeInCollection?.Invoke();
             return result;
         }
 
@@ -140,6 +141,16 @@ namespace TaskThree.Classes
             decimal answer = (from product in GetAll()
                               where product.ProductSubcategory.ProductCategory.Name.Equals(category.Name)
                               select product.StandardCost).ToList().Sum();
+
+            return (int)answer;
+        }
+
+
+        public decimal GetTotalStandardCostByCategory(string category)
+        {
+            decimal answer = (from product in GetAll()
+                              where product.ProductSubcategory.ProductCategory.Name.Equals(category)
+                              select product.StandardCost).Sum();
 
             return (int)answer;
         }

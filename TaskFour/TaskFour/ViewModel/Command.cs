@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Windows.Input;
 
 
 namespace ViewModel
 {
-    public class Command
+    public class Command : ICommand
     {
         private readonly Action execute;
         private readonly Func<bool> canExecute;
+        public event EventHandler CanExecuteChanged;
 
 
         public Command(Action execute) : this(execute, null) { }

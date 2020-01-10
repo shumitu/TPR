@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Linq;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TaskThree.Files;
 
 
@@ -25,7 +22,7 @@ namespace TaskThree.Classes
             try
             {
                 dataContext.Product.InsertOnSubmit(product);
-                dataContext.SubmitChanges();
+                dataContext.SubmitChanges(ConflictMode.ContinueOnConflict);
                 return true;
             }
             catch
@@ -52,18 +49,18 @@ namespace TaskThree.Classes
         }
 
 
-        public bool RemoveProduct(int productId)
+        public bool RemoveProduct(Product product)
         {
-            Product productToDelete = GetProduct(productId);
-
-            if (productToDelete != null)
+            try
             {
-                dataContext.Product.DeleteOnSubmit(productToDelete);
-                dataContext.SubmitChanges();
-
+                dataContext.Product.DeleteOnSubmit(product);
+                dataContext.SubmitChanges(ConflictMode.ContinueOnConflict);
                 return true;
             }
-            else return false;           
+            catch
+            {
+                return false;
+            }
         }
 
 
@@ -96,6 +93,7 @@ namespace TaskThree.Classes
                 productToUpdate.DiscontinuedDate = product.DiscontinuedDate;
                 productToUpdate.rowguid = product.rowguid;
                 productToUpdate.ModifiedDate = DateTime.Today;
+                dataContext.SubmitChanges(ConflictMode.ContinueOnConflict);
                 return true;
             }
             catch
@@ -108,6 +106,12 @@ namespace TaskThree.Classes
         public IQueryable<P> GetItems<P>() where P : class
         {
             return dataContext.GetTable<P>();
+        }
+
+
+        public IQueryable<Product> GetItems()
+        {
+            return dataContext.GetTable<Product>();
         }
     }
 }
